@@ -1,0 +1,40 @@
+engine:
+collision detection
+xml support
+post processing
+resource loading
+resize support
+
+game:
+movement
+level system
+gameplay systems
+
+other:
+
+
+design posibilities:
+	flashpunk like:
+		no ide
+		library dll
+		game links against library
+		code can be in c++
+
+	scripted:
+		seperate ide:
+			game engine knows about scripts
+			seperate framework project as ide
+			ide allows for live editing, as a full editor,..
+			difficult for representing engine stuff outside of the viewport
+
+		in-engine ide:
+			bloat engine?
+			difficult to make clean looking?
+
+
+
+engine is seperate library
+engine knows nothing about data on hard drive. has callbacks to fetch data and caches it
+framework knows about data on hard drive, feeds it to the engine
+
+

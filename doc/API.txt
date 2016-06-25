@@ -1,0 +1,65 @@
+graphics:
+	static graphic objects:
+		quad
+	
+	primitive graphic objects:
+		texture (wrapper around opengl texture)
+		color (contains color, used for conversion)
+		program (vertex, fragment shader)
+
+	drawable graphic objects:
+		sprite (multiple textures (diffuse, normal, glow? ))
+		colorfield (color, afmeting)
+		light(color, afmeting, intensity)
+		effect ( => inheritable: used to specify custom effects, to allow for things such as twirling sprites,.. with virtual 'enable' function , program )
+		post_effect (program, afmeting )
+
+	renderer:
+		=> diffuse renderer (
+				step 1: call begin composition: render each object
+				step 2: call begin lighting: render each light
+				step 3: call begin postprocessing: render each postprocess object
+				step 4: call finalize to finish drawing, after this the screen can be flipped to display the result
+			)
+		=> stateless (no list of render objects, manually call render functions for each object)
+		=> if no effect is specified in a render function, the default effect is used
+
+		renderSprite(sprite, position, rotation, scale, effect = null)
+		renderColorfield(field, position, rotation, scale, effect = null)
+		renderLight(light, position)
+		renderPostEffect(post_effect, position, rotation, scale)
+
+
+
+
+
+resources:
+	resource object:
+		contains resource object,
+		reference counts
+
+	static resource manager:
+		load functions, with string creates/load resource
+		everything is cached with shared pointers
+
+
+
+
+
+engine:
+	static config class:
+		loads ini, contains all ini data, can be used from everywhere
+
+	scene:
+		list of entities,
+		list of graphics of entities,
+		list of lights of entities,
+	
+	sceneLight:
+		variables: light, position
+
+	scenePostEffect:
+		variables: post_effect, position, rotation, scale
+
+	sceneEntity:
+		variables: graphic, effect, position, rotation, scale
