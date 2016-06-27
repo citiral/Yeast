@@ -3,7 +3,7 @@
 #include "windowing/window.h"
 #include "World.h"
 #include "Timer.h"
-#include "resourceloader.h"
+#include "resources/ResourceManager.h"
 #include "premade/world/YeastWorld.h"
 #include <iostream>
 #include <cstdlib>
@@ -11,7 +11,7 @@
 #define FPS 60
 
 Engine::Engine(int width, int height, bool fullscreen) {
-    _loader = new ResourceLoader;
+    _loader = new ResourceManager;
 
     _window = new Window;
     _window->setResolution(width, height);
@@ -100,6 +100,6 @@ void Engine::begin(World* world) {
     }
 }
 
-ResourceLoader* Engine::getResourceLoader() {
+ResourceManager* Engine::getResourceManager() {
     return _loader;
 }

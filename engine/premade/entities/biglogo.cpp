@@ -1,5 +1,5 @@
 #include "biglogo.h"
-#include "../../../engine/resourceloader.h"
+#include "../../resources/ResourceManager.h"
 
 Biglogo::Biglogo(Engine* engine): Entity(engine)
 {
@@ -10,8 +10,8 @@ Biglogo::~Biglogo()
 }
 
 void Biglogo::added() {
-	Sprite* sprite = new Sprite(getEngine(), getEngine()->getResourceLoader()->loadTexture("res/assets/logo.png"));
-	sprite->setNormal(getEngine()->getResourceLoader()->loadTexture("res/assets/logo_normal.png"));
+	Sprite* sprite = new Sprite(getEngine(), getEngine()->getResourceManager()->loadTexture("res/assets/logo.png"));
+	sprite->setNormal(getEngine()->getResourceManager()->loadTexture("res/assets/logo_normal.png"));
 	setRenderable(sprite);
 
     setX(getEngine()->getWindow()->getWidth() / 2 - sprite->getDiffuse()->getWidth() / 2);

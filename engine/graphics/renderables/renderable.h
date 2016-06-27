@@ -2,8 +2,8 @@
 
 #include "../primitives/program.h"
 #include "../../math/Vector2.h"
-#include "../../resource.h"
 #include "../../engine.h"
+#include "../../resources/resource.h"
 
 class Renderable {
 public:

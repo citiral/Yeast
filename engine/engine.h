@@ -3,7 +3,7 @@
 class Window;
 class World;
 class GraphicsContext;
-class ResourceLoader;
+class ResourceManager;
 
 class Engine {
 public:
@@ -19,7 +19,7 @@ public:
     void setWorld(World* world);
     World* getWorld();
 
-    ResourceLoader* getResourceLoader();
+    ResourceManager* getResourceManager();
 
     void begin(World* entry);
 
@@ -29,5 +29,5 @@ private:
     GraphicsContext* _gc;
     World* _world;
 	Window* _window;
-    ResourceLoader* _loader;
+    ResourceManager* _loader;
 };

@@ -1,10 +1,10 @@
 #include "AmbientLight.h"
-#include "../../resourceloader.h"
+#include "../../resources/ResourceManager.h"
 #include <glad/glad.h>
 
 AmbientLight::AmbientLight(Engine* engine, const Color& color) : Light(engine), _lightColor(color)
 {
-	setProgram(_engine->getResourceLoader()->loadProgram("res/shaders/lighting/vertex.vsh", "res/shaders/lighting/ambient.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/lighting/vertex.vsh", "res/shaders/lighting/ambient.fsh"));
 }
 
 AmbientLight::~AmbientLight()

@@ -52,29 +52,11 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/premade/entities/biglogo.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resourceloader.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resourceloader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/resourceloader.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/resourceloader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/framework/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/Alien.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/Alien.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/BoxTest.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/BoxTest.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/GenericBackground.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/GenericBackground.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/GroundBlock.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/GroundBlock.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/PlayerEntity.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/PlayerEntity.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/SmallLogo.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/SmallLogo.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/bullet.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/bullet.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/gunshot.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/entities/gunshot.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/worlds/BeginWorld.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/game/worlds/BeginWorld.h" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -82,19 +64,19 @@
       <library name="Header Search Paths">
         <CLASSES>
           <root url="file://C:/MinGW/include" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include-fixed" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include/ssp" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include-fixed" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/ssp" />
           <root url="file://$MODULE_DIR$/engine" />
           <root url="file://$MODULE_DIR$/include" />
         </CLASSES>
         <SOURCES>
           <root url="file://C:/MinGW/include" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include-fixed" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include/c++" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.8.1/include/ssp" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include-fixed" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++" />
+          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/ssp" />
           <root url="file://$MODULE_DIR$/engine" />
           <root url="file://$MODULE_DIR$/include" />
         </SOURCES>
@@ -126,8 +108,8 @@
           <root url="file://$MODULE_DIR$/engine/premade/entities/biglogo.h" />
           <root url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.cpp" />
           <root url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.h" />
-          <root url="file://$MODULE_DIR$/engine/resourceloader.cpp" />
-          <root url="file://$MODULE_DIR$/engine/resourceloader.h" />
+          <root url="file://$MODULE_DIR$/engine/resources/resourceloader.cpp" />
+          <root url="file://$MODULE_DIR$/engine/resources/resourceloader.h" />
           <root url="file://$MODULE_DIR$/engine/windowing/window.cpp" />
           <root url="file://$MODULE_DIR$/engine/windowing/window.h" />
           <root url="file://$MODULE_DIR$/engine/Timer.cpp" />

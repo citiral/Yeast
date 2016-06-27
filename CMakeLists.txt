@@ -21,6 +21,7 @@ IF (WIN32)
     target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libSOIL.a")
     target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libfreetype.a")
     target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libglfw3.a")
+    target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libluajit.a")
     target_link_libraries(yeast ${OPENGL_LIBRARIES})
 ELSE()
     target_link_libraries(yeast "/usr/local/lib/libSOIL.a")
@@ -34,9 +35,9 @@ target_include_directories(framework PRIVATE engine)
 target_link_libraries(framework yeast)
 
 # compile the sample game
-add_library(I_wanna_kill_the_boshy SHARED ${GAME_SOURCE_FILES})
-target_include_directories(I_wanna_kill_the_boshy PRIVATE engine)
-target_link_libraries(I_wanna_kill_the_boshy yeast)
+# add_library(I_wanna_kill_the_boshy SHARED ${GAME_SOURCE_FILES})
+# target_include_directories(I_wanna_kill_the_boshy PRIVATE engine)
+# target_link_libraries(I_wanna_kill_the_boshy yeast)
 
 #add_library(angelscript_lib STATIC IMPORTED)
 #set_property(TARGET angelscript_lib PROPERTY

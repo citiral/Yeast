@@ -3,7 +3,7 @@
 
 #include "renderable.h"
 #include "../primitives/texture.h"
-#include "../../resource.h"
+#include "../../resources/resource.h"
 #include "../../math/Vector2.h"
 
 class Sprite : public Renderable

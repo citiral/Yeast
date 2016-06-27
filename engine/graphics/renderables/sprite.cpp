@@ -1,11 +1,11 @@
 #include "sprite.h"
-#include "../../resourceloader.h"
+#include "../../resources/ResourceManager.h"
 #include <glad/glad.h>
 
 Sprite::Sprite(Engine* engine, const Resource<GL30Texture>& diffuse)
-		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceLoader()->loadTexture("res/assets/default_normal.png")), _isLit(true), _origin(0, 0)
+		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("res/assets/default_normal.png")), _isLit(true), _origin(0, 0)
 {
-	setProgram(_engine->getResourceLoader()->loadProgram("res/shaders/spriteEffect.vsh", "res/shaders/spriteEffect.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/spriteEffect.vsh", "res/shaders/spriteEffect.fsh"));
 }
 
 Sprite::~Sprite()

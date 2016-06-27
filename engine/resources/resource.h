@@ -7,7 +7,9 @@ class Resource
 public:
 	//template <class T>
 	Resource();
-	Resource(T* res);
+    Resource(T* res);
+    template<typename... ARGS>
+    Resource(ARGS... args);
 	
 	//template <class T>
 	Resource(const Resource<T>& res);
@@ -42,6 +44,14 @@ Resource<T>::Resource(T* res) {
 	_resource = res;
 	_count = new int;
 	*_count = 1;
+}
+
+template <class T>
+template<typename... ARGS>
+Resource<T>::Resource(ARGS... args) {
+    _resource = new T(args...);
+    _count = new int;
+    *_count = 1;
 }
 
 template <class T>

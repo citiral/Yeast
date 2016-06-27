@@ -2,7 +2,7 @@
 #define LIGHT_H
 
 #include "../primitives/program.h"
-#include "../../resource.h"
+#include "../../resources/resource.h"
 #include "../../engine.h"
 
 class Light

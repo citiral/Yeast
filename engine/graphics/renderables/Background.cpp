@@ -1,11 +1,11 @@
 #include "Background.h"
-#include "../../resourceloader.h"
+#include "../../resources/ResourceManager.h"
 #include <glad/glad.h>
 
 Background::Background(Engine* engine, const Resource<GL30Texture>& diffuse, float scale)
-		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceLoader()->loadTexture("res/assets/default_normal.png"))
+		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("res/assets/default_normal.png"))
 {
-	setProgram(_engine->getResourceLoader()->loadProgram("res/shaders/backgroundEffect.vsh", "res/shaders/backgroundEffect.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/backgroundEffect.vsh", "res/shaders/backgroundEffect.fsh"));
 	_diffuse->setRepeat(GL_REPEAT);
 	_scale = scale;
 }

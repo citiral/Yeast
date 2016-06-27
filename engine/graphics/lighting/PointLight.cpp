@@ -1,11 +1,11 @@
 #include "PointLight.h"
 #include <glad/glad.h>
-#include "../../resourceloader.h"
+#include "../../resources/ResourceManager.h"
 
 PointLight::PointLight(Engine* engine, const Color& color, const Vector2& position, float depth, float drop, float end) :
         Light(engine), _lightColor(color), _position(position), _depth(depth), _drop(drop), _end(end)
 {
-    setProgram(_engine->getResourceLoader()->loadProgram("res/shaders/lighting/vertex.vsh", "res/shaders/lighting/point.fsh"));
+    setProgram(_engine->getResourceManager()->loadProgram("res/shaders/lighting/vertex.vsh", "res/shaders/lighting/point.fsh"));
 }
 
 PointLight::~PointLight()
