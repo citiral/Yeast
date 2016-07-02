@@ -109,3 +109,11 @@ std::list<std::shared_ptr<Entity>>& World::getEntities() {
 std::vector<std::shared_ptr<Light>>& World::getLights() {
     return _lights;
 }
+
+void World::added() {
+
+}
+
+void World::removed() {
+
+}

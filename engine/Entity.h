@@ -37,7 +37,7 @@ public:
     void setState(EntityState state);
     EntityState getState() const;
 
-    virtual void render(GraphicsContext& gc);
+    void render(GraphicsContext& gc);
 
     float getX() const;
     float getY() const;
@@ -54,13 +54,13 @@ public:
 	void moveTo(float x, float y);
 	
 	//collision functions
-	virtual void onCollide(Entity* e);
-	virtual void onMoveCollideX(Entity* e, float amount);
-	virtual void onMoveCollideY(Entity* e, float amount);
+	void onCollide(Entity* e);
+	void onMoveCollideX(Entity* e, float amount);
+	void onMoveCollideY(Entity* e, float amount);
 
-	virtual void added() = 0;
-	virtual void removed() = 0;
-    virtual void update(float dt) = 0;
+	void added();
+	void removed();
+    void update(float dt);
 
 private:
     Engine* _engine;

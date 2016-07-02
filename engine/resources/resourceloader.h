@@ -11,7 +11,7 @@ public:
     ResourceLoader();
     ~ResourceLoader();
 
-    Resource<T> getResource(K);
+    Resource<T> getResource(const K& key);
 
     void destroyUnused();
 private:
@@ -31,7 +31,7 @@ ResourceLoader<K, T>::~ResourceLoader() {
 }
 
 template<class K, class T>
-Resource<T> ResourceLoader<K, T>::getResource(K key) {
+Resource<T> ResourceLoader<K, T>::getResource(const K& key) {
     // if we already have the element, return it
     auto element = _data.find(key);
     if (element != _data.end()) {

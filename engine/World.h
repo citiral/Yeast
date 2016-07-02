@@ -14,12 +14,12 @@ public:
     World(Engine* engine);
     virtual ~World();
 	
-	virtual void added() = 0;
-	virtual void removed() = 0;
+	void added();
+	void removed();
 
-    virtual void update(float dt);
-    virtual void renderComposite(GraphicsContext& gc);
-	virtual void renderLighting(GraphicsContext& gc);
+    void update(float dt);
+    void renderComposite(GraphicsContext& gc);
+	void renderLighting(GraphicsContext& gc);
 
 	Engine* getEngine() const;
 	

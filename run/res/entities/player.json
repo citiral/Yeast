@@ -2,8 +2,9 @@
   "name": "player",
   "renderable": {
     "type": "sprite",
-    "diffuse": "ball_diffuse.png",
-    "normal": "ball_normal.png"
+    "diffuse": "monster.png",
+    "normal": "monster_normal.png",
+    "lit": false
   },
-  "script": "a"
+  "scripts": []
 }

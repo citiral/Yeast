@@ -4,24 +4,25 @@ class Window;
 class World;
 class GraphicsContext;
 class ResourceManager;
+class Settings;
+class LuaEngine;
 
-class Engine {
+class __declspec(dllexport) Engine {
 public:
     Engine(int width, int height, bool fullscreen);
     ~Engine();
 
-    void setGraphicsContext(GraphicsContext* graphicsContext);
+    Window* getWindow() const;
     GraphicsContext* getGraphicsContext();
-	
-	void setWindow(Window* window);
-	Window* getWindow() const;
+    World* getWorld();
+    Settings* getSettings();
+    LuaEngine* getLuaEngine();
 
     void setWorld(World* world);
-    World* getWorld();
 
     ResourceManager* getResourceManager();
 
-    void begin(World* entry);
+    void begin();
 
     void update(float dt);
     void render();
@@ -30,4 +31,6 @@ private:
     World* _world;
 	Window* _window;
     ResourceManager* _loader;
+    Settings* _settings;
+    LuaEngine* _luaengine;
 };

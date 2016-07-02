@@ -5,10 +5,24 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Entity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Entity.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Timer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Timer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/World.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/World.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/engine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/engine.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/glad.c" isTestSource="false" />
@@ -40,6 +54,7 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.cpp" isTestSource="false" />
@@ -48,15 +63,16 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/premade/entities/biglogo.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/premade/entities/biglogo.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/resourceloader.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/resourceloader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/framework/main.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -68,7 +84,6 @@
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include-fixed" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/ssp" />
-          <root url="file://$MODULE_DIR$/engine" />
           <root url="file://$MODULE_DIR$/include" />
         </CLASSES>
         <SOURCES>
@@ -77,64 +92,8 @@
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include-fixed" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/ssp" />
-          <root url="file://$MODULE_DIR$/engine" />
           <root url="file://$MODULE_DIR$/include" />
         </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/color.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/program.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/program.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/quad.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/quad.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/texture.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/texture.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/Background.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/Background.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.h" />
-          <root url="file://$MODULE_DIR$/engine/math/Vector2.cpp" />
-          <root url="file://$MODULE_DIR$/engine/math/Vector2.h" />
-          <root url="file://$MODULE_DIR$/engine/physics/BoxCollider.cpp" />
-          <root url="file://$MODULE_DIR$/engine/physics/BoxCollider.h" />
-          <root url="file://$MODULE_DIR$/engine/physics/Collider.cpp" />
-          <root url="file://$MODULE_DIR$/engine/physics/Collider.h" />
-          <root url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.cpp" />
-          <root url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.h" />
-          <root url="file://$MODULE_DIR$/engine/premade/entities/biglogo.cpp" />
-          <root url="file://$MODULE_DIR$/engine/premade/entities/biglogo.h" />
-          <root url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.cpp" />
-          <root url="file://$MODULE_DIR$/engine/premade/world/YeastWorld.h" />
-          <root url="file://$MODULE_DIR$/engine/resources/resourceloader.cpp" />
-          <root url="file://$MODULE_DIR$/engine/resources/resourceloader.h" />
-          <root url="file://$MODULE_DIR$/engine/windowing/window.cpp" />
-          <root url="file://$MODULE_DIR$/engine/windowing/window.h" />
-          <root url="file://$MODULE_DIR$/engine/Timer.cpp" />
-          <root url="file://$MODULE_DIR$/engine/Timer.h" />
-          <root url="file://$MODULE_DIR$/engine/Entity.cpp" />
-          <root url="file://$MODULE_DIR$/engine/Entity.h" />
-          <root url="file://$MODULE_DIR$/engine/World.cpp" />
-          <root url="file://$MODULE_DIR$/engine/World.h" />
-          <root url="file://$MODULE_DIR$/engine/engine.cpp" />
-          <root url="file://$MODULE_DIR$/engine/engine.h" />
-          <root url="file://$MODULE_DIR$/engine/glad.c" />
-          <root url="file://$MODULE_DIR$/engine/graphics/graphicscontext.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/graphicscontext.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/light.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/lighting/light.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.cpp" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.h" />
-          <root url="file://$MODULE_DIR$/engine/graphics/primitives/color.cpp" />
-        </excluded>
       </library>
     </orderEntry>
   </component>

@@ -15,8 +15,9 @@ file(GLOB_RECURSE GAME_SOURCE_FILES game/*.cpp game/*.c)
 file(GLOB_RECURSE FRAMEWORK_SOURCE_FILES framework/*.cpp framework/*.c)
 
 # compile the engine, yeast
-add_library(yeast SHARED ${ENGINE_SOURCE_FILES})
+add_executable(yeast ${ENGINE_SOURCE_FILES})
 target_include_directories(yeast PRIVATE include)
+
 IF (WIN32)
     target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libSOIL.a")
     target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libfreetype.a")
@@ -30,9 +31,9 @@ ELSE()
 ENDIF()
 
 # compile the framework
-add_executable(framework ${FRAMEWORK_SOURCE_FILES})
-target_include_directories(framework PRIVATE engine)
-target_link_libraries(framework yeast)
+# add_executable(framework ${FRAMEWORK_SOURCE_FILES})
+# target_include_directories(framework PRIVATE engine)
+# target_link_libraries(framework yeast)
 
 # compile the sample game
 # add_library(I_wanna_kill_the_boshy SHARED ${GAME_SOURCE_FILES})

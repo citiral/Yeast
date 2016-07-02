@@ -6,7 +6,7 @@
 
 Entity::Entity(Engine* engine, float x, float y, Renderable* renderable) : _position(x, y), _type("") {
     _engine = engine;
-    _renderable = nullptr;
+    _renderable = renderable;
 	_collider = nullptr;
 	_rotation = 0;
     _state = EntityState::INVALID;
@@ -145,4 +145,16 @@ void Entity::setState(EntityState state) {
 }
 EntityState Entity::getState() const {
     return _state;
+}
+
+void Entity::added() {
+
+}
+
+void Entity::removed() {
+
+}
+
+void Entity::update(float dt) {
+
 }

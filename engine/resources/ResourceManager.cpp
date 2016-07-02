@@ -35,3 +35,15 @@ Resource<Program> ResourceManager::loadProgram(const std::string &vertex, const 
 Resource<GL30Texture> ResourceManager::loadTexture(const std::string& path) {
     return _textures.getResource(path);
 }
+
+Resource<WorldBlueprint> ResourceManager::loadWorld(const std::string& path) {
+    return _worlds.getResource(path);
+}
+
+Resource<EntityBlueprint> ResourceManager::loadEntity(const std::string& path) {
+    return _entities.getResource(path);
+}
+
+Resource<Script> ResourceManager::loadScript(const std::string& path) {
+    return _scripts.getResource(path);
+}

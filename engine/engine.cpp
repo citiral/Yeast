@@ -4,14 +4,17 @@
 #include "World.h"
 #include "Timer.h"
 #include "resources/ResourceManager.h"
-#include "premade/world/YeastWorld.h"
 #include <iostream>
 #include <cstdlib>
+#include "Settings.h"
+#include "scripting/LuaEngine.h"
 
 #define FPS 60
 
 Engine::Engine(int width, int height, bool fullscreen) {
     _loader = new ResourceManager;
+    _settings = new Settings;
+    _luaengine = new LuaEngine();
 
     _window = new Window;
     _window->setResolution(width, height);
@@ -58,29 +61,32 @@ void Engine::render() {
     _world->renderLighting(*_gc);
 }
 
-void Engine::setGraphicsContext(GraphicsContext *graphicsContext) {
-    _gc = graphicsContext;
-}
-
 GraphicsContext *Engine::getGraphicsContext() {
     return _gc;
 }
 
-void Engine::setWindow(Window* window) {
-	_window = window;
-}
-	
 Window* Engine::getWindow() const {
 	return _window;
 }
 
-void Engine::begin(World* world) {
+Settings* Engine::getSettings() {
+    return _settings;
+}
+
+ResourceManager* Engine::getResourceManager() {
+    return _loader;
+}
+
+LuaEngine* Engine::getLuaEngine() {
+    return _luaengine;
+}
+
+void Engine::begin() {
     // seed the random generator
     std::srand(static_cast <unsigned> (std::time(0)));
 
     // setup the begin world
-    setWorld(new YeastWorld(this, world));
-    //setWorld(world);
+    setWorld(_loader->loadWorld(_settings->get("application", "world"))->create(this));
 
     // enter the core game loop
     Timer t;
@@ -98,8 +104,4 @@ void Engine::begin(World* world) {
             lastRender -= 1./FPS;
         }
     }
-}
-
-ResourceManager* Engine::getResourceManager() {
-    return _loader;
 }

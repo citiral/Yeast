@@ -1,5 +1,36 @@
 {
-  "entities": [],
+  "entities": [{
+    "name": "wallbackground",
+    "x": 0,
+    "y": 0
+  }, {
+    "name": "player",
+    "x": 200,
+    "y": 100
+  }, {
+    "name": "player",
+    "x": 200,
+    "y": 200
+  }, {
+    "name": "player",
+    "x": 100,
+    "y": 100
+  }, {
+    "name": "player",
+    "x": 100,
+    "y": 200
+  }],
   "scripts": [],
-  "lights": []
+  "lights": [{
+    "type": "point",
+    "x": 500,
+    "y": 500,
+    "depth": 200,
+    "drop": 40,
+    "end": 80,
+    "color": [5, 5, 5]
+  },{
+    "type": "ambient",
+    "color": [0.2, 0, 0]
+  }]
 }
