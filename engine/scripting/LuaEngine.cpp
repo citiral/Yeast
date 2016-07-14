@@ -3,10 +3,12 @@
 //
 
 #include "LuaEngine.h"
+#include "EngineBindings.h"
 
 LuaEngine::LuaEngine() {
     _L = luaL_newstate();
     luaL_openlibs(_L);
+    bind(this, _L);
 }
 
 LuaEngine::~LuaEngine() {

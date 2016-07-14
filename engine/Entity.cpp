@@ -18,6 +18,11 @@ Entity::~Entity() {
     } if (_collider != nullptr) {
 		delete _collider;
 	}
+
+    // clean up the scripts
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        delete (*it);
+    }
 }
 
 World *Entity::getWorld() {
@@ -148,13 +153,23 @@ EntityState Entity::getState() const {
 }
 
 void Entity::added() {
-
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        (*it)->runFunction("added");
+    }
 }
 
 void Entity::removed() {
-
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        (*it)->runFunction("removed");
+    }
 }
 
 void Entity::update(float dt) {
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        (*it)->runFunction("update");
+    }
+}
 
+void Entity::addScript(ScriptInstance* script) {
+    _scripts.push_back(script);
 }

@@ -1,5 +1,7 @@
 #include "Vector2.h"
 #include <cmath>
+#include <ostream>
+#include <iostream>
 
 Vector2::Vector2() : _x(0), _y(0)
 {

@@ -1,13 +1,15 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
+#include <lua.hpp>
+
 class Vector2
 {
 public:
 	Vector2();
 	Vector2(float x, float y);
 	Vector2(const Vector2& v);
-	virtual ~Vector2();
+	~Vector2();
 	
 	void setX(float x);
 	void setY(float y);
@@ -34,7 +36,6 @@ public:
 private:
 	float _x;
 	float _y;
-
 };
 
 #endif // VECTOR2_H

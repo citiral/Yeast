@@ -25,5 +25,7 @@ Light* LightBlueprint::create(Engine* engine) {
         return new PointLight(engine, _color.value(), Vector2(_x.value(), _y.value()), _depth.value(), _drop.value(), _end.value());
     } else if (_type == "ambient") {
         return new AmbientLight(engine, _color.value());
+    } else {
+        assert(false);//todo
     }
 }

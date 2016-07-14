@@ -8,13 +8,14 @@ int main() {
     Engine engine(1366, 768, false);
     engine.getSettings()->load("res\\settings.ini");
 
-    ScriptInstance* instance1 = engine.getResourceManager()->loadScript("res/scripts/mouselook.lua")->createInstance(&engine);
+    /*ScriptInstance* instance1 = engine.getResourceManager()->loadScript("res/scripts/mouselook.lua")->createInstance(&engine);
     ScriptInstance* instance2 = engine.getResourceManager()->loadScript("res/scripts/mouselook.lua")->createInstance(&engine);
+    instance1->setValue("kaas", 2.23);
+    instance2->setValue("kaas", 69);
     instance1->runFunction("update");
     instance2->runFunction("update");
     delete instance1;
-    instance2->runFunction("update");
-    delete instance2;
+    delete instance2;*/
 
     engine.begin();
 

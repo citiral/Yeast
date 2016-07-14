@@ -21,6 +21,7 @@ public:
 private:
     void parseJson(json& j);
     RenderableBlueprint* _renderable;
+    std::vector<std::string> _scripts;
 };
 
 

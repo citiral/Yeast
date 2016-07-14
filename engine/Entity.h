@@ -8,6 +8,7 @@ class Collider;
 #include "engine.h"
 #include "windowing/window.h"
 #include "math/Vector2.h"
+#include "scripting/ScriptInstance.h"
 #include <string>
 
 #define WINDOW getWorld()->getEngine()->getWindow()
@@ -43,16 +44,21 @@ public:
     float getY() const;
     void setX(float x);
     void setY(float y);
+
 	float getRotation() const;
 	void setRotation(float rotation);
-	Vector2& getPosition();
+
+    Vector2& getPosition();
 	void setPosition(const Vector2& vec);
 	void setPosition(float x, float y);
-	const std::string& getType() const;
+
+    const std::string& getType() const;
 	void setType(const std::string& t);
 	
 	void moveTo(float x, float y);
-	
+
+    void addScript(ScriptInstance* script);
+
 	//collision functions
 	void onCollide(Entity* e);
 	void onMoveCollideX(Entity* e, float amount);
@@ -70,5 +76,6 @@ private:
 	float _rotation;
     Renderable* _renderable;
 	Collider* _collider;
+    std::vector<ScriptInstance*> _scripts;
     EntityState _state;
 };

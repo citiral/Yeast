@@ -5,6 +5,7 @@
 #include "WorldBlueprint.h"
 #include <fstream>
 #include "../resources/ResourceManager.h"
+#include "../scripting/LuaEngine.h"
 
 WorldBlueprint::WorldBlueprint(std::string& path) {
     std::ifstream file;

@@ -19,8 +19,18 @@ EntityBlueprint::EntityBlueprint(std::string& path) {
 
 void EntityBlueprint::parseJson(json& j) {
     _renderable = RenderableBlueprint::from(j["renderable"]);
+
+    for (auto& it : j["scripts"]) {
+        _scripts.push_back(it.get<std::string>());
+    }
 }
 
 Entity* EntityBlueprint::create(Engine* engine, float x, float y) {
-    return new Entity(engine, x, y, _renderable->create(engine));
+    Entity* e = new Entity(engine, x, y, _renderable->create(engine));
+
+    for (auto& script : _scripts) {
+        e->addScript(engine->getResourceManager()->loadScript(FOLDER_SCRIPTS + script)->createInstance(engine));
+    }
+
+    return e;
 }

@@ -6,5 +6,5 @@
     "normal": "monster_normal.png",
     "lit": false
   },
-  "scripts": []
+  "scripts": ["mouselook.lua"]
 }

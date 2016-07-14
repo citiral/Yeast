@@ -6,10 +6,31 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-r = math.random()
 
-print("I: "..r)
+
+function printVec(v)
+    print("("..v:x()..", "..v:y()..")")
+end
+
+function added()
+    v = Vector2()
+    --print(v:x())
+    --v2 = v
+    v:setX(20)
+
+
+    --print(v:add(v2):x())
+
+    --print(tvec2:x())
+end
 
 function update()
-    print("U: "..r)
+
+    v2 = Vector2()
+
+    v2:setX(1)
+    v2:setY(2)
+    v = v:add(v2)
+
+    printVec(v)
 end

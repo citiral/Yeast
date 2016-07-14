@@ -47,3 +47,12 @@ ScriptInstance* Script::createInstance(Engine* engine) {
 
     return instance;
 }
+
+void Script::initializeScript(Engine* engine) {
+    _L = engine->getLuaEngine()->getState();
+
+    // load the file and store it in the registry
+    lua_pushstring(_L, _path.c_str());
+    luaL_loadfile(_L, _path.c_str());
+    lua_settable(_L, LUA_REGISTRYINDEX);
+}
