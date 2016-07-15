@@ -4,7 +4,7 @@
     "type": "sprite",
     "diffuse": "monster.png",
     "normal": "monster_normal.png",
-    "lit": false
+    "lit": true
   },
   "scripts": ["mouselook.lua"]
 }

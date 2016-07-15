@@ -3,16 +3,14 @@
 -- User: Citiral
 -- Date: 2/07/2016
 -- Time: 18:57
--- To change this template use File | Settings | File Templates.
 --
-
-
 
 function printVec(v)
     print("("..v:x()..", "..v:y()..")")
 end
 
 function added()
+    --engine:world():removeEntity(this)
     --t = Entity()
     v = Vector2()
     --print(v:x())
@@ -26,8 +24,8 @@ function added()
 end
 
 function update()
-    this:setX(this:x()+1)
-
+    this:setPos(engine:window():mousePos())
+    collectgarbage()
     --v2 = Vector2()
 
     --v2:setX(1)

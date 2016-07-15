@@ -171,6 +171,9 @@ void Entity::update(float dt) {
 }
 
 void Entity::addScript(ScriptInstance* script) {
+    // add the script
     _scripts.push_back(script);
-    script->setValue("this", this);
+
+    // register the correct members
+    script->setValueUnowned("this", this);
 }

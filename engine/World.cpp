@@ -27,9 +27,9 @@ void World::update(float dt) {
             std::cout << "Error encountered entity with invalid state.";
             ++iter;
         } else if (e->getState() == EntityState::PENDING_ADD) {
-            // if the entity is pending adding, call its added and set its state
-            e->added();
+            // if the entity is pending adding, set its state and call the added function
             e->setState(EntityState::ACTIVE);
+            e->added();
             ++iter;
         } else if (e->getState() == EntityState::PENDING_REMOVE) {
             // call the removed callback

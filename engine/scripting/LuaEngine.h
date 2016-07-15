@@ -53,9 +53,12 @@ struct LuaEngineHelper<false, T> {
 };
 
 //TODO: expand this for all lua primary types, will do this once I need to :)
-template<>
-inline float LuaEngineHelper<false, float>::getValue(lua_State* _L, int index) {
+template<> inline float LuaEngineHelper<false, float>::getValue(lua_State* _L, int index) {
     return (float)lua_tonumber(_L, index);
+}
+
+template<> inline int LuaEngineHelper<false, int>::getValue(lua_State* _L, int index) {
+    return (int)lua_tonumber(_L, index);
 }
 
 template<class T>
@@ -154,6 +157,12 @@ public:
         lua_setglobal(_L, name);
     }
 
+    template<class T>
+    void setGlobalUnowned(const char* name, T instance) {
+        pushValueUnowned(_L, instance);
+        lua_setglobal(_L, name);
+    }
+
     template<class T, class = typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type>
     static int constructor(lua_State* _L) {
         return LuaEngineHelper<std::is_pointer<T>::value, T>::constructor(_L);
@@ -183,17 +192,23 @@ public:
         lua_pushnumber(_L, value);
     }
 
+    // some wrappers around lua types so primitives can be pushed just like pointers
+    static void pushValue(lua_State* _L, int value) {
+        lua_pushnumber(_L, value);
+    }
+
     static void pushValue(lua_State* _L, const char* value) {
         lua_pushstring(_L, value);
     }
 
     template<class T>
-    static void pushPointerUnowned(lua_State* _L, T* pointer) {
+    static void pushValueUnowned(lua_State* _L, T pointer) {
+        static_assert(std::__is_pointer_helper<T>::value, "You can only push pointers unowned");
         // tag the pointer
-        pointer = (T*)((size_t)pointer | 1);
+        pointer = (T)((size_t)pointer | 1);
 
         // allocate a new class
-        T** data = (T**)lua_newuserdata(_L, sizeof(T*));
+        T* data = (T*)lua_newuserdata(_L, sizeof(T));
         *data = pointer;
 
         // and its metatable

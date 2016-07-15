@@ -73,13 +73,19 @@ bool Window::buttonIsDown(int mouse) {
 int Window::getMouseX() {
 	double x, y;
 	glfwGetCursorPos(_window, &x, &y);
-	return x;
+	return (int)x;
 }
 
 int Window::getMouseY() {
 	double x, y;
 	glfwGetCursorPos(_window, &x, &y);
-	return _height - y;
+	return (int)(_height - y);
+}
+
+Vector2 Window::getMousePos() {
+    double x, y;
+    glfwGetCursorPos(_window, &x, &y);
+    return Vector2(x, _height - y);
 }
 
 int Window::getWidth() const {

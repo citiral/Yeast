@@ -44,7 +44,7 @@ public:
 
         // and we can set the value
         lua_pushstring(_L, name);
-        LuaEngine::pushPointerUnowned(_L, value);
+        LuaEngine::pushValueUnowned(_L, value);
         lua_settable(_L, -3);
 
         // and clean up the stack
