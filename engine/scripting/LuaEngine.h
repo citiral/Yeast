@@ -27,7 +27,8 @@ template<class T>
 struct LuaEngineHelper<false, T> {
     static_assert(!std::is_pointer<T>::value, "Dude this is a pointer type.");
 
-    static int constructor(lua_State* _L) {
+    template<class F = T>
+    static typename std::enable_if<std::is_default_constructible<F>::value, int>::type constructor(lua_State* _L) {
         // allocate a new class
         T* data = (T*)lua_newuserdata(_L, sizeof(T));
         new (data) T;
@@ -51,6 +52,7 @@ struct LuaEngineHelper<false, T> {
     static T getValue(lua_State* _L, int index);
 };
 
+//TODO: expand this for all lua primary types, will do this once I need to :)
 template<>
 inline float LuaEngineHelper<false, float>::getValue(lua_State* _L, int index) {
     return (float)lua_tonumber(_L, index);
@@ -65,7 +67,8 @@ template<class T>
 struct LuaEngineHelper<true, T> {
     static_assert(std::is_pointer<T>::value, "Dude this is no pointer type.");
 
-    static int constructor(lua_State* _L) {
+    template<class F = T>
+    static typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<F>::type>::value, int>::type constructor(lua_State* _L) {
         // allocate a new class
         T* data = (T*)lua_newuserdata(_L, sizeof(T));
         *data = new typename std::pointer_traits<T>::element_type;
@@ -106,9 +109,9 @@ public:
     template<class T>
     void registerClass() {
         static_assert(std::is_standard_layout<T>::value, "Can only register standard_layout classes to lua.");
-        // push a global constructor
-        lua_pushcfunction(_L, &LuaEngine::constructor<T>);
-        lua_setglobal(_L, LuaBindings<T>::name);
+        // push a global constructor if there is a default constructor
+        if (std::is_default_constructible<typename std::remove_pointer<T>::type>::value)
+            registerConstructor<T>(_L);
 
         // make the class and push a pointer for the registry store later
         lua_pushlightuserdata(_L, (void*)typeid(T).hash_code());
@@ -136,12 +139,22 @@ public:
     }
 
     template<class T>
+    static typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type registerConstructor(lua_State* _L) {
+        lua_pushcfunction(_L, &LuaEngine::constructor<T>);
+        lua_setglobal(_L, LuaBindings<T>::name);
+    }
+
+    template<class T>
+    static typename std::enable_if<!std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type registerConstructor(lua_State* _L) {
+    }
+
+    template<class T>
     void setGlobal(const char* name, T instance) {
         pushValue(_L, instance);
         lua_setglobal(_L, name);
     }
 
-    template<class T>
+    template<class T, class = typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type>
     static int constructor(lua_State* _L) {
         return LuaEngineHelper<std::is_pointer<T>::value, T>::constructor(_L);
     }

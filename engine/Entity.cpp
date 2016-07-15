@@ -4,7 +4,7 @@
 #include "graphics/graphicscontext.h"
 
 
-Entity::Entity(Engine* engine, float x, float y, Renderable* renderable) : _position(x, y), _type("") {
+Entity::Entity(Engine* engine, float x, float y, Renderable* renderable) : _type(""), _position(x, y) {
     _engine = engine;
     _renderable = renderable;
 	_collider = nullptr;
@@ -104,7 +104,7 @@ void Entity::setCollider(Collider* r) {
 	_collider->setX(_position.getX());
 	_collider->setY(_position.getY());
 }
-	
+
 Collider* Entity::getCollider() const {
 	return _collider;
 }
@@ -112,19 +112,18 @@ Collider* Entity::getCollider() const {
 void Entity::onCollide(Entity* e) {
 
 }
-	
+
 void Entity::onMoveCollideX(Entity* e, float amount) {
-	
-}
-	
-void Entity::onMoveCollideY(Entity* e, float amount) {
-	
+
 }
 
+void Entity::onMoveCollideY(Entity* e, float amount) {
+
+}
 void Entity::moveTo(float x, float y) {
 	setX(x);
 	setY(y);
-	
+
 	if (_collider != nullptr)
 	{
 		for (std::shared_ptr<Entity> other : _engine->getWorld()->getEntities())
@@ -148,6 +147,7 @@ void Entity::moveTo(float x, float y) {
 void Entity::setState(EntityState state) {
     _state = state;
 }
+
 EntityState Entity::getState() const {
     return _state;
 }
@@ -172,4 +172,5 @@ void Entity::update(float dt) {
 
 void Entity::addScript(ScriptInstance* script) {
     _scripts.push_back(script);
+    script->setValue("this", this);
 }

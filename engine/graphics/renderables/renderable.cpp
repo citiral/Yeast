@@ -1,6 +1,6 @@
 #include "renderable.h"
 
-Renderable::Renderable(Engine* engine) : _program(), _engine(engine) {
+Renderable::Renderable(Engine* engine) :_engine(engine), _program() {
 }
 
 Renderable::~Renderable() {

@@ -13,6 +13,7 @@ function printVec(v)
 end
 
 function added()
+    --t = Entity()
     v = Vector2()
     --print(v:x())
     --v2 = v
@@ -25,12 +26,13 @@ function added()
 end
 
 function update()
+    this:setX(this:x()+1)
 
-    v2 = Vector2()
+    --v2 = Vector2()
 
-    v2:setX(1)
-    v2:setY(2)
-    v = v:add(v2)
+    --v2:setX(1)
+    --v2:setY(2)
+    --v = v:add(v2)
 
-    printVec(v)
+    --printVec(v)
 end

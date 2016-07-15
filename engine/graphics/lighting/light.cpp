@@ -1,6 +1,6 @@
 #include "light.h"
 
-Light::Light(Engine* engine) : _program(), _engine(engine)
+Light::Light(Engine* engine) : _engine(engine), _program()
 {
 
 }

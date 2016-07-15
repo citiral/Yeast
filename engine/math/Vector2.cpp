@@ -31,7 +31,7 @@ float Vector2::dot(const Vector2& v) const
 	return _x * v.getX() + _y * v.getY();
 }
 
-float Vector2::getLength() const
+float Vector2::length() const
 {
 	return std::sqrt((_x*_x) + (_y * _y));
 }
@@ -58,7 +58,7 @@ void Vector2::setY(float y)
 
 Vector2 Vector2::normalize() const
 {
-	return Vector2(*this / getLength());
+	return Vector2(*this / length());
 }
 
 Vector2 Vector2::rotate(float angle) const
@@ -113,4 +113,8 @@ Vector2& Vector2::operator=(const Vector2& v)
 	_x = v.getX();
 	_y = v.getY();
 	return *this;
+}
+
+Vector2 Vector2::clone() const {
+    return *this;
 }
