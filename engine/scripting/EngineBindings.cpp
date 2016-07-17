@@ -108,7 +108,13 @@ template<> luaL_reg LuaBindings<Window*>::functions[] = {
         {"width", &BindFunction<Window, int>::ptr<&Window::getWidth>},
         {"height", &BindFunction<Window, int>::ptr<&Window::getHeight>},
         {"keyIsDown", &BindFunction<Window, bool, int>::ptr<&Window::keyIsDown>},
+        {"keyIsUp", &BindFunction<Window, bool, int>::ptr<&Window::keyIsUp>},
+        {"keyIsPressed", &BindFunction<Window, bool, int>::ptr<&Window::keyIsPressed>},
+        {"keyIsReleased", &BindFunction<Window, bool, int>::ptr<&Window::keyIsReleased>},
         {"buttonIsDown", &BindFunction<Window, bool, int>::ptr<&Window::buttonIsDown>},
+        {"buttonIsUp", &BindFunction<Window, bool, int>::ptr<&Window::buttonIsUp>},
+        {"buttonIsPressed", &BindFunction<Window, bool, int>::ptr<&Window::buttonIsPressed>},
+        {"buttonIsReleased", &BindFunction<Window, bool, int>::ptr<&Window::buttonIsReleased>},
         {0, 0}
 };
 

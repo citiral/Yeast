@@ -24,4 +24,9 @@ function update()
     if engine:window():keyIsDown(Keys.A) == true then this:setX(this:x() - 10) end
     if engine:window():keyIsDown(Keys.W) == true then this:setY(this:y() + 10) end
     if engine:window():keyIsDown(Keys.S) == true then this:setY(this:y() - 10) end
+
+    -- firing
+    if engine:window():buttonIsPressed(Buttons.mouse1) then
+        print("pang!")
+    end
 end
