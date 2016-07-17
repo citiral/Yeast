@@ -11,7 +11,9 @@ end
 
 function added()
     -- center the sprite
+    print(Types[this:renderable()._type])
     this:renderable():centerOrigin()
+    engine:resources():loadEntity("player"):create()
 end
 
 function update()
@@ -27,6 +29,11 @@ function update()
 
     -- firing
     if engine:window():buttonIsPressed(Buttons.mouse1) then
-        print("pang!")
+        e = Entity(20, 30, this:renderable())
+        engine:world():addEntity(e)
+    end
+
+    if engine:window():buttonIsPressed(Buttons.mouse2) then
+        engine:world():destroyEntity(e)
     end
 end

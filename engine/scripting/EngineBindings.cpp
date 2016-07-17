@@ -6,14 +6,48 @@
 #include "../math/Vector2.h"
 #include "../Entity.h"
 #include "../Settings.h"
+#include "../resources/ResourceManager.h"
 #include "../graphics/renderables/sprite.h"
 #include <GLFW/glfw3.h>
 
 
+int entityConstruct0(lua_State* L) {
+    LuaEngine::pushValue(L, new Entity(LuaEngine::getGlobal<Engine*>(L, "engine")));
+    return 1;
+}
 
+int entityConstruct1(lua_State* L) {
+    LuaEngine::pushValue(L, new Entity(
+            LuaEngine::getGlobal<Engine*>(L, "engine"),
+            0,
+            0,
+            LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 3)));
+    return 1;
+}
+
+int entityConstruct2(lua_State* L) {
+    LuaEngine::pushValue(L, new Entity(
+            LuaEngine::getGlobal<Engine*>(L, "engine"),
+            LuaEngine::getValue<float>(L, 1),
+            LuaEngine::getValue<float>(L, 2)));
+    return 1;
+}
+
+int entityConstruct3(lua_State* L) {
+    LuaEngine::pushValue(L, new Entity(
+            LuaEngine::getGlobal<Engine*>(L, "engine"),
+            LuaEngine::getValue<float>(L, 1),
+            LuaEngine::getValue<float>(L, 2),
+            LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 3)));
+    return 1;
+}
 
 template<> const char LuaBindings<Entity*>::name[] = "Entity";
 template<> lua_constructor LuaBindings<Entity*>::constructors[] = {
+        {0, &entityConstruct0},
+        {1, &entityConstruct1},
+        {2, &entityConstruct2},
+        {3, &entityConstruct3},
         {0, 0}
 };
 template<> luaL_reg LuaBindings<Entity*>::functions[] = {
@@ -25,7 +59,8 @@ template<> luaL_reg LuaBindings<Entity*>::functions[] = {
         {"setPos", &BindFunction<Entity, void, const Vector2&>::ptr<&Entity::setPosition>},
         {"rotation", &BindFunction<Entity, float>::ptr<&Entity::getRotation>},
         {"setRotation", &BindFunction<Entity, void, float>::ptr<&Entity::setRotation>},
-        {"renderable", &BindFunction<Entity, Renderable*>::ptr<&Entity::getRenderable, return_unowned_pointer::value>},
+        {"renderable", &BindFunction<Entity, std::shared_ptr<Renderable>>::ptr<&Entity::getRenderable>},
+        {"setRenderable", &BindFunction<Entity, void, std::shared_ptr<Renderable>>::ptr<&Entity::setRenderable>},
         {0, 0}
 };
 
@@ -75,9 +110,10 @@ template<> lua_constructor LuaBindings<Engine*>::constructors[] = {
         {0, 0}
 };
 template<> luaL_reg LuaBindings<Engine*>::functions[] = {
-        {"window", &BindFunction<Engine, Window*>::ptr<&Engine::getWindow, return_unowned_pointer::value>},
-        {"world", &BindFunction<Engine, World*>::ptr<&Engine::getWorld, return_unowned_pointer::value>},
-        {"settings", &BindFunction<Engine, Settings*>::ptr<&Engine::getSettings, return_unowned_pointer::value>},
+        {"window", &BindFunction<Engine, Window*>::ptr<&Engine::getWindow>},
+        {"world", &BindFunction<Engine, World*>::ptr<&Engine::getWorld>},
+        {"settings", &BindFunction<Engine, Settings*>::ptr<&Engine::getSettings>},
+        {"resources", &BindFunction<Engine, ResourceManager*>::ptr<&Engine::getResourceManager>},
         {0, 0}
 };
 
@@ -90,7 +126,7 @@ template<> lua_constructor LuaBindings<World*>::constructors[] = {
 };
 template<> luaL_reg LuaBindings<World*>::functions[] = {
         {"addEntity", &BindFunction<World, void, Entity*>::ptr<&World::addEntity>},
-        {"removeEntity", &BindFunction<World, void, Entity*>::ptr<&World::removeEntity>},
+        {"destroyEntity", &BindFunction<World, void, Entity*>::ptr<&World::destroyEntity>},
         {0, 0}
 };
 
@@ -121,20 +157,42 @@ template<> luaL_reg LuaBindings<Window*>::functions[] = {
 
 
 
-template<> const char LuaBindings<Sprite*>::name[] = "Sprite";
-template<> lua_constructor LuaBindings<Sprite*>::constructors[] = {
+template<> const char LuaBindings<ResourceManager*>::name[] = "ResourceManager";
+template<> lua_constructor LuaBindings<ResourceManager*>::constructors[] = {
         {0, 0}
 };
-template<> luaL_reg LuaBindings<Sprite*>::functions[] = {
-        {"origin", &BindFunction<Sprite, Vector2>::ptr<&Sprite::getOrigin>},
-        {"setOrigin", &BindFunction<Sprite, void, const Vector2&>::ptr<&Sprite::setOrigin>},
-        {"centerOrigin", &BindFunction<Sprite, void>::ptr<&Sprite::centerOrigin>},
-        {"lit", &BindFunction<Sprite, bool>::ptr<&Sprite::getLit>},
-        {"setLit", &BindFunction<Sprite, void, bool>::ptr<&Sprite::setLit>},
-        {"diffuse", &BindFunction<Sprite, Resource<GL30Texture>>::ptr<&Sprite::getDiffuse>},
-        {"normal", &BindFunction<Sprite, Resource<GL30Texture>>::ptr<&Sprite::getNormal>},
-        {"setDiffuse", &BindFunction<Sprite, void, Resource<GL30Texture>>::ptr<&Sprite::setDiffuse>},
-        {"setNormal", &BindFunction<Sprite, void, Resource<GL30Texture>>::ptr<&Sprite::setNormal>},
+template<> luaL_reg LuaBindings<ResourceManager*>::functions[] = {
+        {"loadEntity", &BindFunction<ResourceManager, std::shared_ptr<EntityBlueprint>, const char*>::ptr<&ResourceManager::loadEntity>},
+        {0, 0}
+};
+
+
+
+template<> const char LuaBindings<std::shared_ptr<Sprite>>::name[] = "Sprite";
+template<> lua_constructor LuaBindings<std::shared_ptr<Sprite>>::constructors[] = {
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<std::shared_ptr<Sprite>>::functions[] = {
+        {"origin", &BindFunction<Sprite, Vector2>::shared<&Sprite::getOrigin>},
+        {"setOrigin", &BindFunction<Sprite, void, const Vector2&>::shared<&Sprite::setOrigin>},
+        {"centerOrigin", &BindFunction<Sprite, void>::shared<&Sprite::centerOrigin>},
+        {"lit", &BindFunction<Sprite, bool>::shared<&Sprite::getLit>},
+        {"setLit", &BindFunction<Sprite, void, bool>::shared<&Sprite::setLit>},
+        {"diffuse", &BindFunction<Sprite, std::shared_ptr<GL30Texture>>::shared<&Sprite::getDiffuse>},
+        {"normal", &BindFunction<Sprite, std::shared_ptr<GL30Texture>>::shared<&Sprite::getNormal>},
+        {"setDiffuse", &BindFunction<Sprite, void, std::shared_ptr<GL30Texture>>::shared<&Sprite::setDiffuse>},
+        {"setNormal", &BindFunction<Sprite, void, std::shared_ptr<GL30Texture>>::shared<&Sprite::setNormal>},
+        {0, 0}
+};
+
+
+
+
+template<> const char LuaBindings<std::shared_ptr<Renderable>>::name[] = "Renderable";
+template<> lua_constructor LuaBindings<std::shared_ptr<Renderable>>::constructors[] = {
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<std::shared_ptr<Renderable>>::functions[] = {
         {0, 0}
 };
 
@@ -290,7 +348,9 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<Engine*>();
     engine->registerClass<World*>();
     engine->registerClass<Window*>();
-    engine->registerClass<Sprite*>();
+    engine->registerClass<ResourceManager*>();
+    engine->registerClass<std::shared_ptr<Sprite>>();
+    engine->registerClass<std::shared_ptr<Renderable>>();
     engine->registerEnum("Keys", Keys);
     engine->registerEnum("Buttons", Buttons);
 }

@@ -15,7 +15,7 @@ using json = nlohmann::json;
 
 class EntityBlueprint {
 public:
-    EntityBlueprint(std::string& path);
+    EntityBlueprint(const std::string& path);
     Entity* create(Engine* engine, float x, float y);
 
 private:

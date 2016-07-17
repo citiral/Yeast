@@ -4,6 +4,7 @@
 
 #include "LuaEngine.h"
 #include "EngineBindings.h"
+#include "../graphics/renderables/renderable.h"
 
 LuaEngine::LuaEngine() {
     _L = luaL_newstate();

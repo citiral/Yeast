@@ -12,7 +12,7 @@
 
 class Script {
 public:
-    Script(std::string& path);
+    Script(const std::string& path);
     ~Script();
 
     ScriptInstance* createInstance(Engine* engine);

@@ -36,7 +36,7 @@ public:
         lua_pop(_L, 1);
     }
 
-    template<class T>
+    /*template<class T>
     void setValueUnowned(const char* name, T value) {
         // first get the function
         lua_pushlightuserdata(_L, this);
@@ -49,7 +49,7 @@ public:
 
         // and clean up the stack
         lua_pop(_L, 1);
-    }
+    }*/
 
 private:
     lua_State* _L;

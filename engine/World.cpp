@@ -55,21 +55,12 @@ void World::renderLighting(GraphicsContext& gc) {
     }
 }
 
-void World::addEntity(std::shared_ptr<Entity> e) {
-    e->setState(EntityState::PENDING_ADD);
-    _entities.push_back(e);
-}
-
 void World::addEntity(Entity* e) {
     e->setState(EntityState::PENDING_ADD);
     _entities.push_back(std::shared_ptr<Entity>(e));
 }
 
-void World::removeEntity(std::shared_ptr<Entity> e) {
-    e->setState(EntityState::PENDING_REMOVE);
-}
-
-void World::removeEntity(Entity* e) {
+void World::destroyEntity(Entity* e) {
     e->setState(EntityState::PENDING_REMOVE);
 }
 

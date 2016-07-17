@@ -7,14 +7,16 @@
 #include "../resources/ResourceManager.h"
 #include "../paths.h"
 
-EntityBlueprint::EntityBlueprint(std::string& path) {
+EntityBlueprint::EntityBlueprint(const std::string& path) {
     std::ifstream file;
     file.open(FOLDER_ENTITIES + path + ".json", std::ifstream::in);
 
-    json j(file);
-    parseJson(j);
+    if (file.is_open()) {
+        json j(file);
+        parseJson(j);
 
-    file.close();
+        file.close();
+    }
 }
 
 void EntityBlueprint::parseJson(json& j) {
@@ -26,7 +28,7 @@ void EntityBlueprint::parseJson(json& j) {
 }
 
 Entity* EntityBlueprint::create(Engine* engine, float x, float y) {
-    Entity* e = new Entity(engine, x, y, _renderable->create(engine));
+    Entity* e = new Entity(engine, x, y, std::shared_ptr<Renderable>(_renderable->create(engine)));
 
     for (auto& script : _scripts) {
         e->addScript(engine->getResourceManager()->loadScript(FOLDER_SCRIPTS + script)->createInstance(engine));

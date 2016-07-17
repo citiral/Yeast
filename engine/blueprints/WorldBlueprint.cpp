@@ -7,7 +7,7 @@
 #include "../resources/ResourceManager.h"
 #include "../scripting/LuaEngine.h"
 
-WorldBlueprint::WorldBlueprint(std::string& path) {
+WorldBlueprint::WorldBlueprint(const std::string& path) {
     std::ifstream file;
     file.open(path, std::ifstream::in);
 

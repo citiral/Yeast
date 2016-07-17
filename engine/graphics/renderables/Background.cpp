@@ -2,7 +2,7 @@
 #include "../../resources/ResourceManager.h"
 #include <glad/glad.h>
 
-Background::Background(Engine* engine, const Resource<GL30Texture>& diffuse, float scale)
+Background::Background(Engine* engine, const std::shared_ptr<GL30Texture>& diffuse, float scale)
 		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("res/assets/default_normal.png"))
 {
 	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/backgroundEffect.vsh", "res/shaders/backgroundEffect.fsh"));
@@ -14,19 +14,19 @@ Background::~Background()
 {
 }
 
-void Background::setDiffuse(Resource<GL30Texture> texture) {
+void Background::setDiffuse(std::shared_ptr<GL30Texture> texture) {
 	_diffuse = texture;
 }
 
-Resource<GL30Texture> Background::getDiffuse() const {
+std::shared_ptr<GL30Texture> Background::getDiffuse() const {
 	return _diffuse;
 }
 	
-void Background::setNormal(Resource<GL30Texture> texture) {
+void Background::setNormal(std::shared_ptr<GL30Texture> texture) {
 	_normal = texture;
 }
 
-Resource<GL30Texture> Background::getNormal() const {
+std::shared_ptr<GL30Texture> Background::getNormal() const {
 	return _normal;
 }
 
@@ -39,13 +39,17 @@ void Background::enableForRender() {
 	_diffuse->enableTexture(0);
 	
 	//if we have a normal map, enable it too.
-	if (_normal.getResource() != nullptr) {
+	if (_normal.get() != nullptr) {
 		_normal->enableTexture(1);
 	}
 	
 	glUniform2f(glGetUniformLocation(getProgram()->getProgramID(), "size"), _diffuse->getWidth() * _scale, _diffuse->getHeight() * _scale);
 }
 
-void Background::push(lua_State* L, void* ptr) {
-    LuaEngine::rawPushValue<Background*>(L, (Background*)ptr);
+void Background::push(lua_State* L, Renderable* ptr) {
+    LuaEngine::rawPushValue<Background*>(L, static_cast<Background*>(ptr));
+}
+
+void Background::push(lua_State* L, std::shared_ptr<Renderable> ptr) {
+    LuaEngine::rawPushValue<std::shared_ptr<Background>>(L, std::static_pointer_cast<Background>(ptr));
 }

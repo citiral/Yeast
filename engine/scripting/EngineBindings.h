@@ -12,14 +12,10 @@
 void bind(LuaEngine* engine, lua_State* L);
 
 // helper functions to bind c++ functions
-typedef std::true_type return_owned_pointer;
-typedef std::false_type return_unowned_pointer;
+//typedef std::true_type return_owned_pointer;
+//typedef std::false_type return_unowned_pointer;
 
-template<bool returnOwned>
-struct WrapFunction;
-
-template<>
-struct WrapFunction<true> {
+struct WrapFunction {
     static int rec(lua_State* L, std::function<void()> func, int depth) {
         func();
         return 0;
@@ -43,7 +39,7 @@ struct WrapFunction<true> {
     };
 };
 
-template<>
+/*template<>
 struct WrapFunction<false> {
     static int rec(lua_State* L, std::function<void()> func, int depth) {
         func();
@@ -66,16 +62,16 @@ struct WrapFunction<false> {
 
         return rec(L, (std::function<R(ARGS...)>)g, depth+1);
     };
-};
+};*/
 
 
-template<bool returnOwned, class R, class T, class... ARGS>
+template<class R, class T, class... ARGS>
 inline int wrapFunctionPtr(lua_State* L, R (T::*func)(ARGS...)) {
     std::function<R(T*, ARGS...)> f = func;
-    return WrapFunction<returnOwned>::rec(L, f, 1);
+    return WrapFunction::rec(L, f, 1);
 };
 
-template<bool returnOwned, class R, class T, class... ARGS>
+template<class R, class T, class... ARGS>
 inline int wrapFunctionRef(lua_State* L, R (T::*func)(ARGS...)) {
     std::function<R(T*, ARGS...)> f = func;
 
@@ -83,10 +79,10 @@ inline int wrapFunctionRef(lua_State* L, R (T::*func)(ARGS...)) {
         return f(&LuaEngine::getValue<T&>(L, 1), std::forward<ARGS>(args)...);
     };
 
-    return WrapFunction<returnOwned>::rec(L, (std::function<R(ARGS...)>)g, 2);
+    return WrapFunction::rec(L, (std::function<R(ARGS...)>)g, 2);
 };
 
-template<bool returnOwned, class R, class T, class... ARGS>
+template<class R, class T, class... ARGS>
 inline int wrapFunctionShared(lua_State* L, R (T::*func)(ARGS...)) {
     std::function<R(T*, ARGS...)> f = func;
 
@@ -94,34 +90,34 @@ inline int wrapFunctionShared(lua_State* L, R (T::*func)(ARGS...)) {
         return f(&*LuaEngine::getValue<std::shared_ptr<T>>(L, 1), std::forward<ARGS>(args)...);
     };
 
-    return WrapFunction<returnOwned>::rec(L, (std::function<R(ARGS...)>)g, 2);
+    return WrapFunction::rec(L, (std::function<R(ARGS...)>)g, 2);
 };
 
 template<class T, class R, class... ARGS>
 struct BindFunction {
-    template <R (T::*F)(ARGS...) const, bool returnOwned = return_owned_pointer::value>
+    template <R (T::*F)(ARGS...) const>
     static int ref(lua_State* L) {
-        return wrapFunctionRef<returnOwned>(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
+        return wrapFunctionRef(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
     }
-    template <R (T::*F)(ARGS...), bool returnOwned = return_owned_pointer::value>
+    template <R (T::*F)(ARGS...)>
     static int ref(lua_State* L) {
-        return wrapFunctionRef<returnOwned>(L, F);
+        return wrapFunctionRef(L, F);
     }
-    template <R (T::*F)(ARGS...) const, bool returnOwned = return_owned_pointer::value>
+    template <R (T::*F)(ARGS...) const>
     static int ptr(lua_State* L) {
-        return wrapFunctionPtr<returnOwned>(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
+        return wrapFunctionPtr(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
     }
-    template <R (T::*F)(ARGS...), bool returnOwned = return_owned_pointer::value>
+    template <R (T::*F)(ARGS...)>
     static int ptr(lua_State* L) {
-        return wrapFunctionPtr<returnOwned>(L, F);
+        return wrapFunctionPtr(L, F);
     }
-    template <R (T::*F)(ARGS...) const, bool returnOwned = return_owned_pointer::value>
+    template <R (T::*F)(ARGS...) const>
     static int shared(lua_State* L) {
-        return wrapFunctionShared<returnOwned>(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
+        return wrapFunctionShared(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
     }
-    template <R (T::*F)(ARGS...), bool returnOwned = true>
+    template <R (T::*F)(ARGS...)>
     static int shared(lua_State* L) {
-        return wrapFunctionShared<returnOwned>(L, F);
+        return wrapFunctionShared(L, F);
     }
 };
 

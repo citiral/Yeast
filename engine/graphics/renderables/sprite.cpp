@@ -2,7 +2,7 @@
 #include "../../resources/ResourceManager.h"
 #include <glad/glad.h>
 
-Sprite::Sprite(Engine* engine, const Resource<GL30Texture>& diffuse)
+Sprite::Sprite(Engine* engine, const std::shared_ptr<GL30Texture>& diffuse)
 		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("res/assets/default_normal.png")), _origin(0, 0), _isLit(true)
 {
 	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/spriteEffect.vsh", "res/shaders/spriteEffect.fsh"));
@@ -12,19 +12,19 @@ Sprite::~Sprite()
 {
 }
 
-void Sprite::setDiffuse(Resource<GL30Texture> texture) {
+void Sprite::setDiffuse(std::shared_ptr<GL30Texture> texture) {
 	_diffuse = texture;
 }
 
-Resource<GL30Texture> Sprite::getDiffuse() const {
+std::shared_ptr<GL30Texture> Sprite::getDiffuse() const {
 	return _diffuse;
 }
 	
-void Sprite::setNormal(Resource<GL30Texture> texture) {
+void Sprite::setNormal(std::shared_ptr<GL30Texture> texture) {
 	_normal = texture;
 }
 
-Resource<GL30Texture> Sprite::getNormal() const {
+std::shared_ptr<GL30Texture> Sprite::getNormal() const {
 	return _normal;
 }
 
@@ -56,7 +56,7 @@ void Sprite::enableForRender() {
 	_diffuse->enableTexture(0);
 	
 	//if we have a normal map, enable it too.
-	if (_normal.getResource() != nullptr)
+	if (_normal.get() != nullptr)
 		_normal->enableTexture(1);
 		
 	glUniform2f(glGetUniformLocation(getProgram()->getProgramID(), "origin"), _origin.getX(), _origin.getY());
@@ -64,6 +64,10 @@ void Sprite::enableForRender() {
 	glUniform1f(glGetUniformLocation(getProgram()->getProgramID(), "brightness"), _isLit? 1 : 0);	
 }
 
-void Sprite::push(lua_State* L, void* ptr) {
-    LuaEngine::rawPushValue<Sprite*>(L, (Sprite*)ptr);
+void Sprite::push(lua_State* L, Renderable* ptr) {
+    LuaEngine::rawPushValue<Sprite*>(L, static_cast<Sprite*>(ptr));
+}
+
+void Sprite::push(lua_State* L, std::shared_ptr<Renderable> ptr) {
+    LuaEngine::rawPushValue<std::shared_ptr<Sprite>>(L, std::static_pointer_cast<Sprite>(ptr));
 }

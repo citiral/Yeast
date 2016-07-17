@@ -15,7 +15,7 @@ using json = nlohmann::json;
 
 class WorldBlueprint {
 public:
-    WorldBlueprint(std::string& path);
+    WorldBlueprint(const std::string& path);
     World* create(Engine* engine);
 
 private:

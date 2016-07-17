@@ -6,44 +6,46 @@
 
 ResourceManager::ResourceManager() {
 }
+
 ResourceManager::~ResourceManager() {
 }
 
-
-
-Resource<Program> ResourceManager::loadProgram(const std::string &vertex, const std::string &fragment) {
-    return _programs.getResource(std::make_pair(vertex, fragment));
-    /*auto element = _mapProgram->find(std::pair<std::string, std::string>(vertex, fragment));
-
-    if (element != _mapProgram->end()) {
-        return std::get<1>(*element);
-    } else {
-        unsigned int vertexShader = loadShader(vertex.c_str(), GL_VERTEX_SHADER);
-        unsigned int fragmentShader = loadShader(fragment.c_str(), GL_FRAGMENT_SHADER);
-
-        Resource<Program> program_res = Resource<Program>(new Program(vertexShader, fragmentShader));
-
-        glDeleteShader(vertexShader);
-        glDeleteShader(fragmentShader);
-
-        _mapProgram->emplace(std::pair<std::pair<std::string, std::string>, Resource<Program>>(std::pair<std::string, std::string>(vertex, fragment), program_res));
-
-        return program_res;
-    }*/
+std::shared_ptr<Program> ResourceManager::loadProgram(const char* vertex, const char* fragment) {
+    return _programs.getResource(std::make_pair(std::string(vertex), std::string(fragment)));
 }
 
-Resource<GL30Texture> ResourceManager::loadTexture(const std::string& path) {
+std::shared_ptr<GL30Texture> ResourceManager::loadTexture(const char* path) {
+    return _textures.getResource(std::string(path));
+}
+
+std::shared_ptr<WorldBlueprint> ResourceManager::loadWorld(const char* path) {
+    return _worlds.getResource(std::string(path));
+}
+
+std::shared_ptr<EntityBlueprint> ResourceManager::loadEntity(const char* path) {
+    return _entities.getResource(std::string(path));
+}
+
+std::shared_ptr<Script> ResourceManager::loadScript(const char* path) {
+    return _scripts.getResource(std::string(path));
+}
+
+std::shared_ptr<Program> ResourceManager::loadProgram(const std::string& vertex, const std::string& fragment) {
+    return _programs.getResource(std::make_pair(vertex, fragment));
+}
+
+std::shared_ptr<GL30Texture> ResourceManager::loadTexture(const std::string& path) {
     return _textures.getResource(path);
 }
 
-Resource<WorldBlueprint> ResourceManager::loadWorld(const std::string& path) {
+std::shared_ptr<WorldBlueprint> ResourceManager::loadWorld(const std::string& path) {
     return _worlds.getResource(path);
 }
 
-Resource<EntityBlueprint> ResourceManager::loadEntity(const std::string& path) {
+std::shared_ptr<EntityBlueprint> ResourceManager::loadEntity(const std::string& path) {
     return _entities.getResource(path);
 }
 
-Resource<Script> ResourceManager::loadScript(const std::string& path) {
+std::shared_ptr<Script> ResourceManager::loadScript(const std::string& path) {
     return _scripts.getResource(path);
 }

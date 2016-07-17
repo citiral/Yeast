@@ -4,6 +4,7 @@
 #include "../primitives/program.h"
 #include "../../resources/resource.h"
 #include "../../engine.h"
+#include <memory>
 
 class Light
 {
@@ -13,14 +14,14 @@ public:
 
     virtual void enableForRender() = 0;
 
-    Resource<Program> getProgram() const;
-    void setProgram(Resource<Program> p);
+    std::shared_ptr<Program> getProgram() const;
+    void setProgram(std::shared_ptr<Program> p);
 
 protected:
     Engine* _engine;
 
 private:
-    Resource<Program> _program;
+    std::shared_ptr<Program> _program;
 };
 
 #endif // LIGHT_H

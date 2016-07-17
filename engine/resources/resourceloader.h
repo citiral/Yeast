@@ -11,11 +11,11 @@ public:
     ResourceLoader();
     ~ResourceLoader();
 
-    Resource<T> getResource(const K& key);
+    std::shared_ptr<T> getResource(const K& key);
 
     void destroyUnused();
 private:
-    std::map<K, Resource<T>> _data;
+    std::map<K, std::shared_ptr<T>> _data;
 };
 
 
@@ -31,15 +31,15 @@ ResourceLoader<K, T>::~ResourceLoader() {
 }
 
 template<class K, class T>
-Resource<T> ResourceLoader<K, T>::getResource(const K& key) {
+std::shared_ptr<T> ResourceLoader<K, T>::getResource(const K& key) {
     // if we already have the element, return it
     auto element = _data.find(key);
     if (element != _data.end()) {
         return std::get<1>(*element);
     } else {
         // generate a resource with that key
-        Resource<T> resource = Resource<T>(key);
-        _data.emplace(std::pair<K, Resource<T>>(key, resource));
+        std::shared_ptr<T> resource = std::make_shared<T>(key);
+        _data.emplace(std::pair<K, std::shared_ptr<T>>(key, resource));
         return resource;
     }
 }

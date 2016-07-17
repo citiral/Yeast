@@ -24,12 +24,10 @@ public:
 	Engine* getEngine() const;
 	
 	//adds an entity to the world
-    void addEntity(std::shared_ptr<Entity> e);
     void addEntity(Entity* e);
 
     //removes the entity from the world
-    void removeEntity(Entity* e);
-    void removeEntity(std::shared_ptr<Entity> e);
+    void destroyEntity(Entity* e);
 	
 	//adds a light to the world
     void addLight(Light* l);

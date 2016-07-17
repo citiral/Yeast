@@ -6,7 +6,7 @@
 #include "Script.h"
 #include "LuaEngine.h"
 
-Script::Script(std::string& path): _path(path), _L(nullptr) {
+Script::Script(const std::string& path): _path(path), _L(nullptr) {
 }
 
 Script::~Script() {

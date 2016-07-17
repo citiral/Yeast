@@ -4,7 +4,7 @@
 #include "graphics/graphicscontext.h"
 
 
-Entity::Entity(Engine* engine, float x, float y, Renderable* renderable) : _type(""), _position(x, y) {
+Entity::Entity(Engine* engine, float x, float y, std::shared_ptr<Renderable> renderable) : _type(""), _position(x, y) {
     _engine = engine;
     _renderable = renderable;
 	_collider = nullptr;
@@ -13,9 +13,7 @@ Entity::Entity(Engine* engine, float x, float y, Renderable* renderable) : _type
 }
 
 Entity::~Entity() {
-    if (_renderable != nullptr) {
-        delete _renderable;
-    } if (_collider != nullptr) {
+    if (_collider != nullptr) {
 		delete _collider;
 	}
 
@@ -69,11 +67,6 @@ void Entity::setPosition(const Vector2& vec) {
 	_position = vec;
 }
 
-void Entity::setPosition(float x, float y) {
-	setX(x);
-	setY(y);
-}
-
 const std::string& Entity::getType() const {
 	return _type;
 }
@@ -87,13 +80,11 @@ void Entity::render(GraphicsContext& gc) {
         gc.drawRenderable(*_renderable, _position, _rotation, Vector2(1, 1));
 }
 
-void Entity::setRenderable(Renderable *r) {
-    if (_renderable != nullptr)
-        delete _renderable;
+void Entity::setRenderable(std::shared_ptr<Renderable> r) {
     _renderable = r;
 }
 
-Renderable *Entity::getRenderable() const {
+std::shared_ptr<Renderable> Entity::getRenderable() const {
     return _renderable;
 }
 
@@ -175,5 +166,5 @@ void Entity::addScript(ScriptInstance* script) {
     _scripts.push_back(script);
 
     // register the correct members
-    script->setValueUnowned("this", this);
+    script->setValue("this", this);
 }

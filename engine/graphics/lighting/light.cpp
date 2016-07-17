@@ -9,10 +9,10 @@ Light::~Light()
 {
 }
 
-Resource<Program> Light::getProgram() const {
+std::shared_ptr<Program> Light::getProgram() const {
     return _program;
 }
 
-void Light::setProgram(Resource<Program> p) {
+void Light::setProgram(std::shared_ptr<Program> p) {
     _program = p;
 }

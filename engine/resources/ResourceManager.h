@@ -17,11 +17,17 @@ public:
     ResourceManager();
     ~ResourceManager();
 
-    Resource<Program> loadProgram(const std::string& vertex, const std::string& fragment);
-    Resource<GL30Texture> loadTexture(const std::string& path);
-    Resource<WorldBlueprint> loadWorld(const std::string& path);
-    Resource<EntityBlueprint> loadEntity(const std::string& path);
-    Resource<Script> loadScript(const std::string& path);
+    std::shared_ptr<Program> loadProgram(const char* vertex, const char* fragment);
+    std::shared_ptr<GL30Texture> loadTexture(const char* path);
+    std::shared_ptr<WorldBlueprint> loadWorld(const char* path);
+    std::shared_ptr<EntityBlueprint> loadEntity(const char* path);
+    std::shared_ptr<Script> loadScript(const char* path);
+
+    std::shared_ptr<Program> loadProgram(const std::string& vertex, const std::string& fragment);
+    std::shared_ptr<GL30Texture> loadTexture(const std::string& path);
+    std::shared_ptr<WorldBlueprint> loadWorld(const std::string& path);
+    std::shared_ptr<EntityBlueprint> loadEntity(const std::string& path);
+    std::shared_ptr<Script> loadScript(const std::string& path);
 
 private:
     ResourceLoader<std::pair<std::string, std::string>, Program> _programs;

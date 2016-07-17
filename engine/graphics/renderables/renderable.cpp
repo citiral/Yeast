@@ -5,12 +5,12 @@ Renderable::Renderable(Engine* engine) :_engine(engine), _program() {
 
 Renderable::~Renderable() {
 }
-	
-Resource<Program> Renderable::getProgram() const {
+
+std::shared_ptr<Program> Renderable::getProgram() const {
 	return _program;
 }
 
-void Renderable::setProgram(Resource<Program> p) {
+void Renderable::setProgram(std::shared_ptr<Program> p) {
 	_program = p;
 }
 	

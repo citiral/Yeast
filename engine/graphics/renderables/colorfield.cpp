@@ -28,6 +28,10 @@ Vector2& ColorField::getSize() {
 	return _size;
 }
 
-void ColorField::push(lua_State* L, void* ptr) {
-    LuaEngine::rawPushValue<ColorField*>(L, (ColorField*)ptr);
+void ColorField::push(lua_State* L, Renderable* ptr) {
+    LuaEngine::rawPushValue<ColorField*>(L, static_cast<ColorField*>(ptr));
+}
+
+void ColorField::push(lua_State* L, std::shared_ptr<Renderable> ptr) {
+    LuaEngine::rawPushValue<std::shared_ptr<ColorField>>(L, std::static_pointer_cast<ColorField>(ptr));
 }

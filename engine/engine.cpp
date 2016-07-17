@@ -15,7 +15,7 @@ Engine::Engine(int width, int height, bool fullscreen) {
     _loader = new ResourceManager;
     _settings = new Settings;
     _luaengine = new LuaEngine();
-    _luaengine->setGlobalUnowned("engine", this);
+    _luaengine->setGlobal("engine", this);
 
     _window = new Window;
     _window->setResolution(width, height);

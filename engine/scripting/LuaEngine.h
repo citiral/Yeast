@@ -13,6 +13,17 @@
 #include <memory>
 #include "../cdefs.h"
 
+/* TODO currently polymorphism does not properly differentiate between tagged/untagged pointers
+ * really you should never push owned pointers to lua, I will probably remove that functionality to prevent confusion
+ * if you want lua to own it use by value and if you want to share it use a shared pointer
+*/
+
+// extend std to acknowledge shared pointers in some functions
+namespace std {
+    template< class T > struct remove_pointer<shared_ptr<T>> { typedef T type;};
+    template< class T > struct is_pointer<std::shared_ptr<T>> : std::true_type {};
+}
+
 struct lua_constructor {
     unsigned int arguments;
     int (*func)(lua_State*);
@@ -30,67 +41,10 @@ struct LuaEnumValue {
     int value;
 };
 
+template<class T>
 struct LuaCustomPush {
-    virtual void push(lua_State* L, void* ptr) = 0;
-};
-
-template<bool isPointer, class T>
-struct LuaEngineHelper {
-};
-
-template<class T>
-struct LuaEngineHelper<false, T> {
-    static_assert(!std::is_pointer<T>::value, "Dude this is a pointer type.");
-
-    static int destructor(lua_State* _L) {
-        T* obj = (T*)lua_touserdata(_L, 1);
-        obj->~T();
-
-        return 0;
-    }
-
-    static T getValue(lua_State* _L, int index);
-};
-
-//TODO: expand this for all lua primary types, will do this once I need to :)
-template<> inline float LuaEngineHelper<false, float>::getValue(lua_State* _L, int index) {
-    return (float)lua_tonumber(_L, index);
-}
-
-template<> inline int LuaEngineHelper<false, int>::getValue(lua_State* _L, int index) {
-    return (int)lua_tonumber(_L, index);
-}
-
-template<> inline bool LuaEngineHelper<false, bool>::getValue(lua_State* _L, int index) {
-    return (bool)lua_toboolean(_L, index);
-}
-
-template<class T>
-inline T LuaEngineHelper<false, T>::getValue(lua_State* _L, int index) {
-    return *(typename std::remove_reference<T>::type*)lua_touserdata(_L, index);
-}
-
-template<class T>
-struct LuaEngineHelper<true, T> {
-    static_assert(std::is_pointer<T>::value, "Dude this is no pointer type.");
-
-    template<class F = T>
-
-    static int destructor(lua_State* _L) {
-        T* obj = (T*)lua_touserdata(_L, 1);
-
-        // only destroy it if it is not tagged
-        if ((((size_t)*obj) & 1) == 0)
-            delete *obj;
-
-        return 0;
-    }
-
-    static T getValue(lua_State* _L, int index) {
-        // get the object and untag it
-        size_t obj = (size_t)*(T*)lua_touserdata(_L, index);
-        return (T)(obj & ~(size_t)1);
-    }
+    virtual void push(lua_State* L, T* val) = 0;
+    virtual void push(lua_State* L, std::shared_ptr<T> val) = 0;
 };
 
 class LuaEngine {
@@ -173,12 +127,6 @@ public:
     }
 
     template<class T>
-    void setGlobalUnowned(const char* name, T instance) {
-        pushValueUnowned(_L, instance);
-        lua_setglobal(_L, name);
-    }
-
-    template<class T>
     static int constructor(lua_State* _L) {
         // get the argument count before modifying the stack, otherwise it might be wrong
         int argc = lua_gettop(_L);
@@ -203,7 +151,9 @@ public:
 
     template<class T>
     static int destructor(lua_State* _L) {
-        return LuaEngineHelper<std::is_pointer<T>::value, T>::destructor(_L);
+        T* obj = (T*)lua_touserdata(_L, 1);
+        obj->~T();
+        return 0;
     }
 
     template<class T>
@@ -219,30 +169,14 @@ public:
         lua_setmetatable(_L, -2);
     }
 
-    // pushed values are automatically owned unless specifically pushed as unowned
-    // if the class implements luacustompush, call that function to push the value, this adds support for polymorphism
-    template<class T, class = typename std::enable_if<std::is_base_of<LuaCustomPush, T>::value && std::is_pointer<T>::value>::type>
-    static void pushValue(lua_State* _L, T value) {
-        value->push(_L, value);
-    }
-
-    // pushed values are automatically owned unless specifically pushed as unowned
-    template<class T>
-    static void pushValue(lua_State* _L, T value) {
-        rawPushValue(_L, value);
-    }
-
-    // some wrappers around lua types so primitives can be pushed just like pointers
     static void pushValue(lua_State* _L, float value) {
         lua_pushnumber(_L, value);
     }
 
-    // some wrappers around lua types so primitives can be pushed just like pointers
     static void pushValue(lua_State* _L, int value) {
         lua_pushnumber(_L, value);
     }
 
-    // some wrappers around lua types so primitives can be pushed just like pointers
     static void pushValue(lua_State* _L, bool value) {
         lua_pushboolean(_L, value);
     }
@@ -253,28 +187,55 @@ public:
 
     // if the class implements luacustompush, call that function to push the value, this adds support for polymorphism
     template<class T>
-    static typename std::enable_if<std::is_base_of<LuaCustomPush, typename std::remove_pointer<T>::type>::value>::type pushValueUnowned(lua_State* _L, T pointer) {
-        static_assert(std::__is_pointer_helper<T>::value, "You can only push pointers unowned");
-        // tag the pointer and call the push function
-        pointer->push(_L, (void*)((size_t)pointer | 1));
+    static typename std::enable_if<std::is_base_of<LuaCustomPush<typename std::remove_pointer<T>::type>, typename std::remove_pointer<T>::type>::value && std::is_pointer<T>::value>::type pushValue(lua_State* _L, T value) {
+        value->push(_L, value);
     }
 
     template<class T>
-    static typename std::enable_if<std::false_type::value == std::is_base_of<LuaCustomPush, typename std::remove_pointer<T>::type>::value>::type pushValueUnowned(lua_State* _L, T pointer) {
-        static_assert(std::__is_pointer_helper<T>::value, "You can only push pointers unowned");
-        // tag the pointer
-        pointer = (T)((size_t)pointer | 1);
-        rawPushValue(_L, pointer);
+    static typename std::enable_if<!(std::is_base_of<LuaCustomPush<typename std::remove_pointer<T>::type>, typename std::remove_pointer<T>::type>::value && std::is_pointer<T>::value)>::type pushValue(lua_State* _L, T value) {
+        rawPushValue(_L, value);
     }
 
     template<class T>
-    static T getValue(lua_State* _L, int index) {
-        return LuaEngineHelper<std::is_pointer<T>::value, T>::getValue(_L, index);
+    static T getValue(lua_State* _L, int index);
+
+    template<class T>
+    static T getGlobal(lua_State* _L, const char* name) {
+        lua_pushstring(_L, name);
+        lua_gettable(_L, LUA_GLOBALSINDEX);
+        T t = getValue<T>(_L, -1);
+        lua_pop(_L, 1);
+        return t;
     }
 
 private:
     lua_State* _L;
 };
 
+//TODO: expand this for all lua primary types, will do this once I need to :)
+template<>
+inline float LuaEngine::getValue<float>(lua_State* _L, int index) {
+    return (float)lua_tonumber(_L, index);
+}
+
+template<>
+inline int LuaEngine::getValue<int>(lua_State* _L, int index) {
+    return (int)lua_tonumber(_L, index);
+}
+
+template<>
+inline bool LuaEngine::getValue<bool>(lua_State* _L, int index) {
+    return (bool)lua_toboolean(_L, index);
+}
+
+template<>
+inline const char* LuaEngine::getValue<const char*>(lua_State* _L, int index) {
+    return lua_tostring(_L, index);
+}
+
+template<class T>
+inline T LuaEngine::getValue(lua_State* _L, int index) {
+    return *(typename std::remove_reference<T>::type*)lua_touserdata(_L, index);
+}
 
 #endif //I_WANNA_KILL_THE_BOSHY_LUAENGINE_H

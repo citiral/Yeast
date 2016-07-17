@@ -11,8 +11,6 @@ class Collider;
 #include "scripting/ScriptInstance.h"
 #include <string>
 
-#define WINDOW getWorld()->getEngine()->getWindow()
-
 enum class EntityState {
     PENDING_ADD,
     ACTIVE,
@@ -23,14 +21,14 @@ enum class EntityState {
 class Entity {
 	friend class World;
 public:
-    Entity(Engine* engine, float x = 0, float y = 0, Renderable* renderable = nullptr);
+    Entity(Engine* engine, float x = 0, float y = 0, std::shared_ptr<Renderable> renderable = nullptr);
     virtual ~Entity();
 
     World* getWorld();
     Engine* getEngine();
 
-    void setRenderable(Renderable* r);
-    Renderable* getRenderable() const;
+    void setRenderable(std::shared_ptr<Renderable> r);
+    std::shared_ptr<Renderable> getRenderable() const;
 
     void setCollider(Collider* r);
     Collider* getCollider() const;
@@ -50,7 +48,6 @@ public:
 
     Vector2& getPosition();
 	void setPosition(const Vector2& vec);
-	void setPosition(float x, float y);
 
     const std::string& getType() const;
 	void setType(const std::string& t);
@@ -74,7 +71,7 @@ private:
     std::string _type;
 	Vector2 _position;
 	float _rotation;
-    Renderable* _renderable;
+    std::shared_ptr<Renderable> _renderable;
 	Collider* _collider;
     std::vector<ScriptInstance*> _scripts;
     EntityState _state;

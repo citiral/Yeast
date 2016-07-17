@@ -16,7 +16,8 @@ public:
 	Color& getColor();
 	Vector2& getSize();
 
-    void push(lua_State* L, void* ptr);
+    void push(lua_State* L, Renderable* ptr);
+    void push(lua_State* L, std::shared_ptr<Renderable> ptr);
 private:
 	Color _color;
 	Vector2 _size;
