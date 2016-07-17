@@ -10,27 +10,18 @@ function printVec(v)
 end
 
 function added()
-    --engine:world():removeEntity(this)
-    --t = Entity()
-    v = Vector2()
-    --print(v:x())
-    --v2 = v
-    v:setX(20)
-
-
-    --print(v:add(v2):x())
-
-    --print(tvec2:x())
+    -- center the sprite
+    this:renderable():centerOrigin()
 end
 
 function update()
-    this:setPos(engine:window():mousePos())
-    collectgarbage()
-    --v2 = Vector2()
+    -- mouselook
+    local diff = engine:window():mousePos() - this:pos()
+    this:setRotation(math.atan2(-diff:y(), diff:x()))
 
-    --v2:setX(1)
-    --v2:setY(2)
-    --v = v:add(v2)
-
-    --printVec(v)
+    -- movement
+    if engine:window():keyIsDown(Keys.D) == true then this:setX(this:x() + 10) end
+    if engine:window():keyIsDown(Keys.A) == true then this:setX(this:x() - 10) end
+    if engine:window():keyIsDown(Keys.W) == true then this:setY(this:y() + 10) end
+    if engine:window():keyIsDown(Keys.S) == true then this:setY(this:y() - 10) end
 end

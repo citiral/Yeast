@@ -63,3 +63,7 @@ void Sprite::enableForRender() {
 	glUniform2f(glGetUniformLocation(getProgram()->getProgramID(), "size"), _diffuse->getWidth(), _diffuse->getHeight());
 	glUniform1f(glGetUniformLocation(getProgram()->getProgramID(), "brightness"), _isLit? 1 : 0);	
 }
+
+void Sprite::push(lua_State* L, void* ptr) {
+    LuaEngine::rawPushValue<Sprite*>(L, (Sprite*)ptr);
+}

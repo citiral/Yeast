@@ -45,3 +45,7 @@ void Background::enableForRender() {
 	
 	glUniform2f(glGetUniformLocation(getProgram()->getProgramID(), "size"), _diffuse->getWidth() * _scale, _diffuse->getHeight() * _scale);
 }
+
+void Background::push(lua_State* L, void* ptr) {
+    LuaEngine::rawPushValue<Background*>(L, (Background*)ptr);
+}

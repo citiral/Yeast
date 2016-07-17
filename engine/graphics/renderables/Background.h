@@ -18,7 +18,8 @@ public:
 	Resource<GL30Texture> getNormal() const;
 
     virtual void enableForRender();
-	
+
+    void push(lua_State* L, void* ptr);
 private:
 	Resource<GL30Texture> _diffuse;
 	Resource<GL30Texture> _normal;

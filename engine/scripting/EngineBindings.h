@@ -12,6 +12,9 @@
 void bind(LuaEngine* engine, lua_State* L);
 
 // helper functions to bind c++ functions
+typedef std::true_type return_owned_pointer;
+typedef std::false_type return_unowned_pointer;
+
 template<bool returnOwned>
 struct WrapFunction;
 
@@ -96,23 +99,23 @@ inline int wrapFunctionShared(lua_State* L, R (T::*func)(ARGS...)) {
 
 template<class T, class R, class... ARGS>
 struct BindFunction {
-    template <R (T::*F)(ARGS...) const, bool returnOwned = true>
+    template <R (T::*F)(ARGS...) const, bool returnOwned = return_owned_pointer::value>
     static int ref(lua_State* L) {
         return wrapFunctionRef<returnOwned>(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
     }
-    template <R (T::*F)(ARGS...), bool returnOwned = true>
+    template <R (T::*F)(ARGS...), bool returnOwned = return_owned_pointer::value>
     static int ref(lua_State* L) {
         return wrapFunctionRef<returnOwned>(L, F);
     }
-    template <R (T::*F)(ARGS...) const, bool returnOwned = true>
+    template <R (T::*F)(ARGS...) const, bool returnOwned = return_owned_pointer::value>
     static int ptr(lua_State* L) {
         return wrapFunctionPtr<returnOwned>(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
     }
-    template <R (T::*F)(ARGS...), bool returnOwned = true>
+    template <R (T::*F)(ARGS...), bool returnOwned = return_owned_pointer::value>
     static int ptr(lua_State* L) {
         return wrapFunctionPtr<returnOwned>(L, F);
     }
-    template <R (T::*F)(ARGS...) const, bool returnOwned = true>
+    template <R (T::*F)(ARGS...) const, bool returnOwned = return_owned_pointer::value>
     static int shared(lua_State* L) {
         return wrapFunctionShared<returnOwned>(L, (typename std::decay<R(T::*)(ARGS...)>::type)F);
     }

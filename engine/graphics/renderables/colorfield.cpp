@@ -27,3 +27,7 @@ Color& ColorField::getColor() {
 Vector2& ColorField::getSize() {
 	return _size;
 }
+
+void ColorField::push(lua_State* L, void* ptr) {
+    LuaEngine::rawPushValue<ColorField*>(L, (ColorField*)ptr);
+}

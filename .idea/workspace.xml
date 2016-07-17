@@ -33,21 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Entity.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/Entity.cpp">
+      <file leaf-file-name="testworld.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run/res/worlds/testworld.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="177" column="42" selection-start-line="177" selection-start-column="42" selection-end-line="177" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vector2_lua.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/scripting/bindings/vector2_lua.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.8846154">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -57,51 +47,110 @@
         <entry file="file://$PROJECT_DIR$/engine/scripting/EngineBindings.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="44" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="44" />
+              <caret line="287" column="39" selection-start-line="287" selection-start-column="39" selection-end-line="287" selection-end-column="39" />
               <folding>
                 <element signature="e#43#70#0" expanded="true" />
-                <element signature="e#132#134#0" expanded="true" />
-                <element signature="e#195#197#0" expanded="true" />
-                <element signature="e#886#888#0" expanded="true" />
-                <element signature="e#950#952#0" expanded="true" />
-                <element signature="e#2070#2072#0" expanded="true" />
-                <element signature="e#2133#2135#0" expanded="true" />
-                <element signature="e#2465#2467#0" expanded="true" />
-                <element signature="e#2526#2528#0" expanded="true" />
-                <element signature="e#2776#2778#0" expanded="true" />
-                <element signature="e#2839#2841#0" expanded="true" />
+                <element signature="e#228#230#0" expanded="true" />
+                <element signature="e#291#293#0" expanded="true" />
+                <element signature="e#377#379#0" expanded="true" />
+                <element signature="e#1475#1477#0" expanded="true" />
+                <element signature="e#1539#1541#0" expanded="true" />
+                <element signature="e#1685#1687#0" expanded="true" />
+                <element signature="e#2808#2810#0" expanded="true" />
+                <element signature="e#2871#2873#0" expanded="true" />
+                <element signature="e#2957#2959#0" expanded="true" />
+                <element signature="e#3364#3366#0" expanded="true" />
+                <element signature="e#3425#3427#0" expanded="true" />
+                <element signature="e#3510#3512#0" expanded="true" />
+                <element signature="e#3763#3765#0" expanded="true" />
+                <element signature="e#3826#3828#0" expanded="true" />
+                <element signature="e#3912#3914#0" expanded="true" />
+                <element signature="e#4533#4535#0" expanded="true" />
+                <element signature="e#4596#4598#0" expanded="true" />
+                <element signature="e#4682#4684#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mouselook.lua" pinned="false" current-in-tab="false">
+      <file leaf-file-name="glfw3.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/GLFW/glfw3.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="455" column="0" selection-start-line="455" selection-start-column="0" selection-end-line="466" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mouselook.lua" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run/res/scripts/mouselook.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.6005435">
+              <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="engine.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/engine.cpp">
+      <file leaf-file-name="sprite.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="window.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/windowing/window.cpp">
+      <file leaf-file-name="sprite.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resource.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/resources/resource.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="103" column="33" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#546#555#0" expanded="true" />
+                <element signature="e#649#658#0" expanded="true" />
+                <element signature="e#1579#1588#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LuaEngine.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="212" column="13" selection-start-line="212" selection-start-column="13" selection-end-line="212" selection-end-column="13" />
+              <folding>
+                <element signature="e#1115#1117#0" expanded="true" />
+                <element signature="e#1253#1255#0" expanded="true" />
+                <element signature="e#1385#1387#0" expanded="true" />
+                <element signature="e#1521#1530#0" expanded="true" />
+                <element signature="e#1696#1705#0" expanded="true" />
+                <element signature="e#1832#1845#0" expanded="true" />
+                <element signature="e#2430#2439#0" expanded="true" />
+                <element signature="e#4267#4276#0" expanded="true" />
+                <element signature="e#4956#4965#0" expanded="true" />
+                <element signature="e#5102#5111#0" expanded="true" />
+                <element signature="e#5262#5271#0" expanded="true" />
+                <element signature="e#5980#5989#0" expanded="true" />
+                <element signature="e#6130#6139#0" expanded="true" />
+                <element signature="e#6692#6811#0" expanded="true" />
+                <element signature="e#6998#7007#0" expanded="true" />
+                <element signature="e#7882#7891#0" expanded="true" />
+                <element signature="e#8283#8292#0" expanded="true" />
+                <element signature="e#8705#8714#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,57 +160,36 @@
         <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run/res/entities/player.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769">
-              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testworld.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/run/res/worlds/testworld.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6464789">
-              <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LuaEngine.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.h">
+      <file leaf-file-name="EngineBindings.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/scripting/EngineBindings.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="196" column="34" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
+              <caret line="55" column="35" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="35" />
               <folding>
-                <element signature="e#130#148#0" expanded="true" />
-                <element signature="e#279#288#0" expanded="true" />
-                <element signature="e#385#410#0" expanded="true" />
-                <element signature="e#448#457#0" expanded="true" />
-                <element signature="e#585#598#0" expanded="true" />
-                <element signature="e#1295#1297#0" expanded="true" />
-                <element signature="e#1433#1435#0" expanded="true" />
-                <element signature="e#1740#1749#0" expanded="true" />
-                <element signature="e#1876#1889#0" expanded="true" />
-                <element signature="e#2921#2930#0" expanded="true" />
-                <element signature="e#4205#4214#0" expanded="true" />
-                <element signature="e#4497#4506#0" expanded="true" />
-                <element signature="e#4682#4691#0" expanded="true" />
-                <element signature="e#4828#4837#0" expanded="true" />
-                <element signature="e#4988#5113#0" expanded="true" />
-                <element signature="e#5256#5265#0" expanded="true" />
-                <element signature="e#5489#5498#0" expanded="true" />
-                <element signature="e#6322#6331#0" expanded="true" />
-                <element signature="e#6867#6876#0" expanded="true" />
+                <element signature="e#141#159#0" expanded="true" />
+                <element signature="e#373#391#0" expanded="true" />
+                <element signature="e#422#424#0" expanded="true" />
+                <element signature="e#581#590#0" expanded="true" />
+                <element signature="e#763#796#0" expanded="true" />
+                <element signature="e#1093#1095#0" expanded="true" />
+                <element signature="e#1253#1262#0" expanded="true" />
+                <element signature="e#1442#1475#0" expanded="true" />
+                <element signature="e#1773#1824#0" expanded="true" />
+                <element signature="e#1999#2050#0" expanded="true" />
+                <element signature="e#2376#2427#0" expanded="true" />
+                <element signature="e#2773#2806#0" expanded="true" />
+                <element signature="e#2842#2916#0" expanded="true" />
+                <element signature="e#3067#3135#0" expanded="true" />
+                <element signature="e#3241#3315#0" expanded="true" />
+                <element signature="e#3466#3534#0" expanded="true" />
+                <element signature="e#3640#3714#0" expanded="true" />
+                <element signature="e#3871#3916#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -172,13 +200,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/engine/blueprints/RenderableBlueprint.h" />
-        <option value="$PROJECT_DIR$/engine/blueprints/RenderableSpriteBlueprint.h" />
-        <option value="$PROJECT_DIR$/engine/Result.h" />
-        <option value="$PROJECT_DIR$/engine/blueprints/RenderableSpriteBlueprint.cpp" />
-        <option value="$PROJECT_DIR$/engine/blueprints/RenderableBackgroundBlueprint.h" />
-        <option value="$PROJECT_DIR$/engine/blueprints/RenderableBackgroundBlueprint.cpp" />
-        <option value="$PROJECT_DIR$/engine/blueprints/RenderableBlueprint.cpp" />
         <option value="$PROJECT_DIR$/engine/blueprints/LightBlueprint.h" />
         <option value="$PROJECT_DIR$/engine/blueprints/WorldBlueprint.h" />
         <option value="$PROJECT_DIR$/run/res/entities/wallbackground.json" />
@@ -196,7 +217,6 @@
         <option value="$PROJECT_DIR$/engine/scripting/Luna.h" />
         <option value="$PROJECT_DIR$/engine/scripting/LuaTestClass.h" />
         <option value="$PROJECT_DIR$/engine/scripting/LuaTestClass.cpp" />
-        <option value="$PROJECT_DIR$/engine/scripting/LuaEngine.cpp" />
         <option value="$PROJECT_DIR$/engine/cdefs.h" />
         <option value="$PROJECT_DIR$/engine/scripting/ScriptInstance.h" />
         <option value="$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp" />
@@ -205,7 +225,6 @@
         <option value="$PROJECT_DIR$/engine/math/Vector2.cpp" />
         <option value="$PROJECT_DIR$/engine/math/Vector2.h" />
         <option value="$PROJECT_DIR$/engine/Entity.h" />
-        <option value="$PROJECT_DIR$/engine/graphics/renderables/sprite.cpp" />
         <option value="$PROJECT_DIR$/engine/graphics/lighting/PointLight.cpp" />
         <option value="$PROJECT_DIR$/engine/graphics/lighting/light.cpp" />
         <option value="$PROJECT_DIR$/engine/graphics/renderables/renderable.cpp" />
@@ -214,15 +233,24 @@
         <option value="$PROJECT_DIR$/engine/scripting/bindings/vector2_lua.cpp" />
         <option value="$PROJECT_DIR$/engine/World.cpp" />
         <option value="$PROJECT_DIR$/engine/windowing/window.h" />
-        <option value="$PROJECT_DIR$/engine/scripting/EngineBindings.h" />
-        <option value="$PROJECT_DIR$/engine/scripting/EngineBindings.cpp" />
         <option value="$PROJECT_DIR$/engine/Entity.cpp" />
         <option value="$PROJECT_DIR$/engine/engine.cpp" />
-        <option value="$PROJECT_DIR$/engine/scripting/LuaEngine.h" />
-        <option value="$PROJECT_DIR$/run/res/scripts/mouselook.lua" />
         <option value="$PROJECT_DIR$/engine/windowing/window.cpp" />
         <option value="$PROJECT_DIR$/run/res/entities/player.json" />
+        <option value="$PROJECT_DIR$/engine/scripting/EngineBindings.h" />
         <option value="$PROJECT_DIR$/run/res/worlds/testworld.json" />
+        <option value="$PROJECT_DIR$/engine/scripting/LuaEngine.cpp" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/sprite.h" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/sprite.cpp" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/colorfield.h" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/colorfield.cpp" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/Background.h" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/Background.cpp" />
+        <option value="$PROJECT_DIR$/engine/graphics/renderables/renderable.h" />
+        <option value="$PROJECT_DIR$/engine/scripting/LuaEngine.h" />
+        <option value="$PROJECT_DIR$/engine/resources/resource.h" />
+        <option value="$PROJECT_DIR$/engine/scripting/EngineBindings.cpp" />
+        <option value="$PROJECT_DIR$/run/res/scripts/mouselook.lua" />
       </list>
     </option>
   </component>
@@ -349,28 +377,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Yeast" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Yeast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -439,11 +445,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bindings" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -461,7 +463,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="blueprints" />
+              <option name="myItemId" value="math" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="renderables" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -555,20 +597,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17324094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17963752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20670995" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23593074" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5021075" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17316018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17316018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37012988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29112554" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -591,81 +633,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/resources/resourceloader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/paths.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/cdefs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26008344">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/blueprints/EntityBlueprint.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="75" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/bits/ptr_traits.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/bits/stl_function.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/bits/move.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/blueprints/RenderableSpriteBlueprint.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/blueprints/RenderableBackgroundBlueprint.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -680,26 +652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/math/Vector2.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43651927">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/blueprints/LightBlueprint.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6305278">
           <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/math/Vector2.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321234">
-          <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -710,14 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/lua.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="259" column="41" selection-start-line="259" selection-start-column="41" selection-end-line="259" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/vector">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -725,26 +673,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="162" selection-start-line="5" selection-start-column="162" selection-end-line="5" selection-end-column="162" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/graphics/lighting/PointLight.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,7 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="101" selection-start-line="5" selection-start-column="101" selection-end-line="5" selection-end-column="101" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,31 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/renderable.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20788044">
           <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,7 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2853261">
           <caret line="2038" column="0" selection-start-line="2038" selection-start-column="0" selection-end-line="2038" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,7 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,15 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/GLFW/glfw3.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33288044">
-          <caret line="3029" column="13" selection-start-line="3029" selection-start-column="13" selection-end-line="3029" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,41 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3464674">
           <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/EngineBindings.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0866426">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding>
-            <element signature="e#141#159#0" expanded="true" />
-            <element signature="e#279#297#0" expanded="true" />
-            <element signature="e#328#330#0" expanded="true" />
-            <element signature="e#487#496#0" expanded="true" />
-            <element signature="e#669#702#0" expanded="true" />
-            <element signature="e#999#1001#0" expanded="true" />
-            <element signature="e#1159#1168#0" expanded="true" />
-            <element signature="e#1348#1381#0" expanded="true" />
-            <element signature="e#1679#1730#0" expanded="true" />
-            <element signature="e#1905#1956#0" expanded="true" />
-            <element signature="e#2282#2333#0" expanded="true" />
-            <element signature="e#2679#2712#0" expanded="true" />
-            <element signature="e#2748#2799#0" expanded="true" />
-            <element signature="e#2950#2995#0" expanded="true" />
-            <element signature="e#3101#3152#0" expanded="true" />
-            <element signature="e#3303#3348#0" expanded="true" />
-            <element signature="e#3454#3505#0" expanded="true" />
-            <element signature="e#3662#3707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/windowing/window.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -906,32 +765,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/Entity.h">
+    <entry file="file://$PROJECT_DIR$/run/res/entities/player.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/graphicscontext.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.1711957">
+          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/math/Vector2.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35869566">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/bindings/entity_lua.cpp">
+    <entry file="file://$PROJECT_DIR$/engine/math/Vector2.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/bindings/vector2_lua.cpp">
+    <entry file="file://$PROJECT_DIR$/include/lauxlib.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.79211956">
+          <caret line="164" column="25" selection-start-line="164" selection-start-column="25" selection-end-line="164" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -939,64 +816,16 @@
     <entry file="file://$PROJECT_DIR$/engine/Entity.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="177" column="42" selection-start-line="177" selection-start-column="42" selection-end-line="177" selection-end-column="42" />
+          <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/EngineBindings.cpp">
+    <entry file="file://$PROJECT_DIR$/include/lua.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="44" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="44" />
-          <folding>
-            <element signature="e#43#70#0" expanded="true" />
-            <element signature="e#132#134#0" expanded="true" />
-            <element signature="e#195#197#0" expanded="true" />
-            <element signature="e#886#888#0" expanded="true" />
-            <element signature="e#950#952#0" expanded="true" />
-            <element signature="e#2070#2072#0" expanded="true" />
-            <element signature="e#2133#2135#0" expanded="true" />
-            <element signature="e#2465#2467#0" expanded="true" />
-            <element signature="e#2526#2528#0" expanded="true" />
-            <element signature="e#2776#2778#0" expanded="true" />
-            <element signature="e#2839#2841#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.33288044">
+          <caret line="150" column="25" selection-start-line="150" selection-start-column="25" selection-end-line="150" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="196" column="34" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
-          <folding>
-            <element signature="e#130#148#0" expanded="true" />
-            <element signature="e#279#288#0" expanded="true" />
-            <element signature="e#385#410#0" expanded="true" />
-            <element signature="e#448#457#0" expanded="true" />
-            <element signature="e#585#598#0" expanded="true" />
-            <element signature="e#1295#1297#0" expanded="true" />
-            <element signature="e#1433#1435#0" expanded="true" />
-            <element signature="e#1740#1749#0" expanded="true" />
-            <element signature="e#1876#1889#0" expanded="true" />
-            <element signature="e#2921#2930#0" expanded="true" />
-            <element signature="e#4205#4214#0" expanded="true" />
-            <element signature="e#4497#4506#0" expanded="true" />
-            <element signature="e#4682#4691#0" expanded="true" />
-            <element signature="e#4828#4837#0" expanded="true" />
-            <element signature="e#4988#5113#0" expanded="true" />
-            <element signature="e#5256#5265#0" expanded="true" />
-            <element signature="e#5489#5498#0" expanded="true" />
-            <element signature="e#6322#6331#0" expanded="true" />
-            <element signature="e#6867#6876#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,36 +837,256 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/scripts/mouselook.lua">
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/typeinfo">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding />
+        <state vertical-scroll-proportion="0.26086956">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/engine/windowing/window.cpp">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06929348">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Entity.h">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/windowing/window.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/windowing/keys.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6399456">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/type_traits">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33288044">
+          <caret line="1952" column="11" selection-start-line="1952" selection-start-column="11" selection-end-line="1952" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/colorfield.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/Background.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/colorfield.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47058824">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/Background.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/renderable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/renderable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#14#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/entities/player.json">
+    <entry file="file://$PROJECT_DIR$/engine/scripting/EngineBindings.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="35" />
+          <folding>
+            <element signature="e#141#159#0" expanded="true" />
+            <element signature="e#373#391#0" expanded="true" />
+            <element signature="e#422#424#0" expanded="true" />
+            <element signature="e#581#590#0" expanded="true" />
+            <element signature="e#763#796#0" expanded="true" />
+            <element signature="e#1093#1095#0" expanded="true" />
+            <element signature="e#1253#1262#0" expanded="true" />
+            <element signature="e#1442#1475#0" expanded="true" />
+            <element signature="e#1773#1824#0" expanded="true" />
+            <element signature="e#1999#2050#0" expanded="true" />
+            <element signature="e#2376#2427#0" expanded="true" />
+            <element signature="e#2773#2806#0" expanded="true" />
+            <element signature="e#2842#2916#0" expanded="true" />
+            <element signature="e#3067#3135#0" expanded="true" />
+            <element signature="e#3241#3315#0" expanded="true" />
+            <element signature="e#3466#3534#0" expanded="true" />
+            <element signature="e#3640#3714#0" expanded="true" />
+            <element signature="e#3871#3916#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="212" column="13" selection-start-line="212" selection-start-column="13" selection-end-line="212" selection-end-column="13" />
+          <folding>
+            <element signature="e#1115#1117#0" expanded="true" />
+            <element signature="e#1253#1255#0" expanded="true" />
+            <element signature="e#1385#1387#0" expanded="true" />
+            <element signature="e#1521#1530#0" expanded="true" />
+            <element signature="e#1696#1705#0" expanded="true" />
+            <element signature="e#1832#1845#0" expanded="true" />
+            <element signature="e#2430#2439#0" expanded="true" />
+            <element signature="e#4267#4276#0" expanded="true" />
+            <element signature="e#4956#4965#0" expanded="true" />
+            <element signature="e#5102#5111#0" expanded="true" />
+            <element signature="e#5262#5271#0" expanded="true" />
+            <element signature="e#5980#5989#0" expanded="true" />
+            <element signature="e#6130#6139#0" expanded="true" />
+            <element signature="e#6692#6811#0" expanded="true" />
+            <element signature="e#6998#7007#0" expanded="true" />
+            <element signature="e#7882#7891#0" expanded="true" />
+            <element signature="e#8283#8292#0" expanded="true" />
+            <element signature="e#8705#8714#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/resource.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="33" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+            <element signature="e#649#658#0" expanded="true" />
+            <element signature="e#1579#1588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run/res/worlds/testworld.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6464789">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/GLFW/glfw3.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="455" column="0" selection-start-line="455" selection-start-column="0" selection-end-line="466" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/EngineBindings.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="287" column="39" selection-start-line="287" selection-start-column="39" selection-end-line="287" selection-end-column="39" />
+          <folding>
+            <element signature="e#43#70#0" expanded="true" />
+            <element signature="e#228#230#0" expanded="true" />
+            <element signature="e#291#293#0" expanded="true" />
+            <element signature="e#377#379#0" expanded="true" />
+            <element signature="e#1475#1477#0" expanded="true" />
+            <element signature="e#1539#1541#0" expanded="true" />
+            <element signature="e#1685#1687#0" expanded="true" />
+            <element signature="e#2808#2810#0" expanded="true" />
+            <element signature="e#2871#2873#0" expanded="true" />
+            <element signature="e#2957#2959#0" expanded="true" />
+            <element signature="e#3364#3366#0" expanded="true" />
+            <element signature="e#3425#3427#0" expanded="true" />
+            <element signature="e#3510#3512#0" expanded="true" />
+            <element signature="e#3763#3765#0" expanded="true" />
+            <element signature="e#3826#3828#0" expanded="true" />
+            <element signature="e#3912#3914#0" expanded="true" />
+            <element signature="e#4533#4535#0" expanded="true" />
+            <element signature="e#4596#4598#0" expanded="true" />
+            <element signature="e#4682#4684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run/res/scripts/mouselook.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6005435">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
           <folding />
         </state>
       </provider>

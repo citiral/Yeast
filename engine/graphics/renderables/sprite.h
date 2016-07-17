@@ -27,7 +27,8 @@ public:
 	void centerOrigin();
 	Vector2 getOrigin() const;
 	void setOrigin(const Vector2& v);
-	
+
+    void push(lua_State* L, void* ptr);
 private:
 	Resource<GL30Texture> _diffuse;
 	Resource<GL30Texture> _normal;

@@ -13,10 +13,25 @@
 #include <memory>
 #include "../cdefs.h"
 
+struct lua_constructor {
+    unsigned int arguments;
+    int (*func)(lua_State*);
+};
+
 template<class T>
 struct LuaBindings {
     static const char name[];
+    static lua_constructor constructors[];
     static luaL_reg functions[];
+};
+
+struct LuaEnumValue {
+    const char* name;
+    int value;
+};
+
+struct LuaCustomPush {
+    virtual void push(lua_State* L, void* ptr) = 0;
 };
 
 template<bool isPointer, class T>
@@ -26,21 +41,6 @@ struct LuaEngineHelper {
 template<class T>
 struct LuaEngineHelper<false, T> {
     static_assert(!std::is_pointer<T>::value, "Dude this is a pointer type.");
-
-    template<class F = T>
-    static typename std::enable_if<std::is_default_constructible<F>::value, int>::type constructor(lua_State* _L) {
-        // allocate a new class
-        T* data = (T*)lua_newuserdata(_L, sizeof(T));
-        new (data) T;
-
-        // and its metatable
-        lua_pushlightuserdata(_L, (void*)typeid(T).hash_code());
-        lua_gettable(_L, LUA_REGISTRYINDEX);
-
-        lua_setmetatable(_L, -2);
-
-        return 1;
-    }
 
     static int destructor(lua_State* _L) {
         T* obj = (T*)lua_touserdata(_L, 1);
@@ -61,6 +61,10 @@ template<> inline int LuaEngineHelper<false, int>::getValue(lua_State* _L, int i
     return (int)lua_tonumber(_L, index);
 }
 
+template<> inline bool LuaEngineHelper<false, bool>::getValue(lua_State* _L, int index) {
+    return (bool)lua_toboolean(_L, index);
+}
+
 template<class T>
 inline T LuaEngineHelper<false, T>::getValue(lua_State* _L, int index) {
     return *(typename std::remove_reference<T>::type*)lua_touserdata(_L, index);
@@ -71,19 +75,6 @@ struct LuaEngineHelper<true, T> {
     static_assert(std::is_pointer<T>::value, "Dude this is no pointer type.");
 
     template<class F = T>
-    static typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<F>::type>::value, int>::type constructor(lua_State* _L) {
-        // allocate a new class
-        T* data = (T*)lua_newuserdata(_L, sizeof(T));
-        *data = new typename std::pointer_traits<T>::element_type;
-
-        // and its metatable
-        lua_pushlightuserdata(_L, (void*)typeid(T).hash_code());
-        lua_gettable(_L, LUA_REGISTRYINDEX);
-
-        lua_setmetatable(_L, -2);
-
-        return 1;
-    }
 
     static int destructor(lua_State* _L) {
         T* obj = (T*)lua_touserdata(_L, 1);
@@ -108,16 +99,17 @@ public:
     ~LuaEngine();
 
     lua_State* getState();
+    void registerEnum(const char* name, LuaEnumValue* e);
 
     template<class T>
     void registerClass() {
         static_assert(std::is_standard_layout<T>::value, "Can only register standard_layout classes to lua.");
-        // push a global constructor if there is a default constructor
-        if (std::is_default_constructible<typename std::remove_pointer<T>::type>::value)
-            registerConstructor<T>(_L);
+        // if there is at least one constructor, register the constructors
+        if (LuaBindings<T>::constructors[0].func != nullptr)
+            registerConstructors<T>(_L);
 
         // make the class and push a pointer for the registry store later
-        lua_pushlightuserdata(_L, (void*)typeid(T).hash_code());
+        lua_pushnumber(_L, typeid(T).hash_code());
         luaL_newmetatable(_L, LuaBindings<T>::name);
 
         // set its destructor
@@ -132,6 +124,11 @@ public:
             lua_settable(_L, -3);
         }
 
+        // and push its type
+        lua_pushstring(_L, "_type");
+        lua_pushnumber(_L, typeid(T).hash_code());
+        lua_settable(_L, -3);
+
         // set the index operator
         lua_pushstring(_L, "__index");
         lua_pushvalue(_L, -2);
@@ -139,16 +136,34 @@ public:
 
         // and store the table in the registry as registry[constructor<T>] = metatable
         lua_settable(_L, LUA_REGISTRYINDEX);
-    }
+
+        // finally store its type in the global type array
+        // we push it two-way so we can stringify the type
+        lua_getglobal(_L, "Types");
+        lua_pushstring(_L, LuaBindings<T>::name);
+        lua_pushnumber(_L, typeid(T).hash_code());
+        lua_settable(_L, -3);
+        lua_pushnumber(_L, typeid(T).hash_code());
+        lua_pushstring(_L, LuaBindings<T>::name);
+        lua_settable(_L, -3);
+        lua_pop(_L, 1);
+     }
 
     template<class T>
-    static typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type registerConstructor(lua_State* _L) {
+    static void registerConstructors(lua_State* _L) {
+        // push the main constructor function
         lua_pushcfunction(_L, &LuaEngine::constructor<T>);
         lua_setglobal(_L, LuaBindings<T>::name);
-    }
 
-    template<class T>
-    static typename std::enable_if<!std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type registerConstructor(lua_State* _L) {
+        // and register the constructor sub-functions
+        lua_pushnumber(_L, -typeid(T).hash_code());
+        lua_newtable(_L);
+        for (int i = 0 ; LuaBindings<T>::constructors[i].func != nullptr ; i++) {
+            lua_pushnumber(_L, LuaBindings<T>::constructors[i].arguments);
+            lua_pushcfunction(_L, LuaBindings<T>::constructors[i].func);
+            lua_settable(_L, -3);
+        }
+        lua_settable(_L, LUA_REGISTRYINDEX);
     }
 
     template<class T>
@@ -163,9 +178,27 @@ public:
         lua_setglobal(_L, name);
     }
 
-    template<class T, class = typename std::enable_if<std::is_default_constructible<typename std::remove_pointer<T>::type>::value>::type>
+    template<class T>
     static int constructor(lua_State* _L) {
-        return LuaEngineHelper<std::is_pointer<T>::value, T>::constructor(_L);
+        // get the argument count before modifying the stack, otherwise it might be wrong
+        int argc = lua_gettop(_L);
+
+        // fetch the constructors table
+        lua_pushnumber(_L, -typeid(T).hash_code());
+        lua_gettable(_L, LUA_REGISTRYINDEX);
+
+        // fetch the function with the given argument count
+        lua_pushnumber(_L, argc);
+        lua_gettable(_L, -2);
+
+        // get the c function
+        auto func = lua_tocfunction(_L, -1);
+
+        // reset the stack
+        lua_pop(_L, 2);
+
+        // run the constructor function and return the amount of items it pushed on the stack (prop 1)
+        return func(_L);
     }
 
     template<class T>
@@ -173,18 +206,30 @@ public:
         return LuaEngineHelper<std::is_pointer<T>::value, T>::destructor(_L);
     }
 
-    // pushed values are automatically owned unless specifically pushed as unowned
     template<class T>
-    static void pushValue(lua_State* _L, T value) {
+    static void rawPushValue(lua_State* _L, T value) {
         // allocate a new class
         T* data = (T*)lua_newuserdata(_L, sizeof(T));
-        *data = value;
+        new (data) T(value);
 
         // and its metatable
-        lua_pushlightuserdata(_L, (void*)typeid(T).hash_code());
+        lua_pushnumber(_L, typeid(T).hash_code());
         lua_gettable(_L, LUA_REGISTRYINDEX);
 
         lua_setmetatable(_L, -2);
+    }
+
+    // pushed values are automatically owned unless specifically pushed as unowned
+    // if the class implements luacustompush, call that function to push the value, this adds support for polymorphism
+    template<class T, class = typename std::enable_if<std::is_base_of<LuaCustomPush, T>::value && std::is_pointer<T>::value>::type>
+    static void pushValue(lua_State* _L, T value) {
+        value->push(_L, value);
+    }
+
+    // pushed values are automatically owned unless specifically pushed as unowned
+    template<class T>
+    static void pushValue(lua_State* _L, T value) {
+        rawPushValue(_L, value);
     }
 
     // some wrappers around lua types so primitives can be pushed just like pointers
@@ -197,25 +242,29 @@ public:
         lua_pushnumber(_L, value);
     }
 
+    // some wrappers around lua types so primitives can be pushed just like pointers
+    static void pushValue(lua_State* _L, bool value) {
+        lua_pushboolean(_L, value);
+    }
+
     static void pushValue(lua_State* _L, const char* value) {
         lua_pushstring(_L, value);
     }
 
+    // if the class implements luacustompush, call that function to push the value, this adds support for polymorphism
     template<class T>
-    static void pushValueUnowned(lua_State* _L, T pointer) {
+    static typename std::enable_if<std::is_base_of<LuaCustomPush, typename std::remove_pointer<T>::type>::value>::type pushValueUnowned(lua_State* _L, T pointer) {
+        static_assert(std::__is_pointer_helper<T>::value, "You can only push pointers unowned");
+        // tag the pointer and call the push function
+        pointer->push(_L, (void*)((size_t)pointer | 1));
+    }
+
+    template<class T>
+    static typename std::enable_if<std::false_type::value == std::is_base_of<LuaCustomPush, typename std::remove_pointer<T>::type>::value>::type pushValueUnowned(lua_State* _L, T pointer) {
         static_assert(std::__is_pointer_helper<T>::value, "You can only push pointers unowned");
         // tag the pointer
         pointer = (T)((size_t)pointer | 1);
-
-        // allocate a new class
-        T* data = (T*)lua_newuserdata(_L, sizeof(T));
-        *data = pointer;
-
-        // and its metatable
-        lua_pushlightuserdata(_L, (void*)typeid(T).hash_code());
-        lua_gettable(_L, LUA_REGISTRYINDEX);
-
-        lua_setmetatable(_L, -2);
+        rawPushValue(_L, pointer);
     }
 
     template<class T>

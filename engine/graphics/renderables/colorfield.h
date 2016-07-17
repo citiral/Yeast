@@ -15,7 +15,8 @@ public:
 	
 	Color& getColor();
 	Vector2& getSize();
-	
+
+    void push(lua_State* L, void* ptr);
 private:
 	Color _color;
 	Vector2 _size;

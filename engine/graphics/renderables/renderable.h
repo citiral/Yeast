@@ -4,8 +4,10 @@
 #include "../../math/Vector2.h"
 #include "../../engine.h"
 #include "../../resources/resource.h"
+#include "../../scripting/LuaEngine.h"
 
-class Renderable {
+
+class Renderable : public LuaCustomPush {
 public:
     Renderable(Engine* engine);
     virtual ~Renderable();

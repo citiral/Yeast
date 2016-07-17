@@ -83,20 +83,20 @@ T* Resource<T>::operator->() const {
 
 template <class T>
 void Resource<T>::decrement() {
-	(*_count)--;
-	
-	//cleanup if we are the last reference
-	if (*_count == 0) {
-		if (_resource != nullptr)
-			delete _resource;
-		delete _count;
-	}
+    (*_count)--;
+
+    //cleanup if we are the last reference
+    if (*_count == 0) {
+        if (_resource != nullptr)
+            delete _resource;
+        delete _count;
+    }
 }
 
 template <class T>
 Resource<T>& Resource<T>::operator=(const Resource<T>& res) {
 	//only copy if our resource and his resource are not identical, else used data might be deleted
-	if (_resource != res._resource) {			
+	if (_resource != res._resource) {
 		//else do our decrement routine
 		decrement();
 		
@@ -106,7 +106,7 @@ Resource<T>& Resource<T>::operator=(const Resource<T>& res) {
 		
 		(*_count)++;
 	}
-	
+
 	return *this;
 }
 
