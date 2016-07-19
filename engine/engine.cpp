@@ -99,6 +99,7 @@ void Engine::begin() {
 
         if (lastRender >= 1./FPS)
         {
+            _luaengine->setGlobal("deltatime", 1.0f/FPS);
             update(1.0f/FPS);
             render();
             _window->updateWindow();

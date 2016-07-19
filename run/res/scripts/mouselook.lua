@@ -5,6 +5,10 @@
 -- Time: 18:57
 --
 
+speed = 500
+shoottimer = 0
+shoottimermax = 0.005
+
 function printVec(v)
     print("("..v:x()..", "..v:y()..")")
 end
@@ -13,7 +17,6 @@ function added()
     -- center the sprite
     print(Types[this:renderable()._type])
     this:renderable():centerOrigin()
-    engine:resources():loadEntity("player"):create()
 end
 
 function update()
@@ -22,18 +25,28 @@ function update()
     this:setRotation(math.atan2(-diff:y(), diff:x()))
 
     -- movement
-    if engine:window():keyIsDown(Keys.D) == true then this:setX(this:x() + 10) end
-    if engine:window():keyIsDown(Keys.A) == true then this:setX(this:x() - 10) end
-    if engine:window():keyIsDown(Keys.W) == true then this:setY(this:y() + 10) end
-    if engine:window():keyIsDown(Keys.S) == true then this:setY(this:y() - 10) end
+    if engine:window():keyIsDown(Keys.D) == true then this:setX(this:x() + speed * deltatime) end
+    if engine:window():keyIsDown(Keys.A) == true then this:setX(this:x() - speed * deltatime) end
+    if engine:window():keyIsDown(Keys.W) == true then this:setY(this:y() + speed * deltatime) end
+    if engine:window():keyIsDown(Keys.S) == true then this:setY(this:y() - speed * deltatime) end
 
     -- firing
-    if engine:window():buttonIsPressed(Buttons.mouse1) then
-        e = Entity(20, 30, this:renderable())
-        engine:world():addEntity(e)
+    if engine:window():buttonIsDown(Buttons.mouse1) then
+        if shoottimer <= 0 then
+            local bullet = Entity("bullet", this:x(), this:y())
+            local diff = engine:window():mousePos() - this:pos()
+            bullet:getScript("bullet.lua"):lua().init(this:pos(), math.atan2(-diff:y(), diff:x()))
+            shoottimer = shoottimermax
+        else
+            shoottimer = shoottimer - deltatime
+        end
     end
 
     if engine:window():buttonIsPressed(Buttons.mouse2) then
-        engine:world():destroyEntity(e)
+        --engine:world():destroyEntity(e)
     end
+end
+
+function removed()
+    print("rip")
 end

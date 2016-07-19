@@ -185,6 +185,10 @@ public:
         lua_pushstring(_L, value);
     }
 
+    static void pushValue(lua_State* _L, std::string value) {
+        lua_pushstring(_L, value.c_str());
+    }
+
     // if the class implements luacustompush, call that function to push the value, this adds support for polymorphism
     template<class T>
     static typename std::enable_if<std::is_base_of<LuaCustomPush<typename std::remove_pointer<T>::type>, typename std::remove_pointer<T>::type>::value && std::is_pointer<T>::value>::type pushValue(lua_State* _L, T value) {
@@ -231,6 +235,11 @@ inline bool LuaEngine::getValue<bool>(lua_State* _L, int index) {
 template<>
 inline const char* LuaEngine::getValue<const char*>(lua_State* _L, int index) {
     return lua_tostring(_L, index);
+}
+
+template<>
+inline std::string LuaEngine::getValue<std::string>(lua_State* _L, int index) {
+    return std::string(lua_tostring(_L, index));
 }
 
 template<class T>

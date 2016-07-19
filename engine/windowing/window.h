@@ -50,4 +50,5 @@ private:
     GLFWwindow* _window;
     KeyState _keystates[348];
     KeyState _buttonstates[7];
+	int _mouseX, _mouseY;
 };

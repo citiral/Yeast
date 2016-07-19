@@ -31,7 +31,7 @@ Entity* EntityBlueprint::create(Engine* engine, float x, float y) {
     Entity* e = new Entity(engine, x, y, std::shared_ptr<Renderable>(_renderable->create(engine)));
 
     for (auto& script : _scripts) {
-        e->addScript(engine->getResourceManager()->loadScript(FOLDER_SCRIPTS + script)->createInstance(engine));
+        e->addScript(script);
     }
 
     return e;

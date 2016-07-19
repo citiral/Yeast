@@ -2,6 +2,8 @@
 #include "graphics/renderables/renderable.h"
 #include "physics/Collider.h"
 #include "graphics/graphicscontext.h"
+#include "resources/ResourceManager.h"
+#include "paths.h"
 
 
 Entity::Entity(Engine* engine, float x, float y, std::shared_ptr<Renderable> renderable) : _type(""), _position(x, y) {
@@ -19,7 +21,7 @@ Entity::~Entity() {
 
     // clean up the scripts
     for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
-        delete (*it);
+        delete (*it).second;
     }
 }
 
@@ -145,26 +147,55 @@ EntityState Entity::getState() const {
 
 void Entity::added() {
     for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
-        (*it)->runFunction("added");
+        (*it).second->runFunction("added");
     }
 }
 
 void Entity::removed() {
     for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
-        (*it)->runFunction("removed");
+        (*it).second->runFunction("removed");
     }
 }
 
 void Entity::update(float dt) {
     for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
-        (*it)->runFunction("update");
+        (*it).second->runFunction("update");
     }
 }
 
-void Entity::addScript(ScriptInstance* script) {
-    // add the script
-    _scripts.push_back(script);
+void Entity::addScript(std::string name) {
+    ScriptInstance* instance = _engine->getResourceManager()->loadScript(FOLDER_SCRIPTS + name)->createInstance(_engine);
+    _scripts[name] = instance;
 
     // register the correct members
-    script->setValue("this", this);
+    instance->setValue("this", this);
+
+    if (_state == EntityState::ACTIVE) {
+        instance->runFunction("added");
+    }
 }
+
+ScriptInstance* Entity::getScript(std::string name) {
+    auto val = _scripts.find(name);
+
+    if (val != _scripts.end()) {
+        return (*val).second;
+    } else {
+        return nullptr;
+    }
+}
+
+void Entity::removeScript(std::string name) {
+    auto val = _scripts.find(name);
+
+    if (val != _scripts.end()) {
+        (*val).second->runFunction("removed");
+        _scripts.erase(name);
+    }
+}
+
+
+
+
+
+

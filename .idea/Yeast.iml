@@ -2,101 +2,92 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Entity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Entity.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Timer.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Timer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/World.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/World.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/engine.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/engine.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/glad.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/graphicscontext.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/engine.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/graphicscontext.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/light.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/light.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/color.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/color.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/program.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/program.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/quad.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/quad.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/texture.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/texture.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/program.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/program.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/color.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/graphicscontext.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/Background.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/Background.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/World.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Timer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/engine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/World.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Entity.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/EngineBindings.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/EngineBindings.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/bindings/entity_lua.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/bindings/vector2_lua.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
-          <root url="file://C:/MinGW/include" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include-fixed" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/ssp" />
-          <root url="file://$MODULE_DIR$/include" />
+          <root url="file://C:/MinGW/include" />
         </CLASSES>
         <SOURCES>
-          <root url="file://C:/MinGW/include" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include" />
           <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include-fixed" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++" />
-          <root url="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/ssp" />
-          <root url="file://$MODULE_DIR$/include" />
+          <root url="file://C:/MinGW/include" />
         </SOURCES>
       </library>
     </orderEntry>

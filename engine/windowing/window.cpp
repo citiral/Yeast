@@ -91,6 +91,10 @@ void Window::updateWindow() {
 
     // and then update them with new key pressed
     glfwPollEvents();
+    double x, y;
+    glfwGetCursorPos(_window, &x, &y);
+    _mouseX = (int)x;
+    _mouseY = (int)y;
 }
 
 void Window::decayInput(KeyState* array, size_t length) {
@@ -136,15 +140,11 @@ bool Window::buttonIsReleased(int key) {
 }
 
 int Window::getMouseX() {
-	double x, y;
-	glfwGetCursorPos(_window, &x, &y);
-	return (int)x;
+    return _mouseX;
 }
 
 int Window::getMouseY() {
-	double x, y;
-	glfwGetCursorPos(_window, &x, &y);
-	return (int)(_height - y);
+    return _mouseY;
 }
 
 Vector2 Window::getMousePos() {

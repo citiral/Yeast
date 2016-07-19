@@ -10,6 +10,7 @@ class Collider;
 #include "math/Vector2.h"
 #include "scripting/ScriptInstance.h"
 #include <string>
+#include <map>
 
 enum class EntityState {
     PENDING_ADD,
@@ -54,7 +55,9 @@ public:
 	
 	void moveTo(float x, float y);
 
-    void addScript(ScriptInstance* script);
+    void addScript(std::string name);
+    ScriptInstance* getScript(std::string name);
+    void removeScript(std::string name);
 
 	//collision functions
 	void onCollide(Entity* e);
@@ -73,6 +76,6 @@ private:
 	float _rotation;
     std::shared_ptr<Renderable> _renderable;
 	Collider* _collider;
-    std::vector<ScriptInstance*> _scripts;
+    std::map<std::string, ScriptInstance*> _scripts;
     EntityState _state;
 };

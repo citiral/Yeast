@@ -12,33 +12,55 @@
 
 
 int entityConstruct0(lua_State* L) {
-    LuaEngine::pushValue(L, new Entity(LuaEngine::getGlobal<Engine*>(L, "engine")));
+    Entity* e = new Entity(LuaEngine::getGlobal<Engine*>(L, "engine"));
+    LuaEngine::pushValue(L, e);
+    LuaEngine::getGlobal<Engine*>(L, "engine")->getWorld()->addEntity(e);
     return 1;
 }
 
 int entityConstruct1(lua_State* L) {
-    LuaEngine::pushValue(L, new Entity(
-            LuaEngine::getGlobal<Engine*>(L, "engine"),
-            0,
-            0,
-            LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 3)));
+    Entity* e;
+    if (lua_isstring(L, 1)) {
+        e = LuaEngine::getGlobal<Engine*>(L, "engine")->getResourceManager()->loadEntity(LuaEngine::getValue<const char*>(L, 1))->create(LuaEngine::getGlobal<Engine*>(L, "engine"), 0, 0);
+    } else if (lua_isuserdata(L, 1)) {
+        e = new Entity(
+                LuaEngine::getGlobal<Engine*>(L, "engine"),
+                0,
+                0,
+                LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 1));
+    }
+
+    LuaEngine::pushValue(L, e);
+    LuaEngine::getGlobal<Engine*>(L, "engine")->getWorld()->addEntity(e);
     return 1;
 }
 
 int entityConstruct2(lua_State* L) {
-    LuaEngine::pushValue(L, new Entity(
+    Entity* e = new Entity(
             LuaEngine::getGlobal<Engine*>(L, "engine"),
             LuaEngine::getValue<float>(L, 1),
-            LuaEngine::getValue<float>(L, 2)));
+            LuaEngine::getValue<float>(L, 2));
+    LuaEngine::pushValue(L, e);
+    LuaEngine::getGlobal<Engine*>(L, "engine")->getWorld()->addEntity(e);
     return 1;
 }
 
 int entityConstruct3(lua_State* L) {
-    LuaEngine::pushValue(L, new Entity(
-            LuaEngine::getGlobal<Engine*>(L, "engine"),
-            LuaEngine::getValue<float>(L, 1),
-            LuaEngine::getValue<float>(L, 2),
-            LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 3)));
+    Entity* e;
+    if (lua_isstring(L, 1)) {
+        e = LuaEngine::getGlobal<Engine*>(L, "engine")->getResourceManager()->loadEntity(LuaEngine::getValue<const char*>(L, 1))->create(
+                LuaEngine::getGlobal<Engine*>(L, "engine"),
+                LuaEngine::getValue<float>(L, 2),
+                LuaEngine::getValue<float>(L, 3));
+    } else {
+        e = new Entity(
+                LuaEngine::getGlobal<Engine*>(L, "engine"),
+                LuaEngine::getValue<float>(L, 1),
+                LuaEngine::getValue<float>(L, 2),
+                LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 3));
+    }
+    LuaEngine::pushValue(L, e);
+    LuaEngine::getGlobal<Engine*>(L, "engine")->getWorld()->addEntity(e);
     return 1;
 }
 
@@ -61,6 +83,9 @@ template<> luaL_reg LuaBindings<Entity*>::functions[] = {
         {"setRotation", &BindFunction<Entity, void, float>::ptr<&Entity::setRotation>},
         {"renderable", &BindFunction<Entity, std::shared_ptr<Renderable>>::ptr<&Entity::getRenderable>},
         {"setRenderable", &BindFunction<Entity, void, std::shared_ptr<Renderable>>::ptr<&Entity::setRenderable>},
+        {"addScript", &BindFunction<Entity, void, std::string>::ptr<&Entity::addScript>},
+        {"getScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
+        {"remlkveScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
         {0, 0}
 };
 
@@ -113,7 +138,6 @@ template<> luaL_reg LuaBindings<Engine*>::functions[] = {
         {"window", &BindFunction<Engine, Window*>::ptr<&Engine::getWindow>},
         {"world", &BindFunction<Engine, World*>::ptr<&Engine::getWorld>},
         {"settings", &BindFunction<Engine, Settings*>::ptr<&Engine::getSettings>},
-        {"resources", &BindFunction<Engine, ResourceManager*>::ptr<&Engine::getResourceManager>},
         {0, 0}
 };
 
@@ -125,7 +149,7 @@ template<> lua_constructor LuaBindings<World*>::constructors[] = {
         {0, 0}
 };
 template<> luaL_reg LuaBindings<World*>::functions[] = {
-        {"addEntity", &BindFunction<World, void, Entity*>::ptr<&World::addEntity>},
+        //{"addEntity", &BindFunction<World, void, Entity*>::ptr<&World::addEntity>},
         {"destroyEntity", &BindFunction<World, void, Entity*>::ptr<&World::destroyEntity>},
         {0, 0}
 };
@@ -157,17 +181,6 @@ template<> luaL_reg LuaBindings<Window*>::functions[] = {
 
 
 
-template<> const char LuaBindings<ResourceManager*>::name[] = "ResourceManager";
-template<> lua_constructor LuaBindings<ResourceManager*>::constructors[] = {
-        {0, 0}
-};
-template<> luaL_reg LuaBindings<ResourceManager*>::functions[] = {
-        {"loadEntity", &BindFunction<ResourceManager, std::shared_ptr<EntityBlueprint>, const char*>::ptr<&ResourceManager::loadEntity>},
-        {0, 0}
-};
-
-
-
 template<> const char LuaBindings<std::shared_ptr<Sprite>>::name[] = "Sprite";
 template<> lua_constructor LuaBindings<std::shared_ptr<Sprite>>::constructors[] = {
         {0, 0}
@@ -196,6 +209,17 @@ template<> luaL_reg LuaBindings<std::shared_ptr<Renderable>>::functions[] = {
         {0, 0}
 };
 
+
+
+
+template<> const char LuaBindings<ScriptInstance*>::name[] = "ScriptInstance";
+template<> lua_constructor LuaBindings<ScriptInstance*>::constructors[] = {
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<ScriptInstance*>::functions[] = {
+        {"lua", ScriptInstance::lua},
+        {0, 0}
+};
 
 
 
@@ -348,7 +372,7 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<Engine*>();
     engine->registerClass<World*>();
     engine->registerClass<Window*>();
-    engine->registerClass<ResourceManager*>();
+    engine->registerClass<ScriptInstance*>();
     engine->registerClass<std::shared_ptr<Sprite>>();
     engine->registerClass<std::shared_ptr<Renderable>>();
     engine->registerEnum("Keys", Keys);

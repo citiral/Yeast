@@ -21,6 +21,8 @@ public:
 
     void runFunction(const char* function);
 
+    static int lua(lua_State* L);
+
     template<class T>
     void setValue(const char* name, T value) {
         // first get the function
@@ -35,21 +37,6 @@ public:
         // and clean up the stack
         lua_pop(_L, 1);
     }
-
-    /*template<class T>
-    void setValueUnowned(const char* name, T value) {
-        // first get the function
-        lua_pushlightuserdata(_L, this);
-        lua_gettable(_L, LUA_REGISTRYINDEX);
-
-        // and we can set the value
-        lua_pushstring(_L, name);
-        LuaEngine::pushValueUnowned(_L, value);
-        lua_settable(_L, -3);
-
-        // and clean up the stack
-        lua_pop(_L, 1);
-    }*/
 
 private:
     lua_State* _L;

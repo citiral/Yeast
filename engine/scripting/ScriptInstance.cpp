@@ -30,47 +30,14 @@ void ScriptInstance::runFunction(const char* function) {
             std::cout << "Error: " << lua_tostring(_L, -1) << std::endl;
         }
     }
-}
 
-/*void ScriptInstance::setValue(const char* name, float value) {
-    // first get the function
-    lua_pushlightuserdata(_L, this);
-    lua_gettable(_L, LUA_REGISTRYINDEX);
-
-    // and we can set the value
-    lua_pushstring(_L, name);
-    lua_pushnumber(_L, value);
-    lua_settable(_L, -3);
-
-    // and clean up the stack
+    // remove the table from the stack
     lua_pop(_L, 1);
 }
 
-void ScriptInstance::setValue(const char* name, const char* value) {
-    // first get the function
-    lua_pushlightuserdata(_L, this);
-    lua_gettable(_L, LUA_REGISTRYINDEX);
-
-    // and we can set the value
-    lua_pushstring(_L, name);
-    lua_pushstring(_L, value);
-    lua_settable(_L, -3);
-
-    // and clean up the stack
-    lua_pop(_L, 1);
+int ScriptInstance::lua(lua_State *L) {
+    ScriptInstance* instance = LuaEngine::getValue<ScriptInstance*>(L, 1);
+    lua_pushlightuserdata(L, instance);
+    lua_gettable(L, LUA_REGISTRYINDEX);
+    return 1;
 }
-
-void ScriptInstance::setValue(const char* name, void* value) {
-    // first get the function
-    lua_pushlightuserdata(_L, this);
-    lua_gettable(_L, LUA_REGISTRYINDEX);
-
-    // and we can set the value
-    lua_pushstring(_L, name);
-    lua_pushlightuserdata(_L, value);
-    lua_settable(_L, -3);
-
-    // and clean up the stack
-    lua_pop(_L, 1);
-}
-*/
