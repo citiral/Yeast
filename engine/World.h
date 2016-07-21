@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include <list>
+#include "scripting/LuaIterator.h"
 
 class Entity;
 class Engine;
@@ -39,11 +40,13 @@ public:
 	
 	int getEntityCount() const;
 
-    std::list<std::shared_ptr<Entity>>& getEntities();
-    std::vector<std::shared_ptr<Light>>& getLights();
+    std::list<Entity*>& getEntities();
+    LuaIterator<std::list<Entity*>::iterator> getEntitiesIterator();
 
+    std::vector<std::shared_ptr<Light>>& getLights();
+    LuaIterator<std::vector<std::shared_ptr<Light>>::iterator> getLightsIterator();
 private:
     Engine* _engine;
     std::vector<std::shared_ptr<Light>> _lights;
-    std::list<std::shared_ptr<Entity>> _entities;
+    std::list<Entity*> _entities;
 };

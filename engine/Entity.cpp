@@ -119,17 +119,17 @@ void Entity::moveTo(float x, float y) {
 
 	if (_collider != nullptr)
 	{
-		for (std::shared_ptr<Entity> other : _engine->getWorld()->getEntities())
+		for (Entity* other : _engine->getWorld()->getEntities())
 		{
-			if (other.get() == this) continue;
+			if (other == this) continue;
 			if (other->_collider != nullptr)
 			{
 				if (_collider->collidesWith(*(other->_collider)))
 				{
-					onCollide(other.get());
+					onCollide(other);
 					_collider->resolveCollision(*(other->_collider),
-						std::bind(&Entity::onMoveCollideX, this, other.get(), std::placeholders::_1),
-						std::bind(&Entity::onMoveCollideY, this, other.get(), std::placeholders::_1)
+						std::bind(&Entity::onMoveCollideX, this, other, std::placeholders::_1),
+						std::bind(&Entity::onMoveCollideY, this, other, std::placeholders::_1)
 						);
 				}
 			}
@@ -193,6 +193,12 @@ void Entity::removeScript(std::string name) {
         _scripts.erase(name);
     }
 }
+
+void Entity::destroy() {
+    _engine->getWorld()->destroyEntity(this);
+}
+
+
 
 
 

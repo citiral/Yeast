@@ -21,7 +21,7 @@ void World::update(float dt) {
     // iterate over all entities
     auto iter = _entities.begin();
     while (iter != _entities.end()) {
-        Entity* e = (*iter).get();
+        Entity* e = *iter;
 
         if (e->getState() == EntityState::INVALID) {
             std::cout << "Error encountered entity with invalid state.";
@@ -44,7 +44,7 @@ void World::update(float dt) {
 }
 
 void World::renderComposite(GraphicsContext& gc) {
-    for (std::shared_ptr<Entity> e : _entities) {
+    for (Entity* e : _entities) {
         e->render(gc);
     }
 }
@@ -57,7 +57,7 @@ void World::renderLighting(GraphicsContext& gc) {
 
 void World::addEntity(Entity* e) {
     e->setState(EntityState::PENDING_ADD);
-    _entities.push_back(std::shared_ptr<Entity>(e));
+    _entities.push_back(e);
 }
 
 void World::destroyEntity(Entity* e) {
@@ -93,12 +93,20 @@ int World::getEntityCount() const {
 	return _entities.size();
 }
 
-std::list<std::shared_ptr<Entity>>& World::getEntities() {
+std::list<Entity*>& World::getEntities() {
     return _entities;
+}
+
+LuaIterator<std::list<Entity*>::iterator> World::getEntitiesIterator() {
+    return LuaIterator<std::list<Entity*>::iterator>(_entities.begin(), _entities.end());
 }
 
 std::vector<std::shared_ptr<Light>>& World::getLights() {
     return _lights;
+}
+
+LuaIterator<std::vector<std::shared_ptr<Light>>::iterator> World::getLightsIterator() {
+    return LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>(_lights.begin(), _lights.end());
 }
 
 void World::added() {
@@ -108,3 +116,5 @@ void World::added() {
 void World::removed() {
 
 }
+
+

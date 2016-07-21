@@ -9,7 +9,16 @@
 #include "../resources/ResourceManager.h"
 #include "../graphics/renderables/sprite.h"
 #include <GLFW/glfw3.h>
+#include "LuaIterator.h"
 
+int lua_ptreq(lua_State* L) {
+    void* a = LuaEngine::getValue<void*>(L, 1);
+    void* b = LuaEngine::getValue<void*>(L, 2);
+
+    LuaEngine::pushValue(L, a == b);
+
+    return 1;
+}
 
 int entityConstruct0(lua_State* L) {
     Entity* e = new Entity(LuaEngine::getGlobal<Engine*>(L, "engine"));
@@ -75,6 +84,7 @@ template<> lua_constructor LuaBindings<Entity*>::constructors[] = {
 template<> luaL_reg LuaBindings<Entity*>::functions[] = {
         {"x", &BindFunction<Entity, float>::ptr<&Entity::getX>},
         {"y", &BindFunction<Entity, float>::ptr<&Entity::getY>},
+        {"destroy", &BindFunction<Entity, void>::ptr<&Entity::destroy>},
         {"setX", &BindFunction<Entity, void, float>::ptr<&Entity::setX>},
         {"setY", &BindFunction<Entity, void, float>::ptr<&Entity::setY>},
         {"pos", &BindFunction<Entity, Vector2&>::ptr<&Entity::getPosition>},
@@ -85,7 +95,8 @@ template<> luaL_reg LuaBindings<Entity*>::functions[] = {
         {"setRenderable", &BindFunction<Entity, void, std::shared_ptr<Renderable>>::ptr<&Entity::setRenderable>},
         {"addScript", &BindFunction<Entity, void, std::string>::ptr<&Entity::addScript>},
         {"getScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
-        {"remlkveScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
+        {"removeScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
+        {"__eq", lua_ptreq},
         {0, 0}
 };
 
@@ -144,15 +155,19 @@ template<> luaL_reg LuaBindings<Engine*>::functions[] = {
 
 
 
+
 template<> const char LuaBindings<World*>::name[] = "World";
 template<> lua_constructor LuaBindings<World*>::constructors[] = {
         {0, 0}
 };
 template<> luaL_reg LuaBindings<World*>::functions[] = {
-        //{"addEntity", &BindFunction<World, void, Entity*>::ptr<&World::addEntity>},
-        {"destroyEntity", &BindFunction<World, void, Entity*>::ptr<&World::destroyEntity>},
+        //{"destroyEntity", &BindFunction<World, void, Entity*>::ptr<&World::destroyEntity>},
+        {"entityCount", &BindFunction<World, int>::ptr<&World::getEntityCount>},
+        {"entities", &BindFunction<World, LuaIterator<std::list<Entity*>::iterator>>::ptr<&World::getEntitiesIterator>},
+        {"lights", &BindFunction<World, LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>::ptr<&World::getLightsIterator>},
         {0, 0}
 };
+
 
 
 
@@ -201,13 +216,41 @@ template<> luaL_reg LuaBindings<std::shared_ptr<Sprite>>::functions[] = {
 
 
 
-template<> const char LuaBindings<std::shared_ptr<Renderable>>::name[] = "Renderable";
+template<> const char LuaBindings<std::shared_ptr<GL30Texture>>::name[] = "GL30Texture";
+template<> lua_constructor LuaBindings<std::shared_ptr<GL30Texture>>::constructors[] = {
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<std::shared_ptr<GL30Texture>>::functions[] = {
+        {"width", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getWidth>},
+        {"height", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getHeight>},
+        {"channels", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getChannels>},
+        {0, 0}
+};
+
+
+
+
+/*template<> const char LuaBindings<std::shared_ptr<Light>>::name[] = "Light";
+template<> lua_constructor LuaBindings<std::shared_ptr<Light>>::constructors[] = {
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<std::shared_ptr<Light>>::functions[] = {
+        {"width", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getWidth>},
+        {"height", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getHeight>},
+        {"channels", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getChannels>},
+        {0, 0}
+};*/
+
+
+
+
+/*template<> const char LuaBindings<std::shared_ptr<Renderable>>::name[] = "Renderable";
 template<> lua_constructor LuaBindings<std::shared_ptr<Renderable>>::constructors[] = {
         {0, 0}
 };
 template<> luaL_reg LuaBindings<std::shared_ptr<Renderable>>::functions[] = {
         {0, 0}
-};
+};*/
 
 
 
@@ -223,6 +266,24 @@ template<> luaL_reg LuaBindings<ScriptInstance*>::functions[] = {
 
 
 
+
+template<class T>
+struct LuaBindings<LuaIterator<T>> {
+    static const char name[];
+    static lua_constructor constructors[];
+    static luaL_reg functions[];
+};
+
+template<> const char LuaBindings<LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>::name[] = "Iterator<Entity>";
+template<> const char LuaBindings<LuaIterator<std::list<Entity*>::iterator>>::name[] = "Iterator<Light>";
+template<class T> lua_constructor LuaBindings<LuaIterator<T>>::constructors[] = {
+        {0, 0}
+};
+template<class T> luaL_reg LuaBindings<LuaIterator<T>>::functions[] = {
+        {"next", LuaIterator<T>::lua_next},
+        {"value", LuaIterator<T>::lua_value},
+        {0, 0}
+};
 
 LuaEnumValue Keys[] = {
         {"unknown", GLFW_KEY_UNKNOWN},
@@ -346,7 +407,6 @@ LuaEnumValue Keys[] = {
         {"rightAlt", GLFW_KEY_RIGHT_ALT},
         {"rightSuper", GLFW_KEY_RIGHT_SUPER},
         {"menu", GLFW_KEY_MENU},
-        {"last", GLFW_KEY_LAST},
         {0, 0}
 };
 
@@ -359,7 +419,6 @@ LuaEnumValue Buttons[] = {
         {"mouse6", GLFW_MOUSE_BUTTON_6},
         {"mouse7", GLFW_MOUSE_BUTTON_7},
         {"mouse8", GLFW_MOUSE_BUTTON_8},
-        {"last", GLFW_MOUSE_BUTTON_LAST},
         {"left", GLFW_MOUSE_BUTTON_LEFT},
         {"right", GLFW_MOUSE_BUTTON_RIGHT},
         {"middle", GLFW_MOUSE_BUTTON_MIDDLE},
@@ -373,8 +432,12 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<World*>();
     engine->registerClass<Window*>();
     engine->registerClass<ScriptInstance*>();
+    engine->registerClass<std::shared_ptr<GL30Texture>>();
     engine->registerClass<std::shared_ptr<Sprite>>();
-    engine->registerClass<std::shared_ptr<Renderable>>();
+    //engine->registerClass<std::shared_ptr<Renderable>>();
+    engine->registerClass<LuaIterator<std::list<Entity*>::iterator>>();
+    engine->registerClass<LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>();
+
     engine->registerEnum("Keys", Keys);
     engine->registerEnum("Buttons", Buttons);
 }

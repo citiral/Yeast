@@ -66,14 +66,16 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/Settings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/EngineBindings.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/EngineBindings.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaIterator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/ScriptInstance.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/Script.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaIterator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/scripting/EngineBindings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

@@ -59,6 +59,8 @@ public:
     ScriptInstance* getScript(std::string name);
     void removeScript(std::string name);
 
+	void destroy();
+
 	//collision functions
 	void onCollide(Entity* e);
 	void onMoveCollideX(Entity* e, float amount);

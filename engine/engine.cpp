@@ -54,7 +54,7 @@ void Engine::update(float dt) {
 }
 
 void Engine::render() {
-    _gc->setBackground(0, 0, 0);
+    //_gc->setBackground(0, 0, 0);
     _gc->clear();
 	_gc->beginStep1Composition();
     _world->renderComposite(*_gc);
