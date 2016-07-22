@@ -17,6 +17,9 @@ public:
     Vector2& getPosition();
     void setPosition(Vector2 p);
 
+    float getDepth() const;
+    void setDepth(float depth);
+
     float getDrop() const;
     void setDrop(float drop);
 
@@ -25,6 +28,8 @@ public:
 
     virtual void enableForRender();
 
+    void push(lua_State* L, Light* val);
+    void push(lua_State* L, std::shared_ptr<Light> val);
 private:
     Color _lightColor;
     Vector2 _position;

@@ -32,8 +32,8 @@ void World::update(float dt) {
             e->added();
             ++iter;
         } else if (e->getState() == EntityState::PENDING_REMOVE) {
-            // call the removed callback
-            e->removed();
+            // call the destroyed callback
+            e->destroyed();
             // remove the current entity from the list
             iter = _entities.erase(iter);
         } else if (e->getState() == EntityState::ACTIVE) {

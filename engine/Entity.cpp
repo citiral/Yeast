@@ -151,9 +151,9 @@ void Entity::added() {
     }
 }
 
-void Entity::removed() {
+void Entity::destroyed() {
     for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
-        (*it).second->runFunction("removed");
+        (*it).second->runFunction("destroyed");
     }
 }
 
@@ -189,7 +189,7 @@ void Entity::removeScript(std::string name) {
     auto val = _scripts.find(name);
 
     if (val != _scripts.end()) {
-        (*val).second->runFunction("removed");
+        (*val).second->runFunction("destroyed");
         _scripts.erase(name);
     }
 }

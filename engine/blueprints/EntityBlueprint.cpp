@@ -3,7 +3,6 @@
 //
 
 #include "EntityBlueprint.h"
-#include "../graphics/renderables/sprite.h"
 #include "../resources/ResourceManager.h"
 #include "../paths.h"
 

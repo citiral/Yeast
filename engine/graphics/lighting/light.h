@@ -4,9 +4,10 @@
 #include "../primitives/program.h"
 #include "../../resources/resource.h"
 #include "../../engine.h"
+#include "../../scripting/LuaEngine.h"
 #include <memory>
 
-class Light
+class Light : public LuaCustomPush<Light>
 {
 public:
     Light(Engine* engine);

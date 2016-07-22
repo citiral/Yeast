@@ -32,6 +32,9 @@ Window::Window() {
     for (int i = 0 ; i < GLFW_KEY_LAST ; i++) {
         _keystates[i] = KeyState::UP;
     }
+    for (int i = 0 ; i < GLFW_MOUSE_BUTTON_LAST ; i++) {
+        _buttonstates[i] = KeyState::UP;
+    }
 }
 
 Window::~Window() {

@@ -41,6 +41,14 @@ void PointLight::setEnd(float end) {
     _end = end;
 }
 
+float PointLight::getDepth() const {
+    return _depth;
+}
+
+void PointLight::setDepth(float depth) {
+    _depth = depth;
+}
+
 void PointLight::enableForRender() {
     getProgram()->enableProgram();
 
@@ -50,3 +58,12 @@ void PointLight::enableForRender() {
     glUniform1f(glGetUniformLocation(getProgram()->getProgramID(), "light.end"), _end);
     glUniform1f(glGetUniformLocation(getProgram()->getProgramID(), "light.depth"), _depth);
 }
+
+void PointLight::push(lua_State* L, Light* ptr) {
+    LuaEngine::rawPushValue<PointLight*>(L, static_cast<PointLight*>(ptr));
+}
+
+void PointLight::push(lua_State* L, std::shared_ptr<Light> ptr) {
+    LuaEngine::rawPushValue<std::shared_ptr<PointLight>>(L, std::static_pointer_cast<PointLight>(ptr));
+}
+

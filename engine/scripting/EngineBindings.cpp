@@ -10,6 +10,7 @@
 #include "../graphics/renderables/sprite.h"
 #include <GLFW/glfw3.h>
 #include "LuaIterator.h"
+#include "../graphics/lighting/PointLight.h"
 
 int lua_ptreq(lua_State* L) {
     void* a = LuaEngine::getValue<void*>(L, 1);
@@ -141,6 +142,41 @@ template<> luaL_reg LuaBindings<Vector2>::functions[] = {
 
 
 
+int colorconstruct0(lua_State* L) {
+    LuaEngine::pushValue(L, Color());
+    return 1;
+}
+
+int colorconstruct3(lua_State* L) {
+    float r = LuaEngine::getValue<float>(L, 1);
+    float g = LuaEngine::getValue<float>(L, 2);
+    float b = LuaEngine::getValue<float>(L, 3);
+    LuaEngine::pushValue(L, Color(r, g, b));
+    return 1;
+}
+
+template<> const char LuaBindings<Color>::name[] = "Color";
+template<> lua_constructor LuaBindings<Color>::constructors[] = {
+        {0, &colorconstruct0},
+        {3, &colorconstruct3},
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<Color>::functions[] = {
+        {"r", &BindFunction<Color, float>::ref<&Color::getR>},
+        {"g", &BindFunction<Color, float>::ref<&Color::getG>},
+        {"b", &BindFunction<Color, float>::ref<&Color::getB>},
+        {"setR", &BindFunction<Color, void, float>::ref<&Color::setR>},
+        {"setG", &BindFunction<Color, void, float>::ref<&Color::setG>},
+        {"setB", &BindFunction<Color, void, float>::ref<&Color::setB>},
+        {"setRGB", &BindFunction<Color, void, float, float, float>::ref<&Color::setRGB>},
+        {"__mul", &BindFunction<Color, Color, float>::ref<&Color::operator*>},
+        {"__div", &BindFunction<Color, Color, float>::ref<&Color::operator/>},
+        {0, 0}
+};
+
+
+
+
 template<> const char LuaBindings<Engine*>::name[] = "Engine";
 template<> lua_constructor LuaBindings<Engine*>::constructors[] = {
         {0, 0}
@@ -165,6 +201,8 @@ template<> luaL_reg LuaBindings<World*>::functions[] = {
         {"entityCount", &BindFunction<World, int>::ptr<&World::getEntityCount>},
         {"entities", &BindFunction<World, LuaIterator<std::list<Entity*>::iterator>>::ptr<&World::getEntitiesIterator>},
         {"lights", &BindFunction<World, LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>::ptr<&World::getLightsIterator>},
+        {"addLight", &BindFunction<World, void, std::shared_ptr<Light>>::ptr<&World::addLight>},
+        {"removeLight", &BindFunction<World, void, std::shared_ptr<Light>>::ptr<&World::removeLight>},
         {0, 0}
 };
 
@@ -230,16 +268,45 @@ template<> luaL_reg LuaBindings<std::shared_ptr<GL30Texture>>::functions[] = {
 
 
 
-/*template<> const char LuaBindings<std::shared_ptr<Light>>::name[] = "Light";
-template<> lua_constructor LuaBindings<std::shared_ptr<Light>>::constructors[] = {
+
+int plconstruct0(lua_State* L) {
+    std::shared_ptr<PointLight> pl = std::make_shared<PointLight>(LuaEngine::getGlobal<Engine*>(L, "engine"), Color(), Vector2(), 0, 0, 0);
+    LuaEngine::pushValue(L, pl);
+    return 1;
+}
+
+int plconstruct5(lua_State* L) {
+    std::shared_ptr<PointLight> pl = std::make_shared<PointLight>(
+            LuaEngine::getGlobal<Engine*>(L, "engine"),
+            LuaEngine::getValue<Color>(L, 1),
+            LuaEngine::getValue<Vector2>(L, 2),
+            LuaEngine::getValue<float>(L, 3),
+            LuaEngine::getValue<float>(L, 4),
+            LuaEngine::getValue<float>(L, 5));
+
+    LuaEngine::pushValue(L, pl);
+    return 1;
+}
+
+template<> const char LuaBindings<std::shared_ptr<PointLight>>::name[] = "PointLight";
+template<> lua_constructor LuaBindings<std::shared_ptr<PointLight>>::constructors[] = {
+        {0, plconstruct0},
+        {5, plconstruct5},
         {0, 0}
 };
-template<> luaL_reg LuaBindings<std::shared_ptr<Light>>::functions[] = {
-        {"width", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getWidth>},
-        {"height", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getHeight>},
-        {"channels", &BindFunction<GL30Texture, int>::shared<&GL30Texture::getChannels>},
+template<> luaL_reg LuaBindings<std::shared_ptr<PointLight>>::functions[] = {
+        {"color", &BindFunction<PointLight, Color&>::shared<&PointLight::getColor>},
+        {"pos", &BindFunction<PointLight, Vector2&>::shared<&PointLight::getPosition>},
+        {"depth", &BindFunction<PointLight, float>::shared<&PointLight::getDepth>},
+        {"drop", &BindFunction<PointLight, float>::shared<&PointLight::getDrop>},
+        {"end", &BindFunction<PointLight, float>::shared<&PointLight::getEnd>},
+        {"setColor", &BindFunction<PointLight, void, Color>::shared<&PointLight::setColor>},
+        {"setPos", &BindFunction<PointLight, void, Vector2>::shared<&PointLight::setPosition>},
+        {"setDepth", &BindFunction<PointLight, void, float>::shared<&PointLight::setDepth>},
+        {"setDrop", &BindFunction<PointLight, void, float>::shared<&PointLight::setDrop>},
+        {"setEnd", &BindFunction<PointLight, void, float>::shared<&PointLight::setEnd>},
         {0, 0}
-};*/
+};
 
 
 
@@ -427,6 +494,7 @@ LuaEnumValue Buttons[] = {
 
 void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<Vector2>();
+    engine->registerClass<Color>();
     engine->registerClass<Entity*>();
     engine->registerClass<Engine*>();
     engine->registerClass<World*>();
@@ -434,7 +502,7 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<ScriptInstance*>();
     engine->registerClass<std::shared_ptr<GL30Texture>>();
     engine->registerClass<std::shared_ptr<Sprite>>();
-    //engine->registerClass<std::shared_ptr<Renderable>>();
+    engine->registerClass<std::shared_ptr<PointLight>>();
     engine->registerClass<LuaIterator<std::list<Entity*>::iterator>>();
     engine->registerClass<LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>();
 

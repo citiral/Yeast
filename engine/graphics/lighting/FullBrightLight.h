@@ -12,6 +12,9 @@ public:
     virtual ~FullBrightLight();
 
     virtual void enableForRender();
+
+    void push(lua_State* L, Light* val);
+    void push(lua_State* L, std::shared_ptr<Light> val);
 };
 
 #endif // FULLBRIGHTLIGHT_H

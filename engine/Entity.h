@@ -67,7 +67,7 @@ public:
 	void onMoveCollideY(Entity* e, float amount);
 
 	void added();
-	void removed();
+	void destroyed();
     void update(float dt);
 
 private:

@@ -41,20 +41,8 @@ function update()
             shoottimer = shoottimer - deltatime
         end
     end
-
-    if engine:window():keyIsPressed(Keys.Q) then
-        local entities = engine:world():entities()
-
-        while entities do
-            if entities:value() ~= this then
-                entities:value():destroy()
-            end
-
-            entities = entities:next()
-        end
-    end
 end
 
-function removed()
+function destroyed()
     print("rip")
 end
