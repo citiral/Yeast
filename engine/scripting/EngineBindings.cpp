@@ -11,6 +11,7 @@
 #include <GLFW/glfw3.h>
 #include "LuaIterator.h"
 #include "../graphics/lighting/PointLight.h"
+#include "../graphics/graphicscontext.h"
 
 int lua_ptreq(lua_State* L) {
     void* a = LuaEngine::getValue<void*>(L, 1);
@@ -119,6 +120,7 @@ int vec2construct2(lua_State* L) {
 template<> const char LuaBindings<Vector2>::name[] = "Vector2";
 template<> lua_constructor LuaBindings<Vector2>::constructors[] = {
         {0, &vec2construct1},
+        {0, &vec2construct1},
         {2, &vec2construct2},
         {0, 0}
 };
@@ -185,6 +187,22 @@ template<> luaL_reg LuaBindings<Engine*>::functions[] = {
         {"window", &BindFunction<Engine, Window*>::ptr<&Engine::getWindow>},
         {"world", &BindFunction<Engine, World*>::ptr<&Engine::getWorld>},
         {"settings", &BindFunction<Engine, Settings*>::ptr<&Engine::getSettings>},
+        {0, 0}
+};
+
+
+
+
+
+template<> const char LuaBindings<GraphicsContext*>::name[] = "GraphicsContext";
+template<> lua_constructor LuaBindings<GraphicsContext*>::constructors[] = {
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<GraphicsContext*>::functions[] = {
+        {"tonemapMaxLum", &BindFunction<GraphicsContext, float>::ptr<&GraphicsContext::getTonemapTargetMaxLum>},
+        {"setTonemapMaxLum", &BindFunction<GraphicsContext, void, float>::ptr<&GraphicsContext::setTonemapTargetMaxLum>},
+        {"tonemapScale", &BindFunction<GraphicsContext, float>::ptr<&GraphicsContext::getTonemapScale>},
+        {"setTonemapScale", &BindFunction<GraphicsContext, void, float>::ptr<&GraphicsContext::setTonemapScale>},
         {0, 0}
 };
 
@@ -500,6 +518,7 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<World*>();
     engine->registerClass<Window*>();
     engine->registerClass<ScriptInstance*>();
+    engine->registerClass<GraphicsContext*>();
     engine->registerClass<std::shared_ptr<GL30Texture>>();
     engine->registerClass<std::shared_ptr<Sprite>>();
     engine->registerClass<std::shared_ptr<PointLight>>();

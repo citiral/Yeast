@@ -4,7 +4,7 @@
 class FrameBuffer
 {
 public:
-	FrameBuffer(unsigned int textureAmount, int width, int height);
+	FrameBuffer(unsigned int textureAmount, int width, int height, int mipmaps = 0);
 	virtual ~FrameBuffer();
 	
 	void bindRead();
@@ -24,6 +24,7 @@ private:
 	//size of the framebuffer
 	int _width;
 	int _height;
+	int _mipmaps;
 	//amount of textures in the fbo
 	int _textureAmount;
 	//array of textures of the fbo

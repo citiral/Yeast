@@ -2,12 +2,13 @@
 #include <glad/glad.h>
 #include <iostream>
 
-FrameBuffer::FrameBuffer(unsigned int textureAmount, int width, int height)
+FrameBuffer::FrameBuffer(unsigned int textureAmount, int width, int height, int mipmaps)
 {
 	_width = width;
 	_height = height;
+	_mipmaps = mipmaps;
 	_textureAmount = textureAmount;
-	//we allocate one more for the depth buffer
+	// we allocate one more for the depth buffer
 	_textures = new unsigned int[textureAmount+1];
 	
 	createFramebuffer();
@@ -50,58 +51,50 @@ void FrameBuffer::checkErrors() {
 }
 
 void FrameBuffer::createFramebuffer() {
-	//first, let us generate the textures
+	// first, let us generate the textures
 	glGenTextures(_textureAmount+1, _textures);
 	
-	//now we set up all textures, except the depth buffer
+	// now we set up all textures, except the depth buffer
 	for (int i = 0 ; i < _textureAmount ; i++) {
-		//first bind the texture
+		// first bind the texture
 		glBindTexture(GL_TEXTURE_2D, _textures[i]);
-		
-		//then set the proper parameters
+
+        // now allocate the space of the textures
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, _width, _height, 0, GL_RGBA, GL_FLOAT, NULL);
+
+		// then set the proper parameters
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		
-		//now allocate the space of the textures
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _width, _height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-	} 
-	//now we create the depth buffer
-	/*glBindTexture(GL_TEXTURE_2D, _textures[_textureAmount]);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL , _mipmaps);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LOD , _mipmaps);
+
+
+        // and generate the mipmaps
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+	}
 	
-	//set up the texture parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_DEPTH_TEXTURE_MODE, GL_INTENSITY);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
-	
-	//and allocate the space for the texture
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, _width, _height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, NULL);*/
-	
-	//now we create the framebuffer itself
+	// now we create the framebuffer itself
 	glGenFramebuffers(1, &_framebuffer);
 	
-	//we bind the framebuffer, so we are working with it
+	// we bind the framebuffer, so we are working with it
 	bindAll();
 	
-	//now we link all the textures to the framebuffer
-	for (int i = 0 ; i < _textureAmount ; i++) {
+	// now we link all the textures to the framebuffer
+	for (size_t i = 0 ; i < _textureAmount ; i++) {
 		glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0+i, GL_TEXTURE_2D, _textures[i], 0);
 	}
-	//glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _textures[_textureAmount], 0);*/
 	
-	//and we set up the amount of color buffers
+	// and we set up the amount of color buffers
 	
 	GLenum* DrawBuffers = new GLenum[_textureAmount];
 
-	for (int i = 0 ; i < _textureAmount ; i++)
+	for (size_t i = 0 ; i < _textureAmount ; i++)
 		DrawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
 	glDrawBuffers(_textureAmount, DrawBuffers);
-	glColorMask(true, true, true, true);
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
 	delete DrawBuffers;
 }
 

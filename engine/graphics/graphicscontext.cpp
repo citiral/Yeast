@@ -1,3 +1,5 @@
+#include "../engine.h"
+#include "../resources/ResourceManager.h"
 #include "graphicscontext.h"
 #include <glad/glad.h>
 #include "primitives/quad.h"
@@ -7,15 +9,20 @@
 //#include "renderables/color.h"
 //#include "renderables/texture.h"
 
-GraphicsContext::GraphicsContext(int width, int height) {
+GraphicsContext::GraphicsContext(Engine* engine, int width, int height) {
     _width = width;
     _height = height;
-	_fbo = nullptr;
+	_gbuffer = nullptr;
+    _post1 = nullptr;
+    _post2 = nullptr;
+    _curPost = 0;
+    _engine = engine;
+    _tonemapScale = 0.17;
+    _tonemapTargetMaxLum = 1;
 }
 
 GraphicsContext::~GraphicsContext() {
-	if (_fbo != nullptr)
-		delete _fbo;
+    terminate();
 }
 
 void GraphicsContext::setBackground(float r, float g, float b) {
@@ -56,26 +63,36 @@ bool GraphicsContext::initialize() {
 	//COLOR0: (COLOR)
 	//COLOR1: (NORMAL)
 	//COLOR2: LIT, UNUSED, UNUSED
-	_fbo = new FrameBuffer(3, _width, _height);
-	_fbo->checkErrors();
+	_gbuffer = new FrameBuffer(3, _width, _height);
+	_gbuffer->checkErrors();
+
+	// create the postprocessing framebuffers
+	_post1 = new FrameBuffer(1, _width, _height);
+	_post1->checkErrors();
+	_post2 = new FrameBuffer(1, _width, _height);
+	_post2->checkErrors();
+
+    // create the tonemapping framebuffer using mipmaps to downscale
+    _tonemapping_avg = new FrameBuffer(1, _width, _height, (int)std::floor(std::log2(std::max(_width, _height))));
+    //_calculatemaxlum = new CalculateMaxLum(_engine, _width, _height);
+    _curPost = 0;
 	
 	std::cout << "opengl version is: " << glGetString(GL_VERSION) << std::endl;
-	
-	/*if (!GLAD_GL_VERSION_3_0) {
-		std::cout << "glad does not support this version of opengl" << std::endl;
-	}
-	*/
         
 	//return the opengl load status
 	return 1;
 }
 
 void GraphicsContext::terminate() {
-
+    delete _gbuffer;
+    //delete _calculatemaxlum;
+    delete _post1;
+    delete _post2;
+    delete _tonemapping_avg;
 }
 
 void GraphicsContext::beginStep1Composition() {
-	_fbo->bindAll();
+    _gbuffer->bindAll();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable( GL_BLEND );
@@ -83,18 +100,19 @@ void GraphicsContext::beginStep1Composition() {
 
 //TODO clean up all clears, etc
 void GraphicsContext::beginStep2Lighting() {
-	_fbo->bindDefaultFramebuffer();
+    _curPost = 0;
+	_post1->bindAll();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glBlendFunc(GL_ONE, GL_ONE);
-	glEnable( GL_BLEND );
 }
 
 void GraphicsContext::beginStep3PostProcessing() {
-
+    flipPost();
+    glDisable(GL_BLEND);
 }
 
 void GraphicsContext::beginStep4Finalize() {
-
+    FrameBuffer::bindDefaultFramebuffer();
 }
 
 void GraphicsContext::drawRenderable(Renderable& renderable, Vector2 position, float rotation, Vector2 scale) {
@@ -123,11 +141,122 @@ void GraphicsContext::drawLight(Light& light) {
 
 	//bind the g-buffer textures to the light
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _fbo->getTexture(0));
+	glBindTexture(GL_TEXTURE_2D, _gbuffer->getTexture(0));
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, _fbo->getTexture(1));
+	glBindTexture(GL_TEXTURE_2D, _gbuffer->getTexture(1));
 	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_2D, _fbo->getTexture(2));
+	glBindTexture(GL_TEXTURE_2D, _gbuffer->getTexture(2));
 
 	Quad::getQuad()->draw();
 }
+
+void GraphicsContext::flipPost() {
+    if (_curPost == 0) {
+        _curPost = 1;
+        _post2->bindAll();
+    } else {
+        _curPost = 0;
+        _post1->bindAll();
+    }
+}
+
+FrameBuffer* GraphicsContext::readPost() {
+    if (_curPost == 0) {
+        return _post2;
+    } else {
+        return _post1;
+    }
+}
+
+FrameBuffer* GraphicsContext::writePost() {
+    if (_curPost == 0) {
+        return _post1;
+    } else {
+        return _post2;
+    }
+}
+
+void GraphicsContext::PostTonemap() {
+    // first calculate the log avg of the luminance
+    _tonemapping_avg->bindAll();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, readPost()->getTexture(0));
+    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/tonemap_logavg.fsh");
+    prog->enableProgram();
+    glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);
+    Quad::getQuad()->draw();
+
+    // generate the mipmaps so we can get the average value
+    glBindTexture(GL_TEXTURE_2D, _tonemapping_avg->getTexture(0));
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    // retrieve the average color
+    // float avg[4];
+    // glGetTexImage(GL_TEXTURE_2D, (int)std::floor(std::log2(std::max(_width, _height))), GL_RGB, GL_FLOAT, avg);
+
+    // now calculate the max color, for this we will manually fill the mipmaps
+    // Color c = _calculatemaxlum->getMaxLum(readPost()->getTexture(0));
+
+    // now use that to properly tonemap
+    writePost()->bindAll();
+    prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/tonemap.fsh");
+    prog->enableProgram();
+
+    glUniform1f(glGetUniformLocation(prog->getProgramID(), "lwhite"), _tonemapTargetMaxLum);
+    glUniform1f(glGetUniformLocation(prog->getProgramID(), "a"), _tonemapScale);
+    glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);
+
+    glUniform1i(glGetUniformLocation(prog->getProgramID(), "screen"), 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, readPost()->getTexture(0));
+    glUniform1i(glGetUniformLocation(prog->getProgramID(), "avg_buffer"), 1);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, _tonemapping_avg->getTexture(0));
+
+    Quad::getQuad()->draw();
+    flipPost();
+}
+
+void GraphicsContext::PostFinalize() {
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, readPost()->getTexture(0));
+    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/finalize.fsh");
+    prog->enableProgram();
+    glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);
+    Quad::getQuad()->draw();
+    flipPost();
+}
+
+void GraphicsContext::setTonemapTargetMaxLum(float targetMaxLum) {
+    _tonemapTargetMaxLum = targetMaxLum;
+}
+
+float GraphicsContext::getTonemapTargetMaxLum() const {
+    return _tonemapTargetMaxLum;
+}
+
+void GraphicsContext::setTonemapScale(float targetscale) {
+    _tonemapScale = targetscale;
+}
+
+float GraphicsContext::getTonemapScale() const {
+    return _tonemapScale;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

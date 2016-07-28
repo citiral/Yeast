@@ -15,7 +15,7 @@ file(GLOB_RECURSE GAME_SOURCE_FILES game/*.cpp game/*.c)
 file(GLOB_RECURSE FRAMEWORK_SOURCE_FILES framework/*.cpp framework/*.c)
 
 # compile the engine, yeast
-add_executable(yeast ${ENGINE_SOURCE_FILES})
+add_executable(yeast ${ENGINE_SOURCE_FILES} engine/graphics/algorithms/CalculateMaxLum.cpp engine/graphics/algorithms/CalculateMaxLum.h)
 target_include_directories(yeast PRIVATE include)
 
 IF (WIN32)

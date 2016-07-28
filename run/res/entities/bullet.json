@@ -1,0 +1,8 @@
+{
+  "renderable": {
+    "type": "sprite",
+    "diffuse": "bullet.png",
+    "lit": true
+  },
+  "scripts": ["bullet.lua"]
+}

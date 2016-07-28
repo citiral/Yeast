@@ -22,7 +22,7 @@ Engine::Engine(int width, int height, bool fullscreen) {
     _window->setFullscreen(fullscreen);
     _window->createWindow();
 
-    _gc = new GraphicsContext(width, height);
+    _gc = new GraphicsContext(this, width, height);
     _world = nullptr;
 
     if (!_gc->initialize()) {
@@ -60,6 +60,10 @@ void Engine::render() {
     _world->renderComposite(*_gc);
 	_gc->beginStep2Lighting();
     _world->renderLighting(*_gc);
+    _gc->beginStep3PostProcessing();
+    _gc->PostTonemap();
+    _gc->beginStep4Finalize();
+    _gc->PostFinalize();
 }
 
 GraphicsContext *Engine::getGraphicsContext() {

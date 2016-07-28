@@ -9,15 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/engine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/graphicscontext.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/light.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/light.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/color.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/quad.cpp" isTestSource="false" />
@@ -28,6 +19,8 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/program.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/color.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/algorithms/CalculateMaxLum.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/algorithms/CalculateMaxLum.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/graphicscontext.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/colorfield.cpp" isTestSource="false" />
@@ -37,26 +30,35 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/renderable.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/renderables/sprite.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/graphicscontext.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/AmbientLight.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/PointLight.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/light.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/FullBrightLight.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/graphics/lighting/light.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/World.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableSpriteBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBlueprint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/EntityBlueprint.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/LightBlueprint.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/WorldBlueprint.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/blueprints/RenderableBackgroundBlueprint.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Timer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/engine.h" isTestSource="false" />
