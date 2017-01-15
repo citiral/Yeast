@@ -7,7 +7,7 @@
 
 speed = 500
 shoottimer = 0
-shoottimermax = 0.005
+shoottimermax = 0.01
 
 function printVec(v)
     print("("..v:x()..", "..v:y()..")")
@@ -32,13 +32,12 @@ function update()
 
     -- firing
     if engine:window():buttonIsDown(Buttons.mouse1) then
-        if shoottimer <= 0 then
+        shoottimer = shoottimer - deltatime
+        while shoottimer <= 0 do
             local bullet = Entity("bullet", this:x(), this:y())
             local diff = engine:window():mousePos() - this:pos()
             bullet:getScript("bullet.lua"):lua().init(this:pos(), math.atan2(-diff:y(), diff:x()))
-            shoottimer = shoottimermax
-        else
-            shoottimer = shoottimer - deltatime
+            shoottimer = shoottimer + shoottimermax
         end
     end
 end

@@ -173,6 +173,10 @@ public:
         lua_pushnumber(_L, value);
     }
 
+    static void pushValue(lua_State* _L, double value) {
+        lua_pushnumber(_L, value);
+    }
+
     static void pushValue(lua_State* _L, int value) {
         lua_pushnumber(_L, value);
     }
@@ -220,6 +224,11 @@ private:
 template<>
 inline float LuaEngine::getValue<float>(lua_State* _L, int index) {
     return (float)lua_tonumber(_L, index);
+}
+
+template<>
+inline double LuaEngine::getValue<double>(lua_State* _L, int index) {
+    return (double)lua_tonumber(_L, index);
 }
 
 template<>

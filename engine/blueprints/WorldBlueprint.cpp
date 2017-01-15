@@ -18,7 +18,7 @@ WorldBlueprint::WorldBlueprint(const std::string& path) {
 }
 
 World* WorldBlueprint::create(Engine* engine) {
-    World* world = new World(engine);
+    /*World* world = new World(engine);
 
     for (auto it = _entities.begin(); it != _entities.end(); ++it) {
         world->addEntity(engine->getResourceManager()->loadEntity((*it).name)->create(engine, (*it).x, (*it).y));
@@ -28,7 +28,8 @@ World* WorldBlueprint::create(Engine* engine) {
         world->addLight((*it).create(engine));
     }
 
-    return world;
+    return world;*/
+    return nullptr;
 }
 
 void WorldBlueprint::parseJson(json& j) {

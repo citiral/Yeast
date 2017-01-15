@@ -1,13 +1,12 @@
 #include "ResourceManager.h"
-#include <fstream>
-#include <iostream>
-#include <vector>
-#include <glad/glad.h>
 
 ResourceManager::ResourceManager() {
+    _fileWatcher = new FW::FileWatcher();
+    _fileWatcher->addWatch("res\\assets", new ResourceListener<GL30Texture>(&_textures));
 }
 
 ResourceManager::~ResourceManager() {
+    _fileWatcher->removeWatch("res\\assets");
 }
 
 std::shared_ptr<Program> ResourceManager::loadProgram(const char* vertex, const char* fragment) {
@@ -17,14 +16,14 @@ std::shared_ptr<Program> ResourceManager::loadProgram(const char* vertex, const 
 std::shared_ptr<GL30Texture> ResourceManager::loadTexture(const char* path) {
     return _textures.getResource(std::string(path));
 }
-
+/*
 std::shared_ptr<WorldBlueprint> ResourceManager::loadWorld(const char* path) {
     return _worlds.getResource(std::string(path));
 }
 
 std::shared_ptr<EntityBlueprint> ResourceManager::loadEntity(const char* path) {
     return _entities.getResource(std::string(path));
-}
+}*/
 
 std::shared_ptr<Script> ResourceManager::loadScript(const char* path) {
     return _scripts.getResource(std::string(path));
@@ -37,15 +36,19 @@ std::shared_ptr<Program> ResourceManager::loadProgram(const std::string& vertex,
 std::shared_ptr<GL30Texture> ResourceManager::loadTexture(const std::string& path) {
     return _textures.getResource(path);
 }
-
+/*
 std::shared_ptr<WorldBlueprint> ResourceManager::loadWorld(const std::string& path) {
     return _worlds.getResource(path);
 }
 
 std::shared_ptr<EntityBlueprint> ResourceManager::loadEntity(const std::string& path) {
     return _entities.getResource(path);
-}
+}*/
 
 std::shared_ptr<Script> ResourceManager::loadScript(const std::string& path) {
     return _scripts.getResource(path);
+}
+
+FW::FileWatcher* ResourceManager::getFileWatcher() {
+    return _fileWatcher;
 }

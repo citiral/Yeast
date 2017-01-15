@@ -39,4 +39,5 @@ void main() {
 
 	//if the a of the diffuse (lit) is 0, we don't render, we leave that to the fullbright light
     frag_color = vec4(diffuse_lighting * texture(info, uv).x, texture(info, uv).x);
+    //frag_color = vec4(1);
 }

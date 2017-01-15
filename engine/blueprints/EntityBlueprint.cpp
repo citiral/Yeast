@@ -27,11 +27,12 @@ void EntityBlueprint::parseJson(json& j) {
 }
 
 Entity* EntityBlueprint::create(Engine* engine, float x, float y) {
-    Entity* e = new Entity(engine, x, y, std::shared_ptr<Renderable>(_renderable->create(engine)));
+    /*Entity* e = new Entity(engine, x, y, std::shared_ptr<Renderable>(_renderable->create(engine)));
 
     for (auto& script : _scripts) {
         e->addScript(script);
     }
 
-    return e;
+    return e;*/
+    return nullptr;
 }

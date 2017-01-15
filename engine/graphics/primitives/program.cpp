@@ -96,3 +96,17 @@ unsigned int Program::loadShader(std::string& path, unsigned int type) {
     }
     return 0;
 }
+
+int Program::getUniform(const char* uniform) {
+    auto uni = _uniforms.find(uniform);
+
+    if (uni != _uniforms.end()) {
+        return (*uni).second;
+    } else {
+        int location = glGetUniformLocation(_program, uniform);
+        _uniforms[uniform] = location;
+        return location;
+    }
+}
+
+

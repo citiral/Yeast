@@ -20,7 +20,7 @@ public:
     static Settings* getInstance();
 
     // initialisation functions
-    void load(std::string file);
+    void load(const char* file);
 
     // data fetching functions
     bool has(std::string section, std::string key);

@@ -6,10 +6,33 @@
 #include "resources/ResourceManager.h"
 #include <iostream>
 #include <cstdlib>
+#include <stdlib.h>
 #include "Settings.h"
 #include "scripting/LuaEngine.h"
 
 #define FPS 60
+
+Engine::Engine(const char* settings) {
+    _settings = new Settings;
+    _settings->load(settings);
+
+    _loader = new ResourceManager;
+    _luaengine = new LuaEngine();
+    _luaengine->setGlobal("engine", this);
+
+    _window = new Window;
+    _window->setResolution(_settings->getT<int>("graphics", "resolution_x"), _settings->getT<int>("graphics", "resolution_y"));
+    _window->setFullscreen(_settings->getT<bool>("graphics", "fullscreen"));
+    _window->createWindow();
+
+    _gc = new GraphicsContext(this, _settings->getT<int>("graphics", "resolution_x"), _settings->getT<int>("graphics", "resolution_y"));
+    _world = nullptr;
+
+    if (!_gc->initialize()) {
+        std::cout << "Error initializing opengl";
+        exit(1);
+    }
+}
 
 Engine::Engine(int width, int height, bool fullscreen) {
     _loader = new ResourceManager;
@@ -91,7 +114,7 @@ void Engine::begin() {
     std::srand(static_cast <unsigned> (std::time(0)));
 
     // setup the begin world
-    setWorld(_loader->loadWorld(_settings->get("application", "world"))->create(this));
+    setWorld(new World(this, _loader->loadScript(_settings->get("application", "world"))->createInstance(this)));
 
     // enter the core game loop
     Timer t;
@@ -99,15 +122,16 @@ void Engine::begin() {
 
     while (!_window->shouldClose()) {
         double elapsed = t.getDeltaTimeSeconds();
-        lastRender += elapsed;
+        //lastRender += elapsed;
 
-        if (lastRender >= 1./FPS)
-        {
-            _luaengine->setGlobal("deltatime", 1.0f/FPS);
-            update(1.0f/FPS);
+        //if (lastRender >= 1./FPS)
+        //{
+            _loader->getFileWatcher()->update();
+            _luaengine->setGlobal("deltatime", elapsed);
+            update(elapsed);
             render();
             _window->updateWindow();
             lastRender -= 1./FPS;
-        }
+        //}
     }
 }

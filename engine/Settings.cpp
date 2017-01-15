@@ -21,7 +21,7 @@ Settings* Settings::getInstance() {
     return _instance;
 }
 
-void Settings::load(std::string file) {
+void Settings::load(const char* file) {
     std::string section = "default";
 
     std::fstream input;

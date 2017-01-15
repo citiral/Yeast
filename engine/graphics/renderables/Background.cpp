@@ -53,3 +53,11 @@ void Background::push(lua_State* L, Renderable* ptr) {
 void Background::push(lua_State* L, std::shared_ptr<Renderable> ptr) {
     LuaEngine::rawPushValue<std::shared_ptr<Background>>(L, std::static_pointer_cast<Background>(ptr));
 }
+
+float Background::scale() const {
+	return _scale;
+}
+
+void Background::setScale(float scale) {
+	_scale = scale;
+}

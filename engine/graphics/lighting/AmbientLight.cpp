@@ -16,7 +16,7 @@ void AmbientLight::enableForRender() {
 	glUniform3f(glGetUniformLocation(getProgram()->getProgramID(), "light.color"), _lightColor.getR(), _lightColor.getG(), _lightColor.getB());
 }
 
-Color AmbientLight::getColor() const {
+Color& AmbientLight::getColor() {
 	return _lightColor;
 }
 

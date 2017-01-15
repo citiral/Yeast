@@ -8,7 +8,10 @@
 #include "../Settings.h"
 #include "../resources/ResourceManager.h"
 #include "../graphics/renderables/sprite.h"
+#include "../graphics/renderables/Background.h"
 #include <GLFW/glfw3.h>
+#include "../paths.h"
+#include "../graphics/lighting/AmbientLight.h"
 #include "LuaIterator.h"
 #include "../graphics/lighting/PointLight.h"
 #include "../graphics/graphicscontext.h"
@@ -30,22 +33,23 @@ int entityConstruct0(lua_State* L) {
 }
 
 int entityConstruct1(lua_State* L) {
-    Entity* e;
-    if (lua_isstring(L, 1)) {
-        e = LuaEngine::getGlobal<Engine*>(L, "engine")->getResourceManager()->loadEntity(LuaEngine::getValue<const char*>(L, 1))->create(LuaEngine::getGlobal<Engine*>(L, "engine"), 0, 0);
-    } else if (lua_isuserdata(L, 1)) {
+    Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
+    //if (lua_isstring(L, 1)) {
+        Entity* e = new Entity(engine);
+        e->addScript(LuaEngine::getValue<const char*>(L, 1));
+    /*} else if (lua_isuserdata(L, 1)) {
         e = new Entity(
                 LuaEngine::getGlobal<Engine*>(L, "engine"),
                 0,
                 0,
                 LuaEngine::getValue<std::shared_ptr<Renderable>>(L, 1));
-    }
+    }*/
 
     LuaEngine::pushValue(L, e);
     LuaEngine::getGlobal<Engine*>(L, "engine")->getWorld()->addEntity(e);
     return 1;
 }
-
+/*
 int entityConstruct2(lua_State* L) {
     Entity* e = new Entity(
             LuaEngine::getGlobal<Engine*>(L, "engine"),
@@ -73,14 +77,14 @@ int entityConstruct3(lua_State* L) {
     LuaEngine::pushValue(L, e);
     LuaEngine::getGlobal<Engine*>(L, "engine")->getWorld()->addEntity(e);
     return 1;
-}
+}*/
 
 template<> const char LuaBindings<Entity*>::name[] = "Entity";
 template<> lua_constructor LuaBindings<Entity*>::constructors[] = {
         {0, &entityConstruct0},
         {1, &entityConstruct1},
-        {2, &entityConstruct2},
-        {3, &entityConstruct3},
+        //{2, &entityConstruct2},
+        //{3, &entityConstruct3},
         {0, 0}
 };
 template<> luaL_reg LuaBindings<Entity*>::functions[] = {
@@ -251,9 +255,28 @@ template<> luaL_reg LuaBindings<Window*>::functions[] = {
 
 
 
+int spriteConstruct1(lua_State* L) {
+    Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
+    std::shared_ptr<Sprite> back = std::make_shared<Sprite>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
+    LuaEngine::pushValue(L, back);
+    return 1;
+}
+
+
+
+int spriteConstruct2(lua_State* L) {
+    Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
+    std::shared_ptr<Sprite> back = std::make_shared<Sprite>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
+    back->setNormal(engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 2)));
+    LuaEngine::pushValue(L, back);
+    return 1;
+}
+
 
 template<> const char LuaBindings<std::shared_ptr<Sprite>>::name[] = "Sprite";
 template<> lua_constructor LuaBindings<std::shared_ptr<Sprite>>::constructors[] = {
+        {1, &spriteConstruct1},
+        {2, &spriteConstruct2},
         {0, 0}
 };
 template<> luaL_reg LuaBindings<std::shared_ptr<Sprite>>::functions[] = {
@@ -268,6 +291,46 @@ template<> luaL_reg LuaBindings<std::shared_ptr<Sprite>>::functions[] = {
         {"setNormal", &BindFunction<Sprite, void, std::shared_ptr<GL30Texture>>::shared<&Sprite::setNormal>},
         {0, 0}
 };
+
+
+int backgroundConstruct1(lua_State* L) {
+    Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
+    std::shared_ptr<Background> back = std::make_shared<Background>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
+    LuaEngine::pushValue(L, back);
+    return 1;
+}
+
+
+
+int backgroundConstruct2(lua_State* L) {
+    Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
+    std::shared_ptr<Background> back = std::make_shared<Background>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
+    back->setNormal(engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 2)));
+    LuaEngine::pushValue(L, back);
+    return 1;
+}
+
+
+
+template<> const char LuaBindings<std::shared_ptr<Background>>::name[] = "Background";
+template<> lua_constructor LuaBindings<std::shared_ptr<Background>>::constructors[] = {
+        {1, &backgroundConstruct1},
+        {2, &backgroundConstruct2},
+        {0, 0}
+};
+template<> luaL_reg LuaBindings<std::shared_ptr<Background>>::functions[] = {
+        {"scale",    &BindFunction<Background, float>::shared<&Background::scale>},
+        {"setScale", &BindFunction<Background, void, float>::shared<&Background::setScale>},
+        {0, 0}
+};
+/*        void setDiffuse(std::shared_ptr<GL30Texture> texture);
+        std::shared_ptr<GL30Texture> getDiffuse() const;
+
+        void setNormal(std::shared_ptr<GL30Texture> texture);
+        std::shared_ptr<GL30Texture> getNormal() const;*/
+
+  //      {"setDiffuse", &BindFunction<Sprite, void, std::shared_ptr<GL30Texture>>::shared<&Sprite::setDiffuse>},
+  //      {"setNormal", &BindFunction<Sprite, void, std::shared_ptr<GL30Texture>>::shared<&Sprite::setNormal>},
 
 
 
@@ -323,6 +386,35 @@ template<> luaL_reg LuaBindings<std::shared_ptr<PointLight>>::functions[] = {
         {"setDepth", &BindFunction<PointLight, void, float>::shared<&PointLight::setDepth>},
         {"setDrop", &BindFunction<PointLight, void, float>::shared<&PointLight::setDrop>},
         {"setEnd", &BindFunction<PointLight, void, float>::shared<&PointLight::setEnd>},
+        {0, 0}
+};
+
+
+
+
+
+int ambientConstruct0(lua_State* L) {
+    std::shared_ptr<AmbientLight> pl = std::make_shared<AmbientLight>(LuaEngine::getGlobal<Engine*>(L, "engine"), Color());
+    LuaEngine::pushValue(L, pl);
+    return 1;
+}
+
+int ambientConstruct1(lua_State* L) {
+    std::shared_ptr<AmbientLight> pl = std::make_shared<AmbientLight>(LuaEngine::getGlobal<Engine*>(L, "engine"), LuaEngine::getValue<Color>(L, 1));
+    LuaEngine::pushValue(L, pl);
+    return 1;
+}
+
+template<> const char LuaBindings<std::shared_ptr<AmbientLight>>::name[] = "AmbientLight";
+template<> lua_constructor LuaBindings<std::shared_ptr<AmbientLight>>::constructors[] = {
+        {0, ambientConstruct0},
+        {1, ambientConstruct1},
+        {0, 0}
+};
+
+template<> luaL_reg LuaBindings<std::shared_ptr<AmbientLight>>::functions[] = {
+        {"color", &BindFunction<AmbientLight, Color&>::shared<&AmbientLight::getColor>},
+        {"setColor", &BindFunction<AmbientLight, void, const Color&>::shared<&AmbientLight::setColor>},
         {0, 0}
 };
 
@@ -521,7 +613,9 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<GraphicsContext*>();
     engine->registerClass<std::shared_ptr<GL30Texture>>();
     engine->registerClass<std::shared_ptr<Sprite>>();
+    engine->registerClass<std::shared_ptr<Background>>();
     engine->registerClass<std::shared_ptr<PointLight>>();
+    engine->registerClass<std::shared_ptr<AmbientLight>>();
     engine->registerClass<LuaIterator<std::list<Entity*>::iterator>>();
     engine->registerClass<LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>();
 

@@ -27,5 +27,6 @@ Light* LightBlueprint::create(Engine* engine) {
         return new AmbientLight(engine, _color.value());
     } else {
         assert(false);//todo
+        return nullptr;
     }
 }

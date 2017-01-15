@@ -3,6 +3,7 @@
 #include "resource.h"
 #include <map>
 #include <fstream>
+#include <memory>
 
 
 template<class K, class T>
@@ -12,6 +13,7 @@ public:
     ~ResourceLoader();
 
     std::shared_ptr<T> getResource(const K& key);
+    bool hasResource(const K& key);
 
     void destroyUnused();
 private:
@@ -42,6 +44,12 @@ std::shared_ptr<T> ResourceLoader<K, T>::getResource(const K& key) {
         _data.emplace(std::pair<K, std::shared_ptr<T>>(key, resource));
         return resource;
     }
+}
+
+template<class K, class T>
+bool ResourceLoader<K, T>::hasResource(const K& key) {
+    // returns true if the key exists
+    return _data.find(key) != _data.end();
 }
 
 // TODO: implement this

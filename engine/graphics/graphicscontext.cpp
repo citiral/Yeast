@@ -120,10 +120,10 @@ void GraphicsContext::drawRenderable(Renderable& renderable, Vector2 position, f
    renderable.enableForRender();
    
    //set the uniforms
-   glUniform2f(glGetUniformLocation(renderable.getProgram()->getProgramID(), "position"), position.getX(), position.getY());
-   glUniform2f(glGetUniformLocation(renderable.getProgram()->getProgramID(), "resolution"), _width, _height);
-   glUniform2f(glGetUniformLocation(renderable.getProgram()->getProgramID(), "scale"), scale.getX(), scale.getY());
-   glUniform1f(glGetUniformLocation(renderable.getProgram()->getProgramID(), "rotation"), rotation);
+   glUniform2f(renderable.getProgram()->getUniform("position"), position.getX(), position.getY());
+   glUniform2f(renderable.getProgram()->getUniform("resolution"), _width, _height);
+   glUniform2f(renderable.getProgram()->getUniform("scale"), scale.getX(), scale.getY());
+   glUniform1f(renderable.getProgram()->getUniform("rotation"), rotation);
    
    //and draw the quad
    Quad::getQuad()->draw();
@@ -134,10 +134,10 @@ void GraphicsContext::drawLight(Light& light) {
 	light.enableForRender();
 
 	//set the uniform location for the g-buffer textures
-	glUniform1i(glGetUniformLocation(light.getProgram()->getProgramID(), "diffuse"), 0);
-	glUniform1i(glGetUniformLocation(light.getProgram()->getProgramID(), "normal"), 1);
-	glUniform1i(glGetUniformLocation(light.getProgram()->getProgramID(), "info"), 2);
-	glUniform2f(glGetUniformLocation(light.getProgram()->getProgramID(), "resolution"), _width, _height);
+	glUniform1i(light.getProgram()->getUniform("diffuse"), 0);
+	glUniform1i(light.getProgram()->getUniform("normal"), 1);
+	glUniform1i(light.getProgram()->getUniform("info"), 2);
+	glUniform2f(light.getProgram()->getUniform("resolution"), _width, _height);
 
 	//bind the g-buffer textures to the light
 	glActiveTexture(GL_TEXTURE0);
@@ -202,14 +202,14 @@ void GraphicsContext::PostTonemap() {
     prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/tonemap.fsh");
     prog->enableProgram();
 
-    glUniform1f(glGetUniformLocation(prog->getProgramID(), "lwhite"), _tonemapTargetMaxLum);
-    glUniform1f(glGetUniformLocation(prog->getProgramID(), "a"), _tonemapScale);
-    glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);
+    glUniform1f(prog->getUniform("lwhite"), _tonemapTargetMaxLum);
+    glUniform1f(prog->getUniform("a"), _tonemapScale);
+    glUniform2f(prog->getUniform("size"), _width, _height);
 
-    glUniform1i(glGetUniformLocation(prog->getProgramID(), "screen"), 0);
+    glUniform1i(prog->getUniform("screen"), 0);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, readPost()->getTexture(0));
-    glUniform1i(glGetUniformLocation(prog->getProgramID(), "avg_buffer"), 1);
+    glUniform1i(prog->getUniform("avg_buffer"), 1);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, _tonemapping_avg->getTexture(0));
 

@@ -9,7 +9,8 @@ class LuaEngine;
 
 class __declspec(dllexport) Engine {
 public:
-    Engine(int width, int height, bool fullscreen);
+	Engine(const char* settings);
+	Engine(int width, int height, bool fullscreen);
     ~Engine();
 
     Window* getWindow() const;

@@ -6,9 +6,9 @@
 #include "paths.h"
 
 
-Entity::Entity(Engine* engine, float x, float y, std::shared_ptr<Renderable> renderable) : _type(""), _position(x, y) {
+Entity::Entity(Engine* engine) {
     _engine = engine;
-    _renderable = renderable;
+    _renderable = nullptr;
 	_collider = nullptr;
 	_rotation = 0;
     _state = EntityState::INVALID;

@@ -83,7 +83,7 @@ void FrameBuffer::createFramebuffer() {
 	bindAll();
 	
 	// now we link all the textures to the framebuffer
-	for (size_t i = 0 ; i < _textureAmount ; i++) {
+	for (size_t i = 0 ; i < (size_t)_textureAmount ; i++) {
 		glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0+i, GL_TEXTURE_2D, _textures[i], 0);
 	}
 	
@@ -91,7 +91,7 @@ void FrameBuffer::createFramebuffer() {
 	
 	GLenum* DrawBuffers = new GLenum[_textureAmount];
 
-	for (size_t i = 0 ; i < _textureAmount ; i++)
+	for (size_t i = 0 ; i < (size_t)_textureAmount ; i++)
 		DrawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
 	glDrawBuffers(_textureAmount, DrawBuffers);
 	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);

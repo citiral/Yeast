@@ -1,13 +1,16 @@
 #pragma once
 
 #include <string>
+#include "../../resources/HotSwappable.h"
 
-class GL30Texture {
+class GL30Texture : public HotSwappable {
 public:
 
 	GL30Texture(int width, int height, int channels = 3);
 	GL30Texture(const std::string& path);
 	~GL30Texture();
+
+	virtual bool hotSwap(const std::string& path);
 
 	int getWidth() const;
 	int getHeight() const;

@@ -7,10 +7,13 @@
 #include <algorithm>
 #include <iostream>
 
-World::World(Engine* engine):
-    _engine(engine) {
+World::World(Engine* engine, ScriptInstance* script):
+    _engine(engine), _script(script) {
 	//every world should have a fullbright light, so we add it here
 	addLight(new FullBrightLight(engine));
+
+    // and initialize the script
+    _script->setValue("this", this);
 }
 
 World::~World() {
@@ -50,8 +53,8 @@ void World::renderComposite(GraphicsContext& gc) {
 }
 
 void World::renderLighting(GraphicsContext& gc) {
-    for (auto it = _lights.begin() ; it != _lights.end() ; it++) {
-        gc.drawLight(**it);
+    for (std::shared_ptr<Light>& l : _lights) {
+        gc.drawLight(*l);
     }
 }
 
@@ -110,7 +113,7 @@ LuaIterator<std::vector<std::shared_ptr<Light>>::iterator> World::getLightsItera
 }
 
 void World::added() {
-
+    _script->runFunction("begin");
 }
 
 void World::removed() {

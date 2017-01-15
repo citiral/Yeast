@@ -5,7 +5,7 @@
 -- Time: 18:57
 --
 
-speed = 500
+speed = 50
 l = nil
 rot = nil
 
@@ -15,9 +15,7 @@ function init(pos, rotation)
 end
 
 function added()
-    this:renderable():centerOrigin()
-
-    l = PointLight(Color(1, 0.5, 0)*2000, Vector2(this:x(), this:y()), 50, 50, 100)
+    l = PointLight(Color(1, 0.5, 0)*10, Vector2(this:x(), this:y()), 4, 4, 20)
     engine:world():addLight(l)
 end
 
@@ -34,10 +32,10 @@ function destroyed()
 end
 
 function checkoob()
-    if      this:x() < 0 - this:renderable():diffuse():width() or
-            this:y() < 0 - this:renderable():diffuse():height() or
-            this:x() > engine:window():width() + this:renderable():diffuse():width() or
-            this:y() > engine:window():height() + this:renderable():diffuse():height() then
+    if      this:x() < 0 or
+            this:y() < 0 or
+            this:x() > engine:window():width() or
+            this:y() > engine:window():height() then
         this:destroy()
     end
 end

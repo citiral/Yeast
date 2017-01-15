@@ -17,6 +17,9 @@ public:
 	void setNormal(std::shared_ptr<GL30Texture> texture);
     std::shared_ptr<GL30Texture> getNormal() const;
 
+	float scale() const;
+	void setScale(float scale);
+
     virtual void enableForRender();
 
     void push(lua_State* L, Renderable* ptr);

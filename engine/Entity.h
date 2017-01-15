@@ -22,7 +22,7 @@ enum class EntityState {
 class Entity {
 	friend class World;
 public:
-    Entity(Engine* engine, float x = 0, float y = 0, std::shared_ptr<Renderable> renderable = nullptr);
+    Entity(Engine* engine);
     virtual ~Entity();
 
     World* getWorld();

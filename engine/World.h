@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include <list>
+#include "scripting/ScriptInstance.h"
 #include "scripting/LuaIterator.h"
 
 class Entity;
@@ -12,7 +13,7 @@ class GraphicsContext;
 
 class World {
 public:
-    World(Engine* engine);
+    World(Engine* engine, ScriptInstance* script);
     virtual ~World();
 	
 	void added();
@@ -49,4 +50,5 @@ private:
     Engine* _engine;
     std::vector<std::shared_ptr<Light>> _lights;
     std::list<Entity*> _entities;
+	ScriptInstance* _script;
 };

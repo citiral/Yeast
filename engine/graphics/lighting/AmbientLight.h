@@ -12,7 +12,7 @@ public:
 
     virtual void enableForRender();
 
-    Color getColor() const;
+    Color& getColor();
     void setColor(const Color& c);
 
     void push(lua_State* L, Light* val);

@@ -1,0 +1,9 @@
+{
+  "renderable": {
+    "type": "sprite",
+    "diffuse": "monster.png",
+    "normal": "monster_normal.png",
+    "lit": true
+  },
+  "scripts": ["mouselook.lua"]
+}
