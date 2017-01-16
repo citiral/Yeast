@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.4)
 project(Yeast)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++14 -Wall -m32")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++14 -Wall")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
 #set(CMAKE_PREFIX_PATH "D:\\Qt\\5.7\\mingw53_32\\")
 set(CMAKE_AUTOUIC ON)
@@ -17,7 +17,7 @@ file(GLOB_RECURSE ENGINE_SOURCE_FILES engine/*.cpp engine/*.c)
 file(GLOB_RECURSE FRAMEWORK_SOURCE_FILES framework/*.cpp framework/*.c)
 
 # compile the engine
-add_library(yeast SHARED ${ENGINE_SOURCE_FILES})
+add_executable(yeast ${ENGINE_SOURCE_FILES})
 target_include_directories(yeast PRIVATE include)
 
 IF (WIN32)
@@ -27,16 +27,16 @@ IF (WIN32)
     target_link_libraries(yeast "${CMAKE_SOURCE_DIR}/lib/libluajit.a")
     target_link_libraries(yeast ${OPENGL_LIBRARIES})
 ELSE()
-    target_link_libraries(yeast "/usr/local/lib/libSOIL.a")
+    target_link_libraries(yeast "-lSOIL -lluajit-5.1")
     target_link_libraries(yeast glfw ${GLFW_LIBRARIES})
     target_link_libraries(yeast ${OPENGL_LIBRARIES})
 ENDIF()
 
 # compile the framework
-add_executable(framework ${FRAMEWORK_SOURCE_FILES})
-target_include_directories(framework PRIVATE engine)
-target_include_directories(framework PRIVATE include)
-target_link_libraries(framework yeast)
+#add_executable(framework ${FRAMEWORK_SOURCE_FILES})
+#target_include_directories(framework PRIVATE engine)
+#target_include_directories(framework PRIVATE include)
+#target_link_libraries(framework yeast)
 
 # compile the editor
 # Find includes in corresponding build directories

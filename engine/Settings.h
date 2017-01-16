@@ -17,8 +17,6 @@ public:
     Settings();
     ~Settings();
 
-    static Settings* getInstance();
-
     // initialisation functions
     void load(const char* file);
 
@@ -36,8 +34,6 @@ public:
 
 private:
     std::map<std::tuple<std::string, std::string>, std::string> data;
-
-    static Settings* _instance;
 };
 
 #endif //I_WANNA_KILL_THE_BOSHY_SETTINGS_H

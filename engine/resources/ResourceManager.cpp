@@ -5,18 +5,18 @@ ResourceManager::ResourceManager(Engine* engine) {
     _engine = engine;
     _fileWatcher = new FW::FileWatcher();
 
-    _fileWatcher->addWatch("res\\assets", new ResourceListener<GL30Texture>(&_textures, [this] (std::string& path, std::shared_ptr<GL30Texture> texture) {
+    _fileWatcher->addWatch(formatPath("res\\assets"), new ResourceListener<GL30Texture>(&_textures, [this] (std::string& path, std::shared_ptr<GL30Texture> texture) {
         texture->hotSwap(path);
     }));
 
-    _fileWatcher->addWatch("res\\scripts", new ResourceListener<Script>(&_scripts, [this] (std::string& path, std::shared_ptr<Script> script) {
+    _fileWatcher->addWatch(formatPath("res\\scripts"), new ResourceListener<Script>(&_scripts, [this] (std::string& path, std::shared_ptr<Script> script) {
         script->hotSwap(_engine, path);
     }));
 }
 
 ResourceManager::~ResourceManager() {
-    _fileWatcher->removeWatch("res\\assets");
-    _fileWatcher->removeWatch("res\\scripts");
+    _fileWatcher->removeWatch(formatPath("res\\assets"));
+    _fileWatcher->removeWatch(formatPath("res\\scripts"));
 }
 
 std::shared_ptr<Program> ResourceManager::loadProgram(const char* vertex, const char* fragment) {

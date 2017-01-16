@@ -6,19 +6,10 @@
 #include <iostream>
 #include "Settings.h"
 
-Settings* Settings::_instance = nullptr;
-
 Settings::Settings() {
 }
 
 Settings::~Settings() {
-}
-
-Settings* Settings::getInstance() {
-    if (_instance == nullptr) {
-        _instance = new Settings();
-    }
-    return _instance;
 }
 
 void Settings::load(const char* file) {

@@ -9,7 +9,7 @@ class ResourceManager;
 class Settings;
 class LuaEngine;
 
-class __declspec(dllexport) Engine {
+class Engine {
 public:
 	Engine(const char* settings);
 	Engine(int width, int height, bool fullscreen);
