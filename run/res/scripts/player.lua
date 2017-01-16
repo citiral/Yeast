@@ -7,11 +7,19 @@
 
 xspeed = 0
 yspeed = 0
-speed = 500
+
+xaccel = 800*9
+jumpspeed = 1000
+
+xmaxspeed = 700
+
+xdeaccel = 800*4
+ydeaccel = -2081
+
 shoottimer = 0
 shoottimermax = 0.01
 
-gravity = -9.81
+jumped = true
 
 function printVec(v)
     print("("..v:x()..", "..v:y()..")")
@@ -19,10 +27,17 @@ end
 
 function onMoveCollideX(e, amount)
     this:setX(this:x() + amount)
+    xspeed = 0
 end
 
 function onMoveCollideY(e, amount)
     this:setY(this:y() + amount)
+
+    yspeed = 0
+
+    if amount > 0 then
+        jumped = false
+    end
 end
 
 function added()
@@ -40,15 +55,41 @@ function added()
 end
 
 function update()
-    -- mouselook
-    local diff = engine:window():mousePos() - this:pos()
-    this:setRotation(math.atan2(-diff:y(), diff:x()))
-
     -- movement
-    if engine:window():keyIsDown(Keys.D) == true then this:move( speed * deltatime, 0) end
-    if engine:window():keyIsDown(Keys.A) == true then this:move(-speed * deltatime, 0) end
-    if engine:window():keyIsDown(Keys.W) == true then this:move(0,  speed * deltatime) end
-    if engine:window():keyIsDown(Keys.S) == true then this:move(0, -speed * deltatime) end
+    if engine:window():keyIsDown(Keys.D) == true then
+        xspeed = xspeed + xaccel * deltatime
+    end
+
+    if engine:window():keyIsDown(Keys.A) == true then
+        xspeed = xspeed - xaccel * deltatime
+    end
+
+    if math.abs(xspeed) > xmaxspeed then
+        if xspeed < 0 then xspeed = -xmaxspeed else xspeed = xmaxspeed end
+    end
+
+    if jumped == false and engine:window():keyIsPressed(Keys.W) then
+        yspeed = jumpspeed
+        jumped = true
+    end
+
+    -- deaccel
+    if math.abs(xspeed) < xdeaccel * deltatime then
+        xspeed = 0
+    elseif xspeed > 0 then
+        xspeed = xspeed - xdeaccel * deltatime
+    else
+        xspeed = xspeed + xdeaccel * deltatime
+    end
+
+    yspeed = yspeed + ydeaccel * deltatime
+
+
+
+    this:move(xspeed * deltatime, yspeed * deltatime)
+
+    --if engine:window():keyIsDown(Keys.W) == true then this:move(0,  speed * deltatime) end
+    --if engine:window():keyIsDown(Keys.S) == true then this:move(0, -speed * deltatime) end
 
     -- firing
     if engine:window():buttonIsPressed(Buttons.mouse1) then
@@ -64,5 +105,4 @@ function update()
 end
 
 function destroyed()
-    print("rip")
 end

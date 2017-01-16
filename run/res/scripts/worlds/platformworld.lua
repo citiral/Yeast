@@ -27,8 +27,13 @@ function begin()
 
     local player = Entity("player.lua")
 
-    for x=5,5 do
-        spawnGround(x,4)
+    for x=0,10 do
+        spawnGround(x,0)
+    end
+
+
+    for x=4,10 do
+        spawnGround(x,2)
     end
 end
 

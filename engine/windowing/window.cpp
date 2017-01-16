@@ -21,9 +21,10 @@ static void mbutton_callback(GLFWwindow* glfwwindow, int button, int action, int
 {
     Window* window = (Window*)glfwGetWindowUserPointer(glfwwindow);
 
-    if (action == GLFW_PRESS)
+    if (action == GLFW_PRESS) {
         window->setButtonState(button, KeyState::PRESSED);
-    else if (action == GLFW_RELEASE)
+        std::cout << " mouse button pressed" << std::endl;
+    } else if (action == GLFW_RELEASE)
         window->setButtonState(button, KeyState::RELEASED);
 }
 
@@ -88,13 +89,16 @@ bool Window::shouldClose() {
 
 void Window::updateWindow() {
     glfwSwapBuffers(_window);
+}
 
+void Window::updateInput() {
     // decay all keystates
     decayInput(_keystates, GLFW_KEY_LAST);
     decayInput(_buttonstates, GLFW_MOUSE_BUTTON_LAST);
 
     // and then update them with new key pressed
     glfwPollEvents();
+
     double x, y;
     glfwGetCursorPos(_window, &x, &y);
     _mouseX = (int)x;

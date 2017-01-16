@@ -136,6 +136,7 @@ void Engine::begin() {
 
         //if (lastRender >= 1./FPS)
         //{
+            _window->updateInput();
             _loader->getFileWatcher()->update();
             _luaengine->setGlobal("deltatime", elapsed);
             update((float)elapsed);

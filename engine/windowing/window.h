@@ -21,6 +21,7 @@ public:
     void setFullscreen(bool fullscreen);
     bool shouldClose();
     void updateWindow();
+	void updateInput();
 
     bool keyIsDown(int key);
     bool keyIsUp(int key);
