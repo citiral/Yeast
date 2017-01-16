@@ -19,20 +19,17 @@ public:
     }
 
     virtual void handleFileAction(FW::WatchID watchid, const std::string& dir, const std::string& filename, FW::Action action) {
-        // we are only interested in modified files
-        if (action != FW::Actions::Modified)
+        // we respond to both modified and added commands
+        if (action != FW::Actions::Delete) {
             return;
+        }
 
+        // get the platform path to the asset
         std::string path = formatPath(dir + "\\" + filename);
 
-        std::cout << "File (" << path << ") Modified! " << std::endl;
-
+        // and run the callback if the asset is currently loaded
         if (_loader->hasResource(path)) {
-            std::cout << "reloading file" << std::endl;
             _callback(path, _loader->getResource(path));
-        } else {
-
-            std::cout << "file is not found" << std::endl;
         }
     }
 

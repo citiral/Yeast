@@ -78,10 +78,8 @@ void Script::reloadInstance(Engine* engine, ScriptInstance* instance) {
 
     // now execute the file to repopulate the script instance with the old variables
     if (lua_pcall(_L, 0, 0, 0)) {
-        std::cout << "Error: " << lua_tostring(_L, -1) << std::endl;
+        std::cout << "Error hotswapping " << _path << ": " << lua_tostring(_L, -1) << std::endl;
     }
-
-    std::cout << "script reloaded..";
 }
 
 void Script::loadScript(Engine* engine) {

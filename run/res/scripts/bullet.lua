@@ -5,8 +5,7 @@
 -- Time: 18:57
 --
 
-print("test")
-speed = 80
+speed = 100
 
 function init(pos, rotation)
     this:setPos(pos)

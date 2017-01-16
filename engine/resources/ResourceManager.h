@@ -13,6 +13,7 @@
 #include "../scripting/Script.h"
 #include "../simplefilewatcher/FileWatcher.h"
 #include "ResourceListener.h"
+#include <list>
 
 class ResourceManager {
 public:
@@ -34,6 +35,9 @@ public:
     FW::FileWatcher* getFileWatcher();
 
 private:
+    template<class T>
+    void addWatch(std::string path, ResourceListener<T>* watch);
+
     Engine* _engine;
 
     ResourceLoader<std::pair<std::string, std::string>, Program> _programs;
@@ -43,4 +47,5 @@ private:
     ResourceLoader<std::string, Script> _scripts;
 
     FW::FileWatcher* _fileWatcher;
+    std::list<std::string> _watches;
 };
