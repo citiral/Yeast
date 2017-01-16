@@ -19,23 +19,6 @@ ScriptInstance::~ScriptInstance() {
     }
 }
 
-void ScriptInstance::runFunction(const char* function) {
-    lua_pushlightuserdata(_L, this);
-    lua_gettable(_L, LUA_REGISTRYINDEX);
-    lua_getfield(_L, -1, function);
-
-    // if the top value is a function run it
-    if (lua_isfunction(_L, -1)) {
-        // run the function using our new environment to set up the script
-        if (lua_pcall(_L, 0, 0, 0)) {
-            std::cout << "Error: " << lua_tostring(_L, -1) << std::endl;
-        }
-    }
-
-    // remove the table from the stack
-    lua_pop(_L, 1);
-}
-
 int ScriptInstance::lua(lua_State *L) {
     ScriptInstance* instance = LuaEngine::getValue<ScriptInstance*>(L, 1);
     lua_pushlightuserdata(L, instance);

@@ -23,9 +23,39 @@ public:
 
     std::shared_ptr<Script> getScript();
 
-    void runFunction(const char* function);
-
     static int lua(lua_State* L);
+
+    void runFunctionRec(int argcount) {
+        // finally call the function with the counted amount of arguments
+        if (lua_pcall(_L, argcount, 0, 0)) {
+            std::cout << "Error: " << lua_tostring(_L, -1) << std::endl;
+        }
+    }
+
+    template <class T, class... ARGS>
+    void runFunctionRec(int argcount, T first, ARGS... args) {
+        // push the current argument on the stack
+        LuaEngine::pushValue(_L, first);
+
+        // and continue recursing
+        runFunctionRec(argcount+1, std::forward<ARGS>(args)...);
+    }
+
+    template <class... ARGS>
+    void runFunction(const char* function, ARGS... args) {
+        // first push the function on the stack
+        lua_pushlightuserdata(_L, this);
+        lua_gettable(_L, LUA_REGISTRYINDEX);
+        lua_getfield(_L, -1, function);
+
+        if (lua_isfunction(_L, -1)) {
+            // then push all the arguments, and also call the function at the end
+            runFunctionRec(0, std::forward<ARGS>(args)...);
+        }
+
+        // remove the table from the stack
+        lua_pop(_L, 1);
+    }
 
     template<class T>
     void setValue(const char* name, T value) {

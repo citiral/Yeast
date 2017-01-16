@@ -17,13 +17,21 @@ function printVec(v)
     print("("..v:x()..", "..v:y()..")")
 end
 
+function onMoveCollideX(e, amount)
+    this:setX(this:x() + amount)
+end
+
+function onMoveCollideY(e, amount)
+    this:setY(this:y() + amount)
+end
+
 function added()
     this:setX(100)
     this:setY(100)
     local b = Sprite("sprite_diffuse.png", "sprite_normal.png")
     this:setRenderable(b)
     -- center the sprite
-    --print(Types[this:renderable()._type])
+
     this:renderable():centerOrigin()
 
     local collider = BoxCollider(this:renderable():diffuse():width(), this:renderable():diffuse():height())

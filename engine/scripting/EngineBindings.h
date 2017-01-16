@@ -12,8 +12,6 @@
 void bind(LuaEngine* engine, lua_State* L);
 
 // helper functions to bind c++ functions
-//typedef std::true_type return_owned_pointer;
-//typedef std::false_type return_unowned_pointer;
 
 struct WrapFunction {
     static int rec(lua_State* L, std::function<void()> func, int depth) {
@@ -38,32 +36,6 @@ struct WrapFunction {
         return rec(L, (std::function<R(ARGS...)>)g, depth+1);
     };
 };
-
-/*template<>
-struct WrapFunction<false> {
-    static int rec(lua_State* L, std::function<void()> func, int depth) {
-        func();
-        return 0;
-    };
-
-    template<class R>
-    static int rec(lua_State* L, std::function<R()> func, int depth) {
-        R ret = func();
-        LuaEngine::pushValueUnowned(L, ret);
-
-        return 1;
-    };
-
-    template<class R, class T, class... ARGS>
-    static int rec(lua_State* L, std::function<R(T, ARGS...)> f, int depth) {
-        auto g = [&](ARGS... args)->R {
-            return f(LuaEngine::getValue<T>(L, depth), std::forward<ARGS>(args)...);
-        };
-
-        return rec(L, (std::function<R(ARGS...)>)g, depth+1);
-    };
-};*/
-
 
 template<class R, class T, class... ARGS>
 inline int wrapFunctionPtr(lua_State* L, R (T::*func)(ARGS...)) {

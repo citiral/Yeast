@@ -97,17 +97,21 @@ std::shared_ptr<Collider> Entity::getCollider() const {
 }
 
 void Entity::onCollide(Entity* e) {
-
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        (*it).second->runFunction("onCollide", e);
+    }
 }
 
 void Entity::onMoveCollideX(Entity* e, float amount) {
-    // todo handle this in lua
-    _position.setX(_position.getX() + amount);
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        (*it).second->runFunction("onMoveCollideX", e, amount);
+    }
 }
 
 void Entity::onMoveCollideY(Entity* e, float amount) {
-    // todo handle this in lua
-    _position.setY(_position.getY() + amount);
+    for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
+        (*it).second->runFunction("onMoveCollideY", e, amount);
+    }
 }
 void Entity::move(float x, float y) {
 	setX(_position.getX() + x);
