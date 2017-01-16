@@ -12,8 +12,9 @@
 template<class T>
 class ResourceListener : public FW::FileWatchListener {
 public:
-    ResourceListener(ResourceLoader<std::string, T>* loader) {
+    ResourceListener(ResourceLoader<std::string, T>* loader, std::function<void(std::string& path, std::shared_ptr<T> value)> callback) {
         _loader = loader;
+        _callback = callback;
     }
 
     virtual void handleFileAction(FW::WatchID watchid, const std::string& dir, const std::string& filename, FW::Action action) {
@@ -27,7 +28,7 @@ public:
 
         if (_loader->hasResource(path)) {
             std::cout << "reloading file" << std::endl;
-            _loader->getResource(path)->hotSwap(path);
+            _callback(path, _loader->getResource(path));
         } else {
 
             std::cout << "file is not found" << std::endl;
@@ -36,6 +37,7 @@ public:
 
 private:
     ResourceLoader<std::string, T>* _loader;
+    std::function<void(std::string& path, std::shared_ptr<T> value)> _callback;
 };
 
 

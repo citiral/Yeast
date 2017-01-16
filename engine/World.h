@@ -41,6 +41,8 @@ public:
 	
 	int getEntityCount() const;
 
+	ScriptInstance* getScript();
+
     std::list<Entity*>& getEntities();
     LuaIterator<std::list<Entity*>::iterator> getEntitiesIterator();
 

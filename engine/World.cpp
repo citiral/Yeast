@@ -120,4 +120,8 @@ void World::removed() {
 
 }
 
+ScriptInstance* World::getScript() {
+    return _script;
+}
+
 

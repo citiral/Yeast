@@ -8,17 +8,22 @@
 #include <lua.hpp>
 #include <string>
 #include "../engine.h"
-#include "ScriptInstance.h"
+#include "../resources/HotSwappable.h"
+
+class ScriptInstance;
 
 class Script {
 public:
     Script(const std::string& path);
     ~Script();
 
+    virtual bool hotSwap(Engine* engine, const std::string& path);
+
     ScriptInstance* createInstance(Engine* engine);
+    void reloadInstance(Engine* engine, ScriptInstance* instance);
 
 private:
-    void initializeScript(Engine* engine);
+    void loadScript(Engine* engine);
 
     std::string _path;
     lua_State* _L;

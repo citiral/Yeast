@@ -194,6 +194,10 @@ void Entity::removeScript(std::string name) {
     }
 }
 
+std::map<std::string, ScriptInstance*>& Entity::getScripts() {
+    return _scripts;
+}
+
 void Entity::destroy() {
     _engine->getWorld()->destroyEntity(this);
 }

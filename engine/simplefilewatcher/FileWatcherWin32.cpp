@@ -23,8 +23,7 @@
 #include "FileWatcherWin32.h"
 
 #if FILEWATCHER_PLATFORM == FILEWATCHER_PLATFORM_WIN32
-
-#define _WIN32_WINNT 0x0550
+//#define _WIN32_WINNT 0x0550
 #include <windows.h>
 
 #if defined(_MSC_VER)
@@ -53,7 +52,7 @@ namespace FW
 		WatchID mWatchid;
 	};
 
-#pragma region Internal Functions
+//#pragma region Internal Functions
 
 	// forward decl
 	bool RefreshWatch(WatchStruct* pWatch, bool _clear = false);
@@ -163,7 +162,7 @@ namespace FW
 		return NULL;
 	}
 
-#pragma endregion
+//#pragma endregion
 
 	//--------
 	FileWatcherWin32::FileWatcherWin32()

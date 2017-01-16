@@ -58,6 +58,7 @@ public:
     void addScript(std::string name);
     ScriptInstance* getScript(std::string name);
     void removeScript(std::string name);
+	std::map<std::string, ScriptInstance*>& getScripts();
 
 	void destroy();
 

@@ -21,91 +21,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aef37a3-0e02-43a1-b90d-05535fed4d52" name="Default" comment="Bindings for lighting">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/editorwindow.ui" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/entityedittab.ui" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/scriptedittab.ui" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/libSOIL.a_old" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/libfreetype.a_old" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/libglfw3.a_old" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/libluajit.a_old" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/win32/wxmsw310u_core_gcc_custom.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/editorwindow.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/editorwindow.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/main.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/project/Project.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/project/Project.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/basetab.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/basetab.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/entityedittab.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/entityedittab.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/scriptedittab.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/tabs/scriptedittab.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/widgets/ProjectTree.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/editor/widgets/ProjectTree.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/resources/HotSwappable.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/resources/HotSwappable.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/resources/ResourceListener.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/resources/ResourceListener.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcher.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcher.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherImpl.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherLinux.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherLinux.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherOSX.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherOSX.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/main.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run/res/entities/enemies/enemy1.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run/res/entities/enemies/enemy2.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run/res/scripts/classes/test.lua" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run/res/scripts/player.lua" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run/res/shaders/lighting/point.vsh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run/res/worlds/testworld.lua" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/engine/main.cpp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libSOIL.a" afterPath="$PROJECT_DIR$/lib/libSOIL.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libfreetype.a" afterPath="$PROJECT_DIR$/lib/libfreetype.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libglfw3.a" afterPath="$PROJECT_DIR$/lib/libglfw3.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libluajit.a" afterPath="$PROJECT_DIR$/lib/libluajit.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/assets/masonry-wall_diffuse.jpg" afterPath="$PROJECT_DIR$/run/res/assets/masonry-wall_diffuse.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/assets/masonry-wall_normal.jpg" afterPath="$PROJECT_DIR$/run/res/assets/masonry-wall_normal.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Yeast.iml" afterPath="$PROJECT_DIR$/.idea/Yeast.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Entity.cpp" afterPath="$PROJECT_DIR$/engine/Entity.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Entity.h" afterPath="$PROJECT_DIR$/engine/Entity.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Settings.cpp" afterPath="$PROJECT_DIR$/engine/Settings.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/Settings.h" afterPath="$PROJECT_DIR$/engine/Settings.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/World.cpp" afterPath="$PROJECT_DIR$/engine/World.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/World.h" afterPath="$PROJECT_DIR$/engine/World.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/blueprints/EntityBlueprint.cpp" afterPath="$PROJECT_DIR$/engine/blueprints/EntityBlueprint.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/blueprints/LightBlueprint.cpp" afterPath="$PROJECT_DIR$/engine/blueprints/LightBlueprint.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/blueprints/WorldBlueprint.cpp" afterPath="$PROJECT_DIR$/engine/blueprints/WorldBlueprint.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/engine.cpp" afterPath="$PROJECT_DIR$/engine/engine.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/engine.h" afterPath="$PROJECT_DIR$/engine/engine.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/graphicscontext.cpp" afterPath="$PROJECT_DIR$/engine/graphics/graphicscontext.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/lighting/AmbientLight.cpp" afterPath="$PROJECT_DIR$/engine/graphics/lighting/AmbientLight.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/lighting/AmbientLight.h" afterPath="$PROJECT_DIR$/engine/graphics/lighting/AmbientLight.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/lighting/PointLight.cpp" afterPath="$PROJECT_DIR$/engine/graphics/lighting/PointLight.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/primitives/FrameBuffer.cpp" afterPath="$PROJECT_DIR$/engine/graphics/primitives/FrameBuffer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/primitives/program.cpp" afterPath="$PROJECT_DIR$/engine/graphics/primitives/program.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/primitives/program.h" afterPath="$PROJECT_DIR$/engine/graphics/primitives/program.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/primitives/texture.cpp" afterPath="$PROJECT_DIR$/engine/graphics/primitives/texture.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/primitives/texture.h" afterPath="$PROJECT_DIR$/engine/graphics/primitives/texture.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/renderables/Background.cpp" afterPath="$PROJECT_DIR$/engine/graphics/renderables/Background.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/graphics/renderables/Background.h" afterPath="$PROJECT_DIR$/engine/graphics/renderables/Background.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/paths.h" afterPath="$PROJECT_DIR$/engine/paths.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/resources/ResourceListener.h" afterPath="$PROJECT_DIR$/engine/resources/ResourceListener.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/resources/ResourceManager.cpp" afterPath="$PROJECT_DIR$/engine/resources/ResourceManager.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/resources/ResourceManager.h" afterPath="$PROJECT_DIR$/engine/resources/ResourceManager.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/resources/resourceloader.h" afterPath="$PROJECT_DIR$/engine/resources/resourceloader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/scripting/EngineBindings.cpp" afterPath="$PROJECT_DIR$/engine/scripting/EngineBindings.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/scripting/LuaEngine.h" afterPath="$PROJECT_DIR$/engine/scripting/LuaEngine.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/scripting/Script.cpp" afterPath="$PROJECT_DIR$/engine/scripting/Script.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/scripting/Script.h" afterPath="$PROJECT_DIR$/engine/scripting/Script.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp" afterPath="$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/scripting/ScriptInstance.h" afterPath="$PROJECT_DIR$/engine/scripting/ScriptInstance.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp" afterPath="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/scripts/bullet.lua" afterPath="$PROJECT_DIR$/run/res/scripts/bullet.lua" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/scripts/mouselook.lua" afterPath="$PROJECT_DIR$/run/res/scripts/mouselook.lua" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/settings.ini" afterPath="$PROJECT_DIR$/run/res/settings.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/shaders/lighting/point.fsh" afterPath="$PROJECT_DIR$/run/res/shaders/lighting/point.fsh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run/res/scripts/player.lua" afterPath="$PROJECT_DIR$/run/res/scripts/player.lua" />
     </list>
     <ignored path="Yeast.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -125,54 +57,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ResourceListener.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/resources/ResourceListener.h">
+      <file leaf-file-name="ScriptInstance.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+            <state relative-caret-position="191">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScriptInstance.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="684">
+              <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
               <folding>
-                <element signature="e#41#86#0" expanded="true" />
-                <element signature="e#229#238#0" expanded="true" />
+                <element signature="e#43#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalculateMaxLum.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/graphics/algorithms/CalculateMaxLum.cpp">
+      <file leaf-file-name="bullet.lua" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run/res/scripts/bullet.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-765">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileWatcherWin32.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileWatcherWin32.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CalculateMaxLum.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/graphics/algorithms/CalculateMaxLum.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="96">
+              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -181,8 +92,8 @@
       <file leaf-file-name="ResourceManager.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/resources/ResourceManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+            <state relative-caret-position="527">
+              <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
               <folding>
                 <element signature="e#14#28#0" expanded="true" />
               </folding>
@@ -190,21 +101,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HotSwappable.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/resources/HotSwappable.h">
+      <file leaf-file-name="engine.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/engine.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="188">
+              <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceListener.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/resources/ResourceListener.cpp">
+      <file leaf-file-name="Entity.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/Entity.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="188">
+              <caret line="166" column="62" selection-start-line="166" selection-start-column="62" selection-end-line="166" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Script.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/scripting/Script.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -213,20 +134,20 @@
       <file leaf-file-name="ResourceManager.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/resources/ResourceManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+            <state relative-caret-position="361">
+              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resourceloader.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/resources/resourceloader.h">
+      <file leaf-file-name="Script.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/scripting/Script.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+            <state relative-caret-position="674">
+              <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
               <folding>
-                <element signature="e#14#35#0" expanded="true" />
+                <element signature="e#43#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -240,9 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/.CLion2016.1/system/cmake/generated/Yeast-1e9c4e7b/1e9c4e7b/Debug/ui_editorwindow.h" />
-        <option value="$PROJECT_DIR$/editor/ProjectTree.cpp" />
-        <option value="$PROJECT_DIR$/editor/ProjectTree.h" />
         <option value="$PROJECT_DIR$/editor/Project.h" />
         <option value="$PROJECT_DIR$/editor/Project.cpp" />
         <option value="$PROJECT_DIR$/editor/project/ProjectResource.h" />
@@ -260,37 +178,40 @@
         <option value="$PROJECT_DIR$/editor/tabs/entityedittab.cpp" />
         <option value="$PROJECT_DIR$/engine/blueprints/WorldBlueprint.cpp" />
         <option value="$PROJECT_DIR$/run/res/settings.ini" />
-        <option value="$PROJECT_DIR$/engine/Entity.h" />
         <option value="$PROJECT_DIR$/engine/blueprints/EntityBlueprint.cpp" />
         <option value="$PROJECT_DIR$/engine/graphics/lighting/AmbientLight.cpp" />
         <option value="$PROJECT_DIR$/engine/graphics/lighting/AmbientLight.h" />
-        <option value="$PROJECT_DIR$/engine/Entity.cpp" />
-        <option value="$PROJECT_DIR$/engine/World.cpp" />
         <option value="$PROJECT_DIR$/engine/graphics/renderables/Background.h" />
         <option value="$PROJECT_DIR$/engine/graphics/renderables/Background.cpp" />
-        <option value="$PROJECT_DIR$/engine/scripting/Script.cpp" />
         <option value="$PROJECT_DIR$/run/res/worlds/testworld.lua" />
-        <option value="$PROJECT_DIR$/run/res/scripts/player.lua" />
-        <option value="$PROJECT_DIR$/engine/engine.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/engine/World.h" />
         <option value="$PROJECT_DIR$/engine/scripting/EngineBindings.cpp" />
         <option value="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherLinux.cpp" />
         <option value="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcher.cpp" />
         <option value="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherOSX.cpp" />
         <option value="$PROJECT_DIR$/run/res/scripts/helloscript.lua" />
-        <option value="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp" />
-        <option value="$PROJECT_DIR$/run/res/scripts/bullet.lua" />
         <option value="$PROJECT_DIR$/run/res/scripts/mouselook.lua" />
         <option value="$PROJECT_DIR$/run/res/scripts/classes/test.lua" />
         <option value="$PROJECT_DIR$/engine/resources/resourceloader.h" />
-        <option value="$PROJECT_DIR$/engine/resources/ResourceManager.h" />
         <option value="$PROJECT_DIR$/engine/graphics/primitives/texture.h" />
-        <option value="$PROJECT_DIR$/engine/graphics/primitives/texture.cpp" />
         <option value="$PROJECT_DIR$/engine/resources/HotSwappable.h" />
         <option value="$PROJECT_DIR$/engine/paths.h" />
-        <option value="$PROJECT_DIR$/engine/resources/ResourceManager.cpp" />
+        <option value="$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp" />
+        <option value="$PROJECT_DIR$/engine/graphics/primitives/texture.cpp" />
         <option value="$PROJECT_DIR$/engine/resources/ResourceListener.h" />
+        <option value="$PROJECT_DIR$/engine/resources/ResourceManager.h" />
+        <option value="$PROJECT_DIR$/engine/World.h" />
+        <option value="$PROJECT_DIR$/engine/World.cpp" />
+        <option value="$PROJECT_DIR$/engine/Entity.h" />
+        <option value="$PROJECT_DIR$/engine/Entity.cpp" />
+        <option value="$PROJECT_DIR$/engine/engine.cpp" />
+        <option value="$PROJECT_DIR$/engine/resources/ResourceManager.cpp" />
+        <option value="$PROJECT_DIR$/run/res/scripts/player.lua" />
+        <option value="$PROJECT_DIR$/engine/scripting/ScriptInstance.h" />
+        <option value="$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp" />
+        <option value="$PROJECT_DIR$/engine/scripting/Script.h" />
+        <option value="$PROJECT_DIR$/engine/scripting/Script.cpp" />
+        <option value="$PROJECT_DIR$/run/res/scripts/bullet.lua" />
       </list>
     </option>
   </component>
@@ -382,6 +303,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worlds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -397,6 +380,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simplefilewatcher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yeast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -709,7 +746,8 @@
       <workItem from="1478286092974" duration="4524000" />
       <workItem from="1479571373570" duration="644000" />
       <workItem from="1484483097086" duration="12631000" />
-      <workItem from="1484496879786" duration="149000" />
+      <workItem from="1484496879786" duration="272000" />
+      <workItem from="1484515100988" duration="12053000" />
     </task>
     <task id="LOCAL-00001" summary="Proper key and mouse bindings.">
       <created>1468765386478</created>
@@ -750,22 +788,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28995000" />
+    <option name="totallyTimeSpent" value="41171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15138593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25893825" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26435536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15059589" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5021075" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20043337" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18418202" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49789253" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15298508" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17334779" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29469123" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -773,7 +812,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3575298" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -799,76 +837,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="66" />
+      <option name="time" value="68" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="50" column="124" selection-start-line="50" selection-start-column="124" selection-end-line="50" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/worlds/testworld.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/World.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="96" column="1" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/assets/sprite_diffuse.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/assets/sprite_normal.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/LuaEngine.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="197" column="187" selection-start-line="197" selection-start-column="187" selection-end-line="197" selection-end-column="187" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/graphics/renderables/sprite.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/worlds/testworld.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/scripts/player.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,24 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/engine.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/framework/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/World.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -966,14 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/scripts/helloscript.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherLinux.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -981,14 +936,6 @@
           <folding>
             <element signature="e#1220#4521#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run/res/scripts/bullet.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1004,14 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1030,31 +969,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcher.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcher.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="123" column="10" selection-start-line="123" selection-start-column="10" selection-end-line="123" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/graphics/primitives/texture.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/graphics/primitives/texture.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1063,18 +981,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/engine.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/paths.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1094,73 +1004,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/resources/HotSwappable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding>
-            <element signature="e#14#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/resources/resourceloader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="e#14#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceListener.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceListener.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="e#41#86#0" expanded="true" />
-            <element signature="e#229#238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/wx/afterstd.h" />
-    <entry file="file://$PROJECT_DIR$/engine/graphics/algorithms/CalculateMaxLum.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/graphics/algorithms/CalculateMaxLum.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-765">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1174,10 +1021,225 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/algorithms/CalculateMaxLum.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="189" column="56" selection-start-line="189" selection-start-column="56" selection-end-line="189" selection-end-column="56" />
+          <folding>
+            <element signature="e#1260#1425#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/simplefilewatcher/FileWatcher.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceListener.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/HotSwappable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/primitives/texture.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceListener.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding>
+            <element signature="e#41#86#0" expanded="true" />
+            <element signature="e#229#238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/lib/gcc/i686-w64-mingw32/6.1.0/include/c++/bits/shared_ptr.h">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
-          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/graphics/primitives/texture.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/engine.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/World.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+          <folding>
+            <element signature="e#14#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/World.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Entity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="60" column="54" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run/res/worlds/testworld.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run/res/scripts/player.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run/res/scripts/helloscript.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding>
+            <element signature="e#14#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/Entity.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="166" column="62" selection-start-line="166" selection-start-column="62" selection-end-line="166" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/engine.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/ResourceManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/resources/resourceloader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/ScriptInstance.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/scripting/Script.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run/res/scripts/bullet.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
           <folding />
         </state>
       </provider>

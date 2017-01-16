@@ -33,7 +33,7 @@ function update()
     if engine:window():keyIsDown(Keys.S) == true then this:setY(this:y() - speed * deltatime) end
 
     -- firing
-    if engine:window():buttonIsDown(Buttons.mouse1) then
+    if engine:window():buttonIsPressed(Buttons.mouse1) then
         shoottimer = shoottimer - deltatime
         while shoottimer <= 0 do
             local bullet = Entity("bullet.lua")

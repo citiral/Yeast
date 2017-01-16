@@ -5,8 +5,9 @@
 #include <iostream>
 #include "ScriptInstance.h"
 
-ScriptInstance::ScriptInstance(lua_State* L) {
+ScriptInstance::ScriptInstance(lua_State* L, std::shared_ptr<Script> script) {
     _L = L;
+    _script = script;
 }
 
 ScriptInstance::~ScriptInstance() {
@@ -40,4 +41,8 @@ int ScriptInstance::lua(lua_State *L) {
     lua_pushlightuserdata(L, instance);
     lua_gettable(L, LUA_REGISTRYINDEX);
     return 1;
+}
+
+std::shared_ptr<Script> ScriptInstance::getScript() {
+    return _script;
 }

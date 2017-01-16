@@ -7,11 +7,13 @@
 
 
 #include <lua.hpp>
+#include <memory>
 #include "LuaEngine.h"
+#include "Script.h"
 
 class ScriptInstance {
 public:
-    ScriptInstance(lua_State* L);
+    ScriptInstance(lua_State* L, std::shared_ptr<Script> script);
     ScriptInstance(const ScriptInstance& script) = delete;
     ScriptInstance(ScriptInstance&& script) = delete;
     ~ScriptInstance();
@@ -19,13 +21,15 @@ public:
     ScriptInstance& operator=(const ScriptInstance& other) = delete;
     ScriptInstance& operator=(ScriptInstance&& other) = delete;
 
+    std::shared_ptr<Script> getScript();
+
     void runFunction(const char* function);
 
     static int lua(lua_State* L);
 
     template<class T>
     void setValue(const char* name, T value) {
-        // first get the function
+        // first get the script's table
         lua_pushlightuserdata(_L, this);
         lua_gettable(_L, LUA_REGISTRYINDEX);
 
@@ -40,6 +44,7 @@ public:
 
 private:
     lua_State* _L;
+    std::shared_ptr<Script> _script;
 };
 
 

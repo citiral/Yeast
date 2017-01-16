@@ -37,9 +37,9 @@ bool GL30Texture::hotSwap(const std::string& path) {
         SOIL_free_image_data(_textureData);
         loadSoilTexture(path);
         createOpenglTexture();
-        return 0; // success
+        return false; // success
     }
-    return 1; // failure, nothing to hotswap
+    return true; // failure, nothing to hotswap
 }
 
 void GL30Texture::createOpenglTexture()

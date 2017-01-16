@@ -5,9 +5,8 @@
 -- Time: 18:57
 --
 
-speed = 50
-l = nil
-rot = nil
+print("test")
+speed = 80
 
 function init(pos, rotation)
     this:setPos(pos)
@@ -15,7 +14,7 @@ function init(pos, rotation)
 end
 
 function added()
-    l = PointLight(Color(1, 0.5, 0)*10, Vector2(this:x(), this:y()), 4, 4, 20)
+    l = PointLight(Color(1, 0.5, 0)*10, Vector2(this:x(), this:y()), 4, 4, 80)
     engine:world():addLight(l)
 end
 

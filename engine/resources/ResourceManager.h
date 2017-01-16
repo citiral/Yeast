@@ -16,7 +16,7 @@
 
 class ResourceManager {
 public:
-    ResourceManager();
+    ResourceManager(Engine* engine);
     ~ResourceManager();
 
     std::shared_ptr<Program> loadProgram(const char* vertex, const char* fragment);
@@ -34,6 +34,8 @@ public:
     FW::FileWatcher* getFileWatcher();
 
 private:
+    Engine* _engine;
+
     ResourceLoader<std::pair<std::string, std::string>, Program> _programs;
     ResourceLoader<std::string, GL30Texture> _textures;
     ResourceLoader<std::string, WorldBlueprint> _worlds;

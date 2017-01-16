@@ -16,7 +16,7 @@ Engine::Engine(const char* settings) {
     _settings = new Settings;
     _settings->load(settings);
 
-    _loader = new ResourceManager;
+    _loader = new ResourceManager(this);
     _luaengine = new LuaEngine();
     _luaengine->setGlobal("engine", this);
 
@@ -35,7 +35,7 @@ Engine::Engine(const char* settings) {
 }
 
 Engine::Engine(int width, int height, bool fullscreen) {
-    _loader = new ResourceManager;
+    _loader = new ResourceManager(this);
     _settings = new Settings;
     _luaengine = new LuaEngine();
     _luaengine->setGlobal("engine", this);
