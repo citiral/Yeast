@@ -1,4 +1,5 @@
 #include "ResourceManager.h"
+#include "../paths.h"
 
 ResourceManager::ResourceManager(Engine* engine) {
     _engine = engine;
@@ -19,11 +20,11 @@ ResourceManager::~ResourceManager() {
 }
 
 std::shared_ptr<Program> ResourceManager::loadProgram(const char* vertex, const char* fragment) {
-    return _programs.getResource(std::make_pair(std::string(vertex), std::string(fragment)));
+    return _programs.getResource(std::make_pair(formatPath(FOLDER_SHADERS + std::string(vertex)), formatPath(FOLDER_SHADERS + std::string(fragment))));
 }
 
 std::shared_ptr<GL30Texture> ResourceManager::loadTexture(const char* path) {
-    return _textures.getResource(std::string(path));
+    return _textures.getResource(formatPath(FOLDER_ASSETS + std::string(path)));
 }
 /*
 std::shared_ptr<WorldBlueprint> ResourceManager::loadWorld(const char* path) {
@@ -35,15 +36,15 @@ std::shared_ptr<EntityBlueprint> ResourceManager::loadEntity(const char* path) {
 }*/
 
 std::shared_ptr<Script> ResourceManager::loadScript(const char* path) {
-    return _scripts.getResource(std::string(path));
+    return _scripts.getResource(formatPath(FOLDER_SCRIPTS + std::string(path)));
 }
 
 std::shared_ptr<Program> ResourceManager::loadProgram(const std::string& vertex, const std::string& fragment) {
-    return _programs.getResource(std::make_pair(vertex, fragment));
+    return _programs.getResource(std::make_pair(formatPath(FOLDER_SHADERS + vertex), formatPath(FOLDER_SHADERS + fragment)));
 }
 
 std::shared_ptr<GL30Texture> ResourceManager::loadTexture(const std::string& path) {
-    return _textures.getResource(path);
+    return _textures.getResource(formatPath(FOLDER_ASSETS + path));
 }
 /*
 std::shared_ptr<WorldBlueprint> ResourceManager::loadWorld(const std::string& path) {
@@ -55,7 +56,7 @@ std::shared_ptr<EntityBlueprint> ResourceManager::loadEntity(const std::string& 
 }*/
 
 std::shared_ptr<Script> ResourceManager::loadScript(const std::string& path) {
-    return _scripts.getResource(path);
+    return _scripts.getResource(formatPath(FOLDER_SCRIPTS + path));
 }
 
 FW::FileWatcher* ResourceManager::getFileWatcher() {

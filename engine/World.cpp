@@ -17,11 +17,14 @@ World::World(Engine* engine, ScriptInstance* script):
 }
 
 World::~World() {
-    // because the arrays are shared pointers, they will clean themselves up
+    // delete all entities
+    for (Entity* e: _entities)
+        delete e;
 }
 
 void World::update(float dt) {
     // iterate over all entities
+    _script->runFunction("update");
     auto iter = _entities.begin();
     while (iter != _entities.end()) {
         Entity* e = *iter;
@@ -116,8 +119,11 @@ void World::added() {
     _script->runFunction("begin");
 }
 
-void World::removed() {
+void World::destroyed() {
+    for (Entity* e: _entities)
+        e->destroyed();
 
+    _script->runFunction("destroyed");
 }
 
 ScriptInstance* World::getScript() {

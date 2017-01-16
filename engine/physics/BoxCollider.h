@@ -1,6 +1,7 @@
 #ifndef BOXCOLLIDER_H
 #define BOXCOLLIDER_H
 
+#include <memory>
 #include "Collider.h"
 #include "../math/Vector2.h"
 class BoxCollider : public Collider
@@ -23,7 +24,9 @@ public:
 	void setOrigin(const Vector2& v);
 	
 	void centerOrigin();
-	
+
+	void push(lua_State* L, Collider* ptr);
+	void push(lua_State* L, std::shared_ptr<Collider> ptr);
 private:
 	float _width;
 	float _height;

@@ -4,7 +4,7 @@
 
 AmbientLight::AmbientLight(Engine* engine, const Color& color) : Light(engine), _lightColor(color)
 {
-	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/lighting/vertex.vsh", "res/shaders/lighting/ambient.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("lighting/vertex.vsh", "lighting/ambient.fsh"));
 }
 
 AmbientLight::~AmbientLight()

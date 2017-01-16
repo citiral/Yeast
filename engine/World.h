@@ -17,7 +17,7 @@ public:
     virtual ~World();
 	
 	void added();
-	void removed();
+	void destroyed();
 
     void update(float dt);
     void renderComposite(GraphicsContext& gc);

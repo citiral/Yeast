@@ -21,4 +21,11 @@ function begin()
 end
 
 function update()
+    if engine:window():keyIsPressed(Keys.R) then
+        engine:loadWorld("worlds/testworld.lua")
+    end
+end
+
+function destroyed()
+
 end

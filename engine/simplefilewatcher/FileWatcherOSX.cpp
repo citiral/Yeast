@@ -152,7 +152,7 @@ namespace FW
 		}
 		
 		// called when the directory is actually changed
-		// means a file has been added or removed
+		// means a file has been added or destroyed
 		// rescans the watched directory adding/removing files and sending notices
 		void rescan()
 		{

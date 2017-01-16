@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "Settings.h"
 #include "scripting/LuaEngine.h"
+#include "paths.h"
 
 #define FPS 60
 
@@ -27,6 +28,7 @@ Engine::Engine(const char* settings) {
 
     _gc = new GraphicsContext(this, _settings->getT<int>("graphics", "resolution_x"), _settings->getT<int>("graphics", "resolution_y"));
     _world = nullptr;
+    _nextWorld = nullptr;
 
     if (!_gc->initialize()) {
         std::cout << "Error initializing opengl";
@@ -47,9 +49,10 @@ Engine::Engine(int width, int height, bool fullscreen) {
 
     _gc = new GraphicsContext(this, width, height);
     _world = nullptr;
+    _nextWorld = nullptr;
 
     if (!_gc->initialize()) {
-        std::cout << "Error initializing opengl";
+        std::cerr << "Error initializing opengl" << std::endl;
         exit(1);
     }
 }
@@ -58,14 +61,11 @@ Engine::~Engine() {
 
 }
 
-void Engine::setWorld(World* world) {
-    std::cout << "changing world" << std::endl;
-    if (_world != nullptr) {
-		_world->removed();
-        delete _world;
+void Engine::loadWorld(std::string path) {
+    if (_nextWorld != nullptr) {
+        delete _nextWorld;
     }
-    _world = world;
-	_world->added();
+    _nextWorld = new World(this, _loader->loadScript(path)->createInstance(this));
 }
 
 World* Engine::getWorld() {
@@ -114,13 +114,23 @@ void Engine::begin() {
     std::srand(static_cast <unsigned> (std::time(0)));
 
     // setup the begin world
-    setWorld(new World(this, _loader->loadScript(_settings->get("application", "world"))->createInstance(this)));
+    loadWorld(_settings->get("application", "world"));
 
     // enter the core game loop
     Timer t;
     double lastRender = 0;
 
     while (!_window->shouldClose()) {
+        if (_nextWorld != nullptr) {
+            if (_world != nullptr) {
+                _world->destroyed();
+                delete _world;
+            }
+            _world = _nextWorld;
+            _world->added();
+            _nextWorld = nullptr;
+        }
+
         double elapsed = t.getDeltaTimeSeconds();
         //lastRender += elapsed;
 
@@ -128,7 +138,7 @@ void Engine::begin() {
         //{
             _loader->getFileWatcher()->update();
             _luaengine->setGlobal("deltatime", elapsed);
-            update(elapsed);
+            update((float)elapsed);
             render();
             _window->updateWindow();
             lastRender -= 1./FPS;

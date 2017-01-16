@@ -15,10 +15,6 @@ Entity::Entity(Engine* engine) {
 }
 
 Entity::~Entity() {
-    if (_collider != nullptr) {
-		delete _collider;
-	}
-
     // clean up the scripts
     for (auto it = _scripts.begin(); it != _scripts.end() ; ++it) {
         delete (*it).second;
@@ -90,15 +86,13 @@ std::shared_ptr<Renderable> Entity::getRenderable() const {
     return _renderable;
 }
 
-void Entity::setCollider(Collider* r) {
-	if (_collider != nullptr)
-		delete _collider;
+void Entity::setCollider(std::shared_ptr<Collider> r) {
 	_collider = r;
 	_collider->setX(_position.getX());
 	_collider->setY(_position.getY());
 }
 
-Collider* Entity::getCollider() const {
+std::shared_ptr<Collider> Entity::getCollider() const {
 	return _collider;
 }
 
@@ -107,27 +101,29 @@ void Entity::onCollide(Entity* e) {
 }
 
 void Entity::onMoveCollideX(Entity* e, float amount) {
-
+    // todo handle this in lua
+    _position.setX(_position.getX() + amount);
 }
 
 void Entity::onMoveCollideY(Entity* e, float amount) {
-
+    // todo handle this in lua
+    _position.setY(_position.getY() + amount);
 }
-void Entity::moveTo(float x, float y) {
-	setX(x);
-	setY(y);
+void Entity::move(float x, float y) {
+	setX(_position.getX() + x);
+	setY(_position.getY() + y);
 
-	if (_collider != nullptr)
+	if (_collider.get() != nullptr)
 	{
 		for (Entity* other : _engine->getWorld()->getEntities())
 		{
 			if (other == this) continue;
-			if (other->_collider != nullptr)
+			if (other->_collider.get() != nullptr)
 			{
-				if (_collider->collidesWith(*(other->_collider)))
+				if (_collider->collidesWith(*(other->_collider.get())))
 				{
 					onCollide(other);
-					_collider->resolveCollision(*(other->_collider),
+					_collider->resolveCollision(*(other->_collider.get()),
 						std::bind(&Entity::onMoveCollideX, this, other, std::placeholders::_1),
 						std::bind(&Entity::onMoveCollideY, this, other, std::placeholders::_1)
 						);
@@ -164,7 +160,7 @@ void Entity::update(float dt) {
 }
 
 void Entity::addScript(std::string name) {
-    ScriptInstance* instance = _engine->getResourceManager()->loadScript(FOLDER_SCRIPTS + name)->createInstance(_engine);
+    ScriptInstance* instance = _engine->getResourceManager()->loadScript(name)->createInstance(_engine);
     _scripts[name] = instance;
 
     // register the correct members

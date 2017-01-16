@@ -3,6 +3,7 @@
 //
 #include "../simplefilewatcher/FileWatcher.h"
 #include "resourceloader.h"
+#include "../paths.h"
 #include <string>
 #include <iostream>
 
@@ -22,7 +23,7 @@ public:
         if (action != FW::Actions::Modified)
             return;
 
-        std::string path = dir + "\\" + filename;
+        std::string path = formatPath(dir + "\\" + filename);
 
         std::cout << "File (" << path << ") Modified! " << std::endl;
 

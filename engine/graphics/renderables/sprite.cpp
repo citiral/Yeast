@@ -3,9 +3,9 @@
 #include <glad/glad.h>
 
 Sprite::Sprite(Engine* engine, const std::shared_ptr<GL30Texture>& diffuse)
-		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("res/assets/default_normal.png")), _origin(0, 0), _isLit(true)
+		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("default_normal.png")), _origin(0, 0), _isLit(true)
 {
-	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/spriteEffect.vsh", "res/shaders/spriteEffect.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("spriteEffect.vsh", "spriteEffect.fsh"));
 }
 
 Sprite::~Sprite()

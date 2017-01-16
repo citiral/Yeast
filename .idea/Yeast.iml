@@ -5,9 +5,17 @@
       <sourceFolder url="file://$MODULE_DIR$/framework/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Entity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Timer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/glad.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Entity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/Settings.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Timer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/engine.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/paths.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/HotSwappable.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceListener.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceListener.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/resources/HotSwappable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/windowing/window.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/graphics/primitives/FrameBuffer.h" isTestSource="false" />
@@ -61,23 +69,17 @@
       <sourceFolder url="file://$MODULE_DIR$/engine/simplefilewatcher/FileWatcher.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/simplefilewatcher/FileWatcherWin32.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/simplefilewatcher/FileWatcherLinux.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/HotSwappable.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceListener.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceListener.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/ResourceManager.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/resources/HotSwappable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/solvers/BoxBoxSolver.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/Collider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/physics/BoxCollider.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/Timer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/engine.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Settings.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/World.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/glad.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/engine/Entity.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/engine/paths.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/math/Vector2.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/engine/scripting/LuaEngine.h" isTestSource="false" />

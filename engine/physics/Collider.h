@@ -2,6 +2,7 @@
 #define COLLIDER_H
 
 #include "../math/Vector2.h"
+#include "../scripting/LuaEngine.h"
 #include <functional>
 
 /**
@@ -17,8 +18,7 @@
 	 NONE
  };
  
-class Collider
-{
+class Collider : public LuaCustomPush<Collider> {
 public:
 	Collider();
 	virtual ~Collider();

@@ -181,7 +181,7 @@ void GraphicsContext::PostTonemap() {
     _tonemapping_avg->bindAll();
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, readPost()->getTexture(0));
-    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/tonemap_logavg.fsh");
+    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("post/post.vsh", "post/tonemap_logavg.fsh");
     prog->enableProgram();
     glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);
     Quad::getQuad()->draw();
@@ -199,7 +199,7 @@ void GraphicsContext::PostTonemap() {
 
     // now use that to properly tonemap
     writePost()->bindAll();
-    prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/tonemap.fsh");
+    prog = _engine->getResourceManager()->loadProgram("post/post.vsh", "post/tonemap.fsh");
     prog->enableProgram();
 
     glUniform1f(prog->getUniform("lwhite"), _tonemapTargetMaxLum);
@@ -220,7 +220,7 @@ void GraphicsContext::PostTonemap() {
 void GraphicsContext::PostFinalize() {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, readPost()->getTexture(0));
-    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("res/shaders/post/post.vsh", "res/shaders/post/finalize.fsh");
+    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("post/post.vsh", "post/finalize.fsh");
     prog->enableProgram();
     glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);
     Quad::getQuad()->draw();

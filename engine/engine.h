@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class Window;
 class World;
 class GraphicsContext;
@@ -19,7 +21,7 @@ public:
     Settings* getSettings();
     LuaEngine* getLuaEngine();
 
-    void setWorld(World* world);
+	void loadWorld(std::string path);
 
     ResourceManager* getResourceManager();
 
@@ -27,11 +29,17 @@ public:
 
     void update(float dt);
     void render();
+
 private:
     GraphicsContext* _gc;
-    World* _world;
 	Window* _window;
     ResourceManager* _loader;
     Settings* _settings;
     LuaEngine* _luaengine;
+
+    // The world that is currently loaded
+    World* _world;
+
+    // The world that is going to be loaded next update step, if any
+    World* _nextWorld;
 };

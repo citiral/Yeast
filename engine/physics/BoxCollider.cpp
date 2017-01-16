@@ -1,6 +1,7 @@
 #include "BoxCollider.h"
 
 #include "solvers/BoxBoxSolver.h"
+#include "../scripting/LuaEngine.h"
 
 BoxCollider::BoxCollider(float width, float height) : _origin(0, 0)
 {
@@ -80,4 +81,12 @@ void BoxCollider::resolveCollision(const Collider& other, std::function<void(flo
 			return;
 			break;
 	}
+}
+
+void BoxCollider::push(lua_State* L, Collider* ptr) {
+	LuaEngine::rawPushValue<BoxCollider*>(L, static_cast<BoxCollider*>(ptr));
+}
+
+void BoxCollider::push(lua_State* L, std::shared_ptr<Collider> ptr) {
+	LuaEngine::rawPushValue<std::shared_ptr<BoxCollider>>(L, std::static_pointer_cast<BoxCollider>(ptr));
 }

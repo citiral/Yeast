@@ -31,8 +31,8 @@ public:
     void setRenderable(std::shared_ptr<Renderable> r);
     std::shared_ptr<Renderable> getRenderable() const;
 
-    void setCollider(Collider* r);
-    Collider* getCollider() const;
+    void setCollider(std::shared_ptr<Collider> r);
+	std::shared_ptr<Collider> getCollider() const;
 
     void setState(EntityState state);
     EntityState getState() const;
@@ -53,7 +53,7 @@ public:
     const std::string& getType() const;
 	void setType(const std::string& t);
 	
-	void moveTo(float x, float y);
+	void move(float x, float y);
 
     void addScript(std::string name);
     ScriptInstance* getScript(std::string name);
@@ -78,7 +78,7 @@ private:
 	Vector2 _position;
 	float _rotation;
     std::shared_ptr<Renderable> _renderable;
-	Collider* _collider;
+	std::shared_ptr<Collider> _collider;
     std::map<std::string, ScriptInstance*> _scripts;
     EntityState _state;
 };

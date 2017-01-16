@@ -5,20 +5,30 @@
 -- Time: 18:57
 --
 
+xspeed = 0
+yspeed = 0
 speed = 500
 shoottimer = 0
 shoottimermax = 0.01
+
+gravity = -9.81
 
 function printVec(v)
     print("("..v:x()..", "..v:y()..")")
 end
 
 function added()
+    this:setX(100)
+    this:setY(100)
     local b = Sprite("sprite_diffuse.png", "sprite_normal.png")
     this:setRenderable(b)
     -- center the sprite
     --print(Types[this:renderable()._type])
     this:renderable():centerOrigin()
+
+    local collider = BoxCollider(this:renderable():diffuse():width(), this:renderable():diffuse():height())
+    this:setCollider(collider)
+    collider:centerOrigin()
 end
 
 function update()
@@ -27,10 +37,10 @@ function update()
     this:setRotation(math.atan2(-diff:y(), diff:x()))
 
     -- movement
-    if engine:window():keyIsDown(Keys.D) == true then this:setX(this:x() + speed * deltatime) end
-    if engine:window():keyIsDown(Keys.A) == true then this:setX(this:x() - speed * deltatime) end
-    if engine:window():keyIsDown(Keys.W) == true then this:setY(this:y() + speed * deltatime) end
-    if engine:window():keyIsDown(Keys.S) == true then this:setY(this:y() - speed * deltatime) end
+    if engine:window():keyIsDown(Keys.D) == true then this:move( speed * deltatime, 0) end
+    if engine:window():keyIsDown(Keys.A) == true then this:move(-speed * deltatime, 0) end
+    if engine:window():keyIsDown(Keys.W) == true then this:move(0,  speed * deltatime) end
+    if engine:window():keyIsDown(Keys.S) == true then this:move(0, -speed * deltatime) end
 
     -- firing
     if engine:window():buttonIsPressed(Buttons.mouse1) then

@@ -4,7 +4,7 @@
 
 FullBrightLight::FullBrightLight(Engine* engine): Light(engine)
 {
-    setProgram(_engine->getResourceManager()->loadProgram("res/shaders/lighting/vertex.vsh", "res/shaders/lighting/fullbright.fsh"));
+    setProgram(_engine->getResourceManager()->loadProgram("lighting/vertex.vsh", "lighting/fullbright.fsh"));
 }
 
 FullBrightLight::~FullBrightLight()

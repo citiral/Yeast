@@ -55,7 +55,7 @@ Color CalculateMaxLum::getMaxLum(unsigned int texture) {
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, _fbo1);
 
     // do the first pass
-    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("res/shaders/post/tonemap_max.vsh", "res/shaders/post/tonemap_max.fsh");
+    std::shared_ptr<Program> prog = _engine->getResourceManager()->loadProgram("post/tonemap_max.vsh", "post/tonemap_max.fsh");
     prog->enableProgram();
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _texture, 0);
     glUniform2f(glGetUniformLocation(prog->getProgramID(), "size"), _width, _height);

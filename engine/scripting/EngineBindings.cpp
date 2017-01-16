@@ -9,12 +9,12 @@
 #include "../resources/ResourceManager.h"
 #include "../graphics/renderables/sprite.h"
 #include "../graphics/renderables/Background.h"
-#include <GLFW/glfw3.h>
-#include "../paths.h"
 #include "../graphics/lighting/AmbientLight.h"
-#include "LuaIterator.h"
 #include "../graphics/lighting/PointLight.h"
 #include "../graphics/graphicscontext.h"
+#include "../physics/Collider.h"
+#include "../physics/BoxCollider.h"
+#include <GLFW/glfw3.h>
 
 int lua_ptreq(lua_State* L) {
     void* a = LuaEngine::getValue<void*>(L, 1);
@@ -91,6 +91,7 @@ template<> luaL_reg LuaBindings<Entity*>::functions[] = {
         {"x", &BindFunction<Entity, float>::ptr<&Entity::getX>},
         {"y", &BindFunction<Entity, float>::ptr<&Entity::getY>},
         {"destroy", &BindFunction<Entity, void>::ptr<&Entity::destroy>},
+        {"move", &BindFunction<Entity, void, float, float>::ptr<&Entity::move>},
         {"setX", &BindFunction<Entity, void, float>::ptr<&Entity::setX>},
         {"setY", &BindFunction<Entity, void, float>::ptr<&Entity::setY>},
         {"pos", &BindFunction<Entity, Vector2&>::ptr<&Entity::getPosition>},
@@ -102,6 +103,8 @@ template<> luaL_reg LuaBindings<Entity*>::functions[] = {
         {"addScript", &BindFunction<Entity, void, std::string>::ptr<&Entity::addScript>},
         {"getScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
         {"removeScript", &BindFunction<Entity, ScriptInstance*, std::string>::ptr<&Entity::getScript>},
+        {"collider", &BindFunction<Entity, std::shared_ptr<Collider>>::ptr<&Entity::getCollider>},
+        {"setCollider", &BindFunction<Entity, void, std::shared_ptr<Collider>>::ptr<&Entity::setCollider>},
         {"__eq", lua_ptreq},
         {0, 0}
 };
@@ -191,6 +194,7 @@ template<> luaL_reg LuaBindings<Engine*>::functions[] = {
         {"window", &BindFunction<Engine, Window*>::ptr<&Engine::getWindow>},
         {"world", &BindFunction<Engine, World*>::ptr<&Engine::getWorld>},
         {"settings", &BindFunction<Engine, Settings*>::ptr<&Engine::getSettings>},
+        {"loadWorld", &BindFunction<Engine, void, std::string>::ptr<&Engine::loadWorld>},
         {0, 0}
 };
 
@@ -257,7 +261,7 @@ template<> luaL_reg LuaBindings<Window*>::functions[] = {
 
 int spriteConstruct1(lua_State* L) {
     Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
-    std::shared_ptr<Sprite> back = std::make_shared<Sprite>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
+    std::shared_ptr<Sprite> back = std::make_shared<Sprite>(engine, engine->getResourceManager()->loadTexture(LuaEngine::getValue<const char*>(L, 1)));
     LuaEngine::pushValue(L, back);
     return 1;
 }
@@ -266,8 +270,8 @@ int spriteConstruct1(lua_State* L) {
 
 int spriteConstruct2(lua_State* L) {
     Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
-    std::shared_ptr<Sprite> back = std::make_shared<Sprite>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
-    back->setNormal(engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 2)));
+    std::shared_ptr<Sprite> back = std::make_shared<Sprite>(engine, engine->getResourceManager()->loadTexture(LuaEngine::getValue<const char*>(L, 1)));
+    back->setNormal(engine->getResourceManager()->loadTexture(LuaEngine::getValue<const char*>(L, 2)));
     LuaEngine::pushValue(L, back);
     return 1;
 }
@@ -295,7 +299,7 @@ template<> luaL_reg LuaBindings<std::shared_ptr<Sprite>>::functions[] = {
 
 int backgroundConstruct1(lua_State* L) {
     Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
-    std::shared_ptr<Background> back = std::make_shared<Background>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
+    std::shared_ptr<Background> back = std::make_shared<Background>(engine, engine->getResourceManager()->loadTexture(LuaEngine::getValue<const char*>(L, 1)));
     LuaEngine::pushValue(L, back);
     return 1;
 }
@@ -304,8 +308,8 @@ int backgroundConstruct1(lua_State* L) {
 
 int backgroundConstruct2(lua_State* L) {
     Engine* engine = LuaEngine::getGlobal<Engine*>(L, "engine");
-    std::shared_ptr<Background> back = std::make_shared<Background>(engine, engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 1)));
-    back->setNormal(engine->getResourceManager()->loadTexture(std::string(FOLDER_ASSETS) + LuaEngine::getValue<const char*>(L, 2)));
+    std::shared_ptr<Background> back = std::make_shared<Background>(engine, engine->getResourceManager()->loadTexture(LuaEngine::getValue<const char*>(L, 1)));
+    back->setNormal(engine->getResourceManager()->loadTexture(LuaEngine::getValue<const char*>(L, 2)));
     LuaEngine::pushValue(L, back);
     return 1;
 }
@@ -420,15 +424,28 @@ template<> luaL_reg LuaBindings<std::shared_ptr<AmbientLight>>::functions[] = {
 
 
 
+int BoxColliderConstruct2(lua_State* L) {
+    std::shared_ptr<BoxCollider> pl = std::make_shared<BoxCollider>(LuaEngine::getValue<float>(L, 1), LuaEngine::getValue<float>(L, 2));
+    LuaEngine::pushValue(L, pl);
+    return 1;
+}
 
-/*template<> const char LuaBindings<std::shared_ptr<Renderable>>::name[] = "Renderable";
-template<> lua_constructor LuaBindings<std::shared_ptr<Renderable>>::constructors[] = {
+template<> const char LuaBindings<std::shared_ptr<BoxCollider>>::name[] = "BoxCollider";
+template<> lua_constructor LuaBindings<std::shared_ptr<BoxCollider>>::constructors[] = {
+        {2, BoxColliderConstruct2},
         {0, 0}
 };
-template<> luaL_reg LuaBindings<std::shared_ptr<Renderable>>::functions[] = {
-        {0, 0}
-};*/
 
+template<> luaL_reg LuaBindings<std::shared_ptr<BoxCollider>>::functions[] = {
+        {"width", &BindFunction<BoxCollider, float>::shared<&BoxCollider::getWidth>},
+        {"height", &BindFunction<BoxCollider, float>::shared<&BoxCollider::getHeight>},
+        {"setWidth", &BindFunction<BoxCollider, void, float>::shared<&BoxCollider::setWidth>},
+        {"setHeight", &BindFunction<BoxCollider, void, float>::shared<&BoxCollider::setHeight>},
+        {"origin", &BindFunction<BoxCollider, Vector2>::shared<&BoxCollider::getOrigin>},
+        {"setOrigin", &BindFunction<BoxCollider, void, const Vector2&>::shared<&BoxCollider::setOrigin>},
+        {"centerOrigin", &BindFunction<BoxCollider, void>::shared<&BoxCollider::centerOrigin>},
+        {0, 0}
+};
 
 
 
@@ -616,6 +633,7 @@ void bind(LuaEngine* engine, lua_State* L) {
     engine->registerClass<std::shared_ptr<Background>>();
     engine->registerClass<std::shared_ptr<PointLight>>();
     engine->registerClass<std::shared_ptr<AmbientLight>>();
+    engine->registerClass<std::shared_ptr<BoxCollider>>();
     engine->registerClass<LuaIterator<std::list<Entity*>::iterator>>();
     engine->registerClass<LuaIterator<std::vector<std::shared_ptr<Light>>::iterator>>();
 

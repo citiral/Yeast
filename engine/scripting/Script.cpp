@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <cstring>
 #include "Script.h"
 #include "LuaEngine.h"
 #include "../World.h"
@@ -28,7 +29,7 @@ ScriptInstance* Script::createInstance(Engine* engine) {
     }
 
     // we go through the resource manager to load the script so we can get the same refcounted std::shared_ptr
-    ScriptInstance* instance = new ScriptInstance(_L, engine->getResourceManager()->loadScript(_path));
+    ScriptInstance* instance = new ScriptInstance(_L, engine->getResourceManager()->loadScript(_path.substr(std::strlen(FOLDER_SCRIPTS))));
 
     // get the function describing the script from the registry
     lua_pushstring(_L, _path.c_str());

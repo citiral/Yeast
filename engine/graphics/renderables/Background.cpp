@@ -3,9 +3,9 @@
 #include <glad/glad.h>
 
 Background::Background(Engine* engine, const std::shared_ptr<GL30Texture>& diffuse, float scale)
-		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("res/assets/default_normal.png"))
+		: Renderable(engine), _diffuse(diffuse), _normal(_engine->getResourceManager()->loadTexture("default_normal.png"))
 {
-	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/backgroundEffect.vsh", "res/shaders/backgroundEffect.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("backgroundEffect.vsh", "backgroundEffect.fsh"));
 	_diffuse->setRepeat(GL_REPEAT);
 	_scale = scale;
 }

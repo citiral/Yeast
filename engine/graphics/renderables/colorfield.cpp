@@ -7,7 +7,7 @@ ColorField::ColorField(Engine* engine, const Color& color, Vector2 size):
     Renderable(engine) {
 	_color = color;
 	_size = size;
-	setProgram(_engine->getResourceManager()->loadProgram("res/shaders/colorEffect.vsh", "res/shaders/colorEffect.fsh"));
+	setProgram(_engine->getResourceManager()->loadProgram("colorEffect.vsh", "colorEffect.fsh"));
 }
 
 ColorField::~ColorField() {
